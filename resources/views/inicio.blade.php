@@ -56,7 +56,8 @@
   </a>
 </div>
 
-<div class="container">
+
+<div class="container nuevo">
 <div class="row mt-5">
     <div class="col-3 align-self-center">
         <h1>Lo Mas Nuevo</h1>
@@ -65,6 +66,105 @@
     <hr class="hr bg-dark align-self-center">
     </div>
 </div>
+
+<div class="row mt-1">
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+  <img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+  <div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+
+</div>
+
+
+<div class="row mt-2">
+    <div class="col-2 align-self-center">
+        <h1>Ofertas</h1>
+    </div>
+    <div class="col">
+    <hr class="hr bg-dark align-self-center">
+    </div>
+</div>
+
+<div class="row mt-1">
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+  <img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+  <div class="card-body">
+  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+
+<div class="card m-5 border-success" style="width: 14rem;">
+<img class="card-img-top mt-2" src="https://fakeimg.pl/250x300/" alt="Card image cap">
+<div class="card-body">
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+  </div>
+  <div class="container">
+  <p class="mt-1">$25000</p>
+  </div>
+</div>
+</div>
+
 
 </div>
 

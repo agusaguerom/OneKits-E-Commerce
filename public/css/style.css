@@ -1,3 +1,52 @@
-#tituloejemplo{
-    color: red;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/*Header y Footer*/
+.navheader{
+    background-color: black;
+}
+.logonav{
+    color: white;
+}
+.footer{
+    background-color: black;
+    color: white;
+}
+.footer, .footer p, .footer a, .footer span {
+    color: white ;
+}
+.footer a i{
+    color: white;
+    font-size: 1.2em;
+}
+.iconofooter, .linkfooter{
+    color: white;
+}
+
+
+/*Contenido del Inicio */
+.containerMasNuevo, .containerOferta{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+.columnalomasnuevo, .columnaOferta{
+    display: flex;
+    align-items: center;
+    margin: 25px;
+
+}
+.tituloNuevo, .tituloOferta{
+    margin: 0;
+}
+.linea{
+    flex-grow: 1;
+    background-color: black;
+    height: 1px;
+}
+.cardInicio{
+    margin: auto;
+}
+.containermetodospago{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
 }

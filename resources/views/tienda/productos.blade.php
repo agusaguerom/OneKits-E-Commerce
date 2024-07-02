@@ -3,6 +3,6 @@
 
 @section('content')
 
-  <h1>contacto</h1>
+  <h1>productos</h1>
 
 @endsection

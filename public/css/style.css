@@ -2,11 +2,33 @@
 
 /*Header y Footer*/
 .navheader{
-    background-color: black;
+    height: 80px;
+    background-color: white;
 }
 .logonav{
-    color: white;
+    color: black;
 }
+.logoheader{
+    margin: 10px;
+}
+
+.linksheader{
+    margin: 17px;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.iconosheader{
+    margin: auto;
+}
+.icono{
+    margin: 15px;
+    color: black;
+    font-size: 1.7em;
+}
+
 .footer{
     background-color: black;
     color: white;
@@ -24,6 +46,10 @@
 
 
 /*Contenido del Inicio */
+.carrusel{
+    width: 100%;
+}
+
 .containerMasNuevo, .containerOferta{
     margin-top: 70px;
     margin-bottom: 20px;
@@ -49,4 +75,13 @@
     margin-top: 100px;
     display: flex;
     justify-content: center;
+}
+.bannerprom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.bannerprom img{
+    width: 100%;
 }

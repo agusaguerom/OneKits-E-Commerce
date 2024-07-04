@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide carrusel" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="https://fakeimg.pl/800x300/" alt="First slide">
@@ -135,6 +135,10 @@
 
     </div>
 
+  </div>
+
+  <div class="bannerprom container">
+    <img src="https://fakeimg.pl/800x300/">
   </div>
 
   <div class="metodosPago">

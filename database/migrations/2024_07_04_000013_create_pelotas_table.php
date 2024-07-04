@@ -20,8 +20,7 @@ return new class extends Migration
             $table->text('Descripcion');
             $table->timestamps();
 
-            $table->foreign('fk_tipo_marca')->references('id')->on('tipo_marcas')->onDelete('cascade');
-            $table->foreign('fk_fotos')->references('id')->on('imagenes')->onDelete('cascade');
+            
 
         });
     }

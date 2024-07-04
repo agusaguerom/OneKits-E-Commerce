@@ -7,6 +7,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('/tienda', function () {
-    return view('tienda/contacto');
+
+Route::get('/contacto', function () {
+    return view('tienda.contacto');
 });
+
+
+
+Route::get('/nosotros', function () {
+    return view('tienda.nosotros');
+});
+
+

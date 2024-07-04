@@ -139,7 +139,7 @@
 
   <div class="bannerprom container">
     <img src="https://fakeimg.pl/800x300/">
-  </div>
+  </div>  
 
   <div class="metodosPago">
     <div class="container containermetodospago">

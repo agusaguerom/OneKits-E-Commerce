@@ -5,6 +5,12 @@
 
 
 
+<h1> Nosotros</h1>
+
+<div class= img>
+
+</div>
+
 
 
 

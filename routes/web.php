@@ -22,5 +22,6 @@ Route::get('/nosotros', function () {
 
 use App\Http\Controllers\AdminController;
 
-Route::resource('admin', AdminController::class);
+Route::get('/admin', [AdminController::class, 'index']);
+
 

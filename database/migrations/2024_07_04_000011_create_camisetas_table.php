@@ -15,15 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('fk_tipo_marca');
             $table->unsignedBigInteger('fk_equipo');
-            $table->unsignedBigInteger('fk_tipo_talle');
             $table->String('nombre');
             $table->integer('precio');
-            $table->unsignedBigInteger('fk_fotos');
             $table->text('Descripcion');
             $table->timestamps();
-
-          
-
         });
     }
 

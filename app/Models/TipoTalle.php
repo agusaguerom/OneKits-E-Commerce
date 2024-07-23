@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoTalle extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nombre_talle', 'stock'];
+
 }

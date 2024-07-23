@@ -11,19 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_talles', function (Blueprint $table) {
+        Schema::create('camiseta_talle_stock', function (Blueprint $table) {
             $table->id();
-            $table->String('nombre_talle');
+            $table->unsignedBigInteger('fk_camiseta');
+            $table->unsignedBigInteger('fk_tipo_talle');
             $table->integer('stock');
             $table->timestamps();
+    
+            $table->foreign('fk_camiseta')->references('id')->on('camisetas')->onDelete('cascade');
+            $table->foreign('fk_tipo_talle')->references('id')->on('tipo_talles')->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_talles');
+        //
     }
 };

@@ -6,9 +6,7 @@
 
 
 
-<h1>feiwojiwfe</h1>
-
-
+<h1>Seccion Camisetas</h1>
 
 
 @endsection

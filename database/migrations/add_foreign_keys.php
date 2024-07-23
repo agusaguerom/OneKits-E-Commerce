@@ -29,8 +29,10 @@ return new class extends Migration
         Schema::table('camisetas', function (Blueprint $table) {
             $table->foreign('fk_tipo_marca')->references('id')->on('tipo_marcas')->onDelete('cascade');
             $table->foreign('fk_equipo')->references('id')->on('equipos')->onDelete('cascade');
-            $table->foreign('fk_tipo_talle')->references('id')->on('tipo_talles')->onDelete('cascade');
-            $table->foreign('fk_fotos')->references('id')->on('imagenes')->onDelete('cascade');
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('fk_tipo_usuario')->references('id')->on('tipo_usuarios')->onDelete('cascade');
+            $table->foreign('fk_domicilio')->references('id')->on('domicilios')->onDelete('cascade');
         });
     }
 };

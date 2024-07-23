@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoMarca extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nombre'];
+
 }

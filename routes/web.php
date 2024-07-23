@@ -28,7 +28,7 @@ Route::get('/nosotros', function () {
 Route::get('/camisetas',[
     CamisetaController::class,
     'index'
-]);
+    ])->name('camisetas.index');
 
 
 use App\Http\Controllers\AdminController;

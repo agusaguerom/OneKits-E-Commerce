@@ -21,7 +21,7 @@
             <tbody>
                 @foreach ($camisetas as $camiseta)
                 <tr>
-                  <td> {{ $camiseta->tipomarca->nombre }} </td>
+                  <td> {{$camiseta->tipomarca->nombre}} </td>
                   <td> {{$camiseta->equipo->nombre}} </td>
                   <td> {{$camiseta->tipotalle->nombre_talle}} </td>
                   <td> {{$camiseta->nombre}} </td>

@@ -37,6 +37,8 @@ Route::get('/camisetas/create',[
 ])->name ('camisetas.create');
 
 
+
+
 use App\Http\Controllers\AdminController;
 
 Route::get('/admin', [AdminController::class, 'index']);

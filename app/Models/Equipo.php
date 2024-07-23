@@ -14,4 +14,11 @@ class Equipo extends Model
     {
         return $this->hasMany(Camiseta::class, 'fk_equipo');
     }
+
+
+    public function equipos()
+    {
+        return $this->hasMany(Camiseta::class, 'nombre');
+
+    }
 }

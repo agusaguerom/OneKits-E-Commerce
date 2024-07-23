@@ -20,9 +20,12 @@ class Camiseta extends Model
         return $this->belongsTo(Equipo::class,'fk_equipo');
     }
 
+
     public function tipotalle()
     {
         return $this->belongsTo(TipoTalle::class,'fk_tipo_talle');
     }
+
+
 
 }

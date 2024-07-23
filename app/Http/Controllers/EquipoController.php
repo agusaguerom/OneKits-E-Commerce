@@ -20,7 +20,10 @@ class EquipoController extends Controller
      */
     public function create()
     {
-        //
+        $equipos = Equipo::orderBy('nombre')->get();
+        return view('admin.camisetas.create', [
+            'equipos' => $equipos
+        ]);
     }
 
     /**

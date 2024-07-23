@@ -12,7 +12,7 @@ class CamisetaController extends Controller
      */
     public function index()
     {
-        //
+        return 'aca van las camisetas';
     }
 
     /**

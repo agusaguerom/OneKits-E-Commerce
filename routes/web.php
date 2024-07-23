@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CamisetaController;
+
 
 Route::get('/', function () {
     return view('inicio');
@@ -20,8 +22,19 @@ Route::get('/nosotros', function () {
 
 
 
+
+// camisetas
+
+Route::get('/camisetas',[
+    CamisetaController::class,
+    'index'
+]);
+
+
 use App\Http\Controllers\AdminController;
 
 Route::get('/admin', [AdminController::class, 'index']);
+
+
 
 

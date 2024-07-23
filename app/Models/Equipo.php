@@ -9,6 +9,16 @@ class Equipo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
 
+    public function camisetas()
+    {
+        return $this->hasMany(Camiseta::class, 'fk_equipo');
+    }
+
+
+    public function equipos()
+    {
+        return $this->hasMany(Camiseta::class, 'nombre');
+
+    }
 }

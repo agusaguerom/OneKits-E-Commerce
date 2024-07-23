@@ -13,69 +13,67 @@
 
 
 <header>
-<nav class="navbar navbar-expand-lg navheader">
-  <a class="navbar-brand logoheader text-black" href="/">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg navheader">
+        <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="#">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/contacto') }}">Contacto</a>
-    </li>
-    </ul>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="text-black linksheader" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-black linksheader" href="#">Panel Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="text-black linksheader" href="#">Panel Clientes</a>
+            </li>
+        </ul>
   </div>
 
   <div class="iconosheader">
-  <i class="bi bi-cart4 icono"></i>
-  <a href="{{ url('/login') }}"> <i class="bi bi-person icono"></i> </a>
+    <i class="bi bi-cart4 icono"></i>
+    <i class="bi bi-person icono"></i>
   </div>
 
-</nav>
+    </nav>
 </header>
 
-    <main>
-        @yield("content")
-    </main>
+<main>
+    @yield("content")
+</main>
 
 
 <footer class="text-center text-lg-start  text-muted footer">
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    <div class="me-5 d-none d-lg-block">
-      <span>Siguenos en Nuestras Redes</span>
-    </div>
+        <div class="me-5 d-none d-lg-block">
+        <span>Siguenos en Nuestras Redes</span>
+        </div>
 
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="bi bi-facebook"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="bi bi-twitter-x"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="bi bi-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="bi bi-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-         <i class="bi bi-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-       <i class="bi bi-github"></i>
-      </a>
-    </div>
-  </section>
+        <div>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-facebook"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-twitter-x"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-google"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+        <i class="bi bi-github"></i>
+        </a>
+        </div>
+
+    </section>
 
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -126,9 +124,12 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

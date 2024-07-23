@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tipo_talles', function (Blueprint $table) {
             $table->id();
             $table->String('nombre_talle');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

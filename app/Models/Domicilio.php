@@ -8,12 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Domicilio extends Model
 {
     use HasFactory;
-
-
-    protected $fillable = [
-        'direccion',
-        'altura',
-        'piso',
-        'nroDepto'
-    ];
 }

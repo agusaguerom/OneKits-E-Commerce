@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Camiseta;
 use Illuminate\Http\Request;
+use App\Models\TipoMarca;
+use App\Models\TipoTalle;
+use App\Models\Equipo;
+
+
 
 class CamisetaController extends Controller
 {
@@ -12,7 +17,10 @@ class CamisetaController extends Controller
      */
     public function index()
     {
-        return 'Aca van las camisetas';
+        $camisetas = Camiseta::orderBy('fk_equipo')->get();
+        return view('admin.camisetas.index', [
+            'camisetas' => $camisetas
+        ]);
     }
 
     /**
@@ -20,7 +28,15 @@ class CamisetaController extends Controller
      */
     public function create()
     {
-        //
+        $equipos = Equipo::orderBy('nombre')->get();
+        $tipomarca = TipoMarca::orderBy('nombre')->get();
+        $tipotalle = TipoTalle::orderBy('id')->get();
+
+        return view('admin.camisetas.create',[
+            'equipos' => $equipos,
+            'tipomarca' => $tipomarca,
+            'tipotalle' => $tipotalle
+        ]);
     }
 
     /**

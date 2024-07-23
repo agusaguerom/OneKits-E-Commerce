@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\CamisetaController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CamisetaController;
 
 
 Route::get('/', function () {
@@ -15,11 +13,7 @@ Route::get('/', function () {
 Route::get('/contacto', function () {
     return view('tienda.contacto');
 });
-Route::get('/camisetas', [
-    CamisetaController::class,
-    'index'
-]);
-Route::resource('/camisetas', CamisetaController::class)->middleware('isAdmin');
+
 
 
 Route::get('/nosotros', function () {
@@ -28,14 +22,29 @@ Route::get('/nosotros', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// camisetas
 
-require __DIR__.'/auth.php';
+Route::get('/camisetas',[
+    CamisetaController::class,
+    'index'
+    ])->name('camisetas.index');
+
+
+Route::get('/camisetas/create',[
+    CamisetaController::class,
+    'create'
+])->name ('camisetas.create');
+
+
+
+
+use App\Http\Controllers\AdminController;
+
+Route::get('/admin', [AdminController::class, 'index']);
+
+
+
+
+
+

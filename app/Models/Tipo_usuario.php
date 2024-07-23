@@ -8,6 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo_usuario extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['tipo_usuario'];
 }

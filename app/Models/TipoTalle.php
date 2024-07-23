@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoTalle extends Model
 {
     use HasFactory;
+
+
+    public function camisetas()
+    {
+        return $this->hasMany(Camiseta::class, 'fk_tipo_talle');
+    }
 }

@@ -12,7 +12,7 @@ class CamisetaController extends Controller
      */
     public function index()
     {
-        $camisetas = Camiseta::orderBy('fk_equipo')->with('tipomarca')->get();
+        $camisetas = Camiseta::orderBy('fk_equipo')->get();
         return view('admin.camisetas.index', [
             'camisetas' => $camisetas
         ]);

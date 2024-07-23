@@ -19,8 +19,8 @@
                 @foreach ($camisetas as $camiseta)
                 <tr>
                   <td> {{ $camiseta->tipomarca->nombre }} </td>
-                  <td> {{$camiseta->fk_equipo}} </td>
-                  <td> {{$camiseta->fk_tipo_talle}} </td>
+                  <td> {{$camiseta->equipo->nombre}} </td>
+                  <td> {{$camiseta->tipotalle->nombre_talle}} </td>
                   <td> {{$camiseta->nombre}} </td>
                   <td> {{$camiseta->precio}} </td>
 

@@ -23,7 +23,9 @@ class CamisetaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.camisetas.create',[
+
+        ]);
     }
 
     /**

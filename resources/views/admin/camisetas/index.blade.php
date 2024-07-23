@@ -1,8 +1,11 @@
-@extends("../layout")
+@extends("../layouts.admin")
 @section('content')
 
     <div class="container">
         <h1>Lista de camisetas</h1>
+
+        <a href="{{ route('camisetas.create')}}" class="btn btn-primary">Agregar Camiseta</a>
+
         <table class="table">
             <thead>
               <tr>

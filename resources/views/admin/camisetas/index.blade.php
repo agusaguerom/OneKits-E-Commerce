@@ -18,11 +18,11 @@
             <tbody>
                 @foreach ($camisetas as $camiseta)
                 <tr>
-                  <td>{{$camiseta->fk_tipo_marca}}</td>
-                  <td>{{$camiseta->fk_equipo}}</td>
-                  <td>{{$camiseta->fk_tipo_talle}}</td>
-                  <td>{{$camiseta->nombre}}</td>
-                  <td>{{$camiseta->precio}}</td>
+                <td> {{ $camiseta->tipomarca ? $camiseta->tipomarca->nombre : 'Sin marca' }} </td>
+                  <td> {{$camiseta->fk_equipo}} </td>
+                  <td> {{$camiseta->fk_tipo_talle}} </td>
+                  <td> {{$camiseta->nombre}} </td>
+                  <td> {{$camiseta->precio}} </td>
 
                   <td>
                     <a href="btn btn-primary"> Ingresar</a>

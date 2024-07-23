@@ -85,3 +85,42 @@
 .bannerprom img{
     width: 100%;
 }
+
+
+/*CSS Contacto*/
+
+.titulocontacto{
+    margin: 20px;
+    text-align: center;
+}
+.parrafocontacto{
+    text-align: center;
+}
+.form-group{
+    margin: 30px;
+}
+.form-group label{
+    font-weight: bold;
+}
+
+.submitdiv{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+/*CSS Nosotros*/
+.nosotrostitulo{
+    margin: 15px;
+    text-align: center;
+}
+
+.imgnosotros{
+    margin-top: 23px;
+    width: 100%;
+}
+
+.parrafo1nosotros{
+    margin: 50px;
+    text-align: center;
+}

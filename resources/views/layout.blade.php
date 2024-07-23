@@ -14,7 +14,7 @@
 
 <header>
 <nav class="navbar navbar-expand-lg navheader">
-  <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
+  <a class="navbar-brand logoheader text-black" href="/">Logo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,7 +38,7 @@
 
   <div class="iconosheader">
   <i class="bi bi-cart4 icono"></i>
-  <i class="bi bi-person icono"></i>
+  <a href="{{ url('/login') }}"> <i class="bi bi-person icono"></i> </a>
   </div>
 
 </nav>

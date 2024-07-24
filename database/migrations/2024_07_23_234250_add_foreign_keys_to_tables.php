@@ -35,6 +35,9 @@ return new class extends Migration
             $table->foreign('fk_camisetas')->references('id')->on('camisetas')->onDelete('cascade');
             $table->foreign('fk_pelotas')->references('id')->on('pelotas')->onDelete('cascade');
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('fk_tipo_usuario')->references('id')->on('tipo_usuarios')->onDelete('cascade');
+        });
     }
 
     public function down()
@@ -63,5 +66,8 @@ return new class extends Migration
             $table->dropForeign(['fk_camisetas']);
             $table->dropForeign(['fk_pelotas']);
         });
+
+   
     }
 };
+    

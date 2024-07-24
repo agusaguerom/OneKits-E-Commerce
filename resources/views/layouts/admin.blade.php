@@ -1,3 +1,6 @@
+<!--admin.blade.php-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +31,7 @@
                 <a class="text-black linksheader" href="#">Panel Productos</a>
             </li>
             <li class="nav-item">
-                <a class="text-black linksheader" href="#">Panel Clientes</a>
+                <a class="text-black linksheader" href={{ url('/usuarios') }}>Panel Clientes</a>
             </li>
         </ul>
   </div>

@@ -3,10 +3,12 @@
 @section('content')
 
 <div class="container">
-    <form action="">
+    <form action="{{route('camisetas.store')}}" method="POST">
+        @csrf
+
         <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
-            <select class="form-select" id="marca">
+            <select class="form-select" name="marca" id="marca">
 
                 @foreach ($tipomarca as $marca)
                 <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
@@ -17,7 +19,7 @@
 
         <div class="mb-3">
             <label for="equipo" class="form-label">Equipo</label>
-            <select class="form-select" id="equipo">
+            <select class="form-select" name="equipo" id="equipo">
 
                 @foreach ($equipos as $equipo)
                 <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
@@ -28,7 +30,7 @@
 
         <div class="mb-3">
             <label for="talle" class="form-label">Talle</label>
-            <select class="form-select" id="talle">
+            <select class="form-select" name="talle" id="talle">
 
                 @foreach ($tipotalle as $talle)
                 <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
@@ -39,22 +41,22 @@
 
         <div class="mb-3">
             <label for="dorsal" class="form-label">Dorsal</label>
-            <input type="text" class="form-control" id="dorsal" placeholder="Dorsal">
+            <input type="text" class="form-control" name="dorsal" id="dorsal" placeholder="Dorsal">
         </div>
 
         <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
-            <input type="text" class="form-control" id="precio" placeholder="Precio">
+            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
         </div>
 
         <div class="mb-3">
-            <label for="imagen">Cargar imagen del Producto</label>
-            <input id="imagen" type="file" name="imagen" class="form-control">
+            <label for="img" class="form-label">Imagen</label>
+            <input type="text" class="form-control" name="img" id="img" placeholder="Imagen">
         </div>
 
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea class="form-control" id="descripcion" rows="3"></textarea>
+            <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
         </div>
 
             <button type="submit" class="btn btn-primary">Agregar Camiseta</button>

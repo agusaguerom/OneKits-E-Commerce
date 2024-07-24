@@ -44,7 +44,19 @@ class CamisetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Camiseta::create([
+
+            'fk_tipo_marca' =>  $request ->marca,
+            'fk_equipo' => $request ->equipo,
+            'fk_tipo_talle' => $request ->talle,
+            'nombre' => $request ->dorsal,
+            'precio' => $request ->precio,
+            'fk_fotos' => $request ->imagen,
+            'Descripcion' => $request ->descripcion,
+        ]);
+
+        return redirect()->route('camisetas.index');
+
     }
 
     /**

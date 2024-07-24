@@ -26,6 +26,6 @@ class Camiseta extends Model
         return $this->belongsTo(TipoTalle::class,'fk_tipo_talle');
     }
 
-
+    protected $fillable = ['fk_tipo_marca','fk_equipo','fk_tipo_talle','nombre','precio','Descripcion'];
 
 }

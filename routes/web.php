@@ -37,6 +37,10 @@ Route::get('/camisetas/create',[
 ])->name ('camisetas.create');
 
 
+Route::post('/camisetas',[
+    CamisetaController::class,
+    'store'
+])->name('camisetas.store');
 
 
 use App\Http\Controllers\AdminController;

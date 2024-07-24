@@ -7,7 +7,11 @@
         <div class="mb-3">
             <label for="marca" class="form-label">Marca</label>
             <select class="form-select" id="marca">
-                <option selected>Marca</option>
+
+                @foreach ($tipomarca as $marca)
+                <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                @endforeach
+
             </select>
         </div>
 
@@ -25,7 +29,11 @@
         <div class="mb-3">
             <label for="talle" class="form-label">Talle</label>
             <select class="form-select" id="talle">
-                <option selected>Talle</option>
+
+                @foreach ($tipotalle as $talle)
+                <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
+                @endforeach
+
             </select>
         </div>
 

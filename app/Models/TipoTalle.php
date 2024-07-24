@@ -14,4 +14,11 @@ class TipoTalle extends Model
     {
         return $this->hasMany(Camiseta::class, 'fk_tipo_talle');
     }
+
+
+    public function tipotalle()
+    {
+        return $this->hasMany(Camiseta::class, 'nombre_talle');
+
+    }
 }

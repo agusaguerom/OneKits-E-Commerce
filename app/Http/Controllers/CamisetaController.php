@@ -30,12 +30,10 @@ class CamisetaController extends Controller
     {
         $equipos = Equipo::orderBy('nombre')->get();
         $tipomarca = TipoMarca::orderBy('nombre')->get();
-        $tipotalle = TipoTalle::orderBy('id')->get();
 
         return view('admin.camisetas.create',[
             'equipos' => $equipos,
             'tipomarca' => $tipomarca,
-            'tipotalle' => $tipotalle
         ]);
     }
 
@@ -48,20 +46,16 @@ class CamisetaController extends Controller
         $request->validate([
             'fk_tipo_marca' => 'required',
             'fk_equipo' => 'required',
-            'fk_tipo_talle' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
-            'fk_fotos' => 'nullable',
             'Descripcion' => 'nullable',
         ]);
 
         Camiseta::create([
             'fk_tipo_marca' => $request->fk_tipo_marca,
             'fk_equipo' => $request->fk_equipo,
-            'fk_tipo_talle' => $request->fk_tipo_talle,
             'nombre' => $request->nombre,
             'precio' => $request->precio,
-            'fk_fotos' => $request->fk_fotos,
             'Descripcion' => $request->Descripcion,
         ]);
 
@@ -74,9 +68,16 @@ class CamisetaController extends Controller
      */
     public function show(Camiseta $camiseta)
     {
-        return view('admin.camisetas.show', [
-            'camiseta' => $camiseta
+        $stocks = $camiseta->stocks()
+            ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
+            ->orderBy('stocks.cantidad') // Ordenar por cantidad numéricamente
+            ->orderBy('tipo_talles.nombre_talle') // Ordenar por nombre_talle alfabéticamente
+            ->select('stocks.*', 'tipo_talles.nombre_talle') // Seleccionar los campos necesarios
+            ->get();
 
+        return view('admin.camisetas.show', [
+            'camiseta' => $camiseta,
+            'stocks' => $stocks
         ]);
     }
 
@@ -88,13 +89,11 @@ class CamisetaController extends Controller
 
         $equipos = Equipo::orderBy('nombre')->get();
         $tipomarca = TipoMarca::orderBy('nombre')->get();
-        $tipotalle = TipoTalle::orderBy('id')->get();
 
         return view('admin.camisetas.edit', [
             'camiseta' => $camiseta,
             'equipos' => $equipos,
             'tipomarca' => $tipomarca,
-            'tipotalle' => $tipotalle
         ]);
     }
 
@@ -108,10 +107,8 @@ class CamisetaController extends Controller
         $request->validate([
             'fk_tipo_marca' => 'required',
             'fk_equipo' => 'required',
-            'fk_tipo_talle' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
-            'fk_fotos' => 'nullable',
             'Descripcion' => 'nullable',
 
         ]);
@@ -120,10 +117,8 @@ class CamisetaController extends Controller
 
             'fk_tipo_marca' => $request->fk_tipo_marca,
             'fk_equipo' => $request->fk_equipo,
-            'fk_tipo_talle' => $request->fk_tipo_talle,
             'nombre' => $request->nombre,
             'precio' => $request->precio,
-            'fk_fotos' => $request->fk_fotos,
             'Descripcion' => $request->descripcion,
 
          ]);

@@ -36,4 +36,9 @@ class Camiseta extends Model
         'Descripcion',
     ];
 
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'fk_camiseta');
+    }
+
 }

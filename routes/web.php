@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CamisetaController;
 use App\Http\Controllers\BotinController;
 use App\Http\Controllers\PelotaController;
+use App\Http\Controllers\StockController;
+
 
 
 
@@ -121,6 +123,20 @@ Route::delete('/botines/{botin}',
 
 
 
+
+
+
+//stock
+Route::get('/camisetas/{camiseta}/stock/create',
+    [StockController::class, 'create'])
+->name('stock.create');
+
+
+
+
+Route::post('/camisetas/{camiseta}/stock',
+    [StockController::class, 'store'])
+->name('stock.store');
 
 
 

@@ -21,7 +21,6 @@
               <tr>
                 <th scope="col">Marca</th>
                 <th scope="col">Equipo</th>
-                <th scope="col">Talle</th>
                 <th scope="col">Dorsal</th>
                 <th scope="col">Precio</th>
                 <th scope="col"></th>
@@ -33,7 +32,6 @@
                 <tr>
                   <td> {{$camiseta->tipomarca->nombre}} </td>
                   <td> {{$camiseta->equipo->nombre}} </td>
-                  <td> {{$camiseta->tipotalle->nombre_talle}} </td>
                   <td> {{$camiseta->nombre}} </td>
                   <td> {{$camiseta->precio}} </td>
 

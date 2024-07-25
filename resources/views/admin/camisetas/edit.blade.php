@@ -32,17 +32,6 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="fk_tipo_talle" class="form-label">Talle</label>
-            <select class="form-select" name="fk_tipo_talle" id="fk_tipo_talle">
-
-                @foreach ($tipotalle as $talle)
-                <option value="{{ $talle->id }}" {{ $camiseta->fk_tipo_talle == $talle->id ? 'selected' : '' }}>
-                {{ $talle->nombre_talle }}
-                @endforeach
-
-            </select>
-        </div>
 
         <div class="mb-3">
             <label for="nombre" class="form-label">Dorsal</label>
@@ -55,10 +44,6 @@
             <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="{{$camiseta->precio}}">
         </div>
 
-        <div class="mb-3">
-            <label for="fk_fotos" class="form-label">Imagen</label>
-            <input type="text" class="form-control" name="fk_fotos" id="fk_fotos" placeholder="Imagen">
-        </div>
 
 
         <div class="mb-3">

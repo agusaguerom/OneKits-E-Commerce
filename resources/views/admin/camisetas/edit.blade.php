@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <form action="{{route('camisetas.store')}}" method="POST">
+    <form action="{{route('camisetas.update' ,$camiseta)}}" method="POST">
         @csrf
 
         <div class="mb-3">
@@ -41,12 +41,12 @@
 
         <div class="mb-3">
             <label for="dorsal" class="form-label">Dorsal</label>
-            <input type="text" class="form-control" name="dorsal" id="dorsal" placeholder="Dorsal">
+            <input type="text" class="form-control" name="dorsal" id="dorsal" placeholder="Dorsal" value="{{$camiseta->nombre}}">
         </div>
 
         <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
-            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="{{$camiseta->precio}}">
         </div>
 
         <div class="mb-3">
@@ -56,10 +56,10 @@
 
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
+            <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{ $camiseta->Descripcion }}</textarea>
         </div>
 
-            <button type="submit" class="btn btn-primary">Agregar Camiseta</button>
+            <button type="submit" class="btn btn-primary">Modificar</button>
 
             <a href="{{route ('camisetas.index')}}" class="btn btn-danger">Cancelar</a>
 

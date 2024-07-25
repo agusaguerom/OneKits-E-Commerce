@@ -64,7 +64,10 @@ class CamisetaController extends Controller
      */
     public function show(Camiseta $camiseta)
     {
-        //
+        return view('admin.camisetas.show', [
+            'camiseta' => $camiseta
+
+        ]);
     }
 
     /**
@@ -72,7 +75,17 @@ class CamisetaController extends Controller
      */
     public function edit(Camiseta $camiseta)
     {
-        //
+
+        $equipos = Equipo::orderBy('nombre')->get();
+        $tipomarca = TipoMarca::orderBy('nombre')->get();
+        $tipotalle = TipoTalle::orderBy('id')->get();
+
+        return view('admin.camisetas.edit', [
+            'camiseta' => $camiseta,
+            'equipos' => $equipos,
+            'tipomarca' => $tipomarca,
+            'tipotalle' => $tipotalle
+        ]);
     }
 
     /**
@@ -80,7 +93,30 @@ class CamisetaController extends Controller
      */
     public function update(Request $request, Camiseta $camiseta)
     {
-        //
+        $request->validate([
+            'fk_tipo_marca' =>  'required' ,
+            'fk_equipo' => 'required' ,
+            'fk_tipo_talle' => 'required' ,
+            'nombre' => 'required' ,
+            'precio' => 'required' ,
+            'fk_fotos' => 'required' ,
+            'Descripcion' => 'required',
+
+        ]);
+
+        $camiseta->update([
+
+            'fk_tipo_marca' =>  $request ->marca,
+            'fk_equipo' => $request ->equipo,
+            'fk_tipo_talle' => $request ->talle,
+            'nombre' => $request ->dorsal,
+            'precio' => $request ->precio,
+            'fk_fotos' => $request ->imagen,
+            'Descripcion' => $request ->descripcion,
+
+         ]);
+
+         return redirect()->route('camisetas.index');
     }
 
     /**

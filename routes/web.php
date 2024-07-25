@@ -23,6 +23,10 @@ Route::get('/nosotros', function () {
 
 
 
+
+
+
+
 // camisetas
 
 Route::get('/camisetas',[
@@ -41,6 +45,32 @@ Route::post('/camisetas',[
     CamisetaController::class,
     'store'
 ])->name('camisetas.store');
+
+
+Route::get('/camisetas/{camiseta}',[
+    CamisetaController::class,
+    'show'
+])->name('camisetas.show');
+
+
+Route::get('/camisetas/{camiseta}/edit',[
+    CamisetaController::class,
+    'edit'
+])->name('camisetas.edit');
+
+
+Route::put('/camisetas/{camiseta}',[
+    CamisetaController::class,
+    'update'
+])->name('camisetas.update');
+
+
+
+
+
+
+
+
 
 
 use App\Http\Controllers\AdminController;

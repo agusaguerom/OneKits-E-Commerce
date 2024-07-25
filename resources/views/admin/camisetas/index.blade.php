@@ -28,7 +28,7 @@
                   <td> {{$camiseta->precio}} </td>
 
                   <td>
-                    <a href="btn btn-primary"> Ingresar</a>
+                    <a href="{{route('camisetas.show',$camiseta->id)}}" class="btn btn-primary"> Ingresar</a>
                   </td>
                 </tr>
                 @endforeach

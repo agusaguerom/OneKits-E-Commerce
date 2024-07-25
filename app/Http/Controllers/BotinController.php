@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Botin;
+use App\Models\TipoMarca;
+use App\Models\TalleCalzado;
 use Illuminate\Http\Request;
 
 class BotinController extends Controller

@@ -73,6 +73,18 @@ Route::delete('/camisetas/{camiseta}',
 
 
 
+//BOTINES
+
+Route::get('/botines',[
+    CamisetaController::class,
+    'index'
+    ])->name('botines.index');
+
+
+
+
+
+
 
 
 

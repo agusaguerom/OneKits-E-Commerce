@@ -16,16 +16,12 @@
             </select>
         </div>
 
+
         <div class="mb-3">
             <label for="fk_equipo" class="form-label">Equipo</label>
-            <select class="form-select" name="fk_equipo" id="fk_equipo">
-
-                @foreach ($equipos as $equipo)
-                <option value="{{ $equipo->id }}">{{ $equipo->nombre }}</option>
-                @endforeach
-
-            </select>
+            <input type="text" class="form-control" name="fk_equipo" id="fk_equipo" placeholder="Equipo">
         </div>
+
 
         <div class="mb-3">
             <label for="fk_tipo_talle" class="form-label">Talle</label>

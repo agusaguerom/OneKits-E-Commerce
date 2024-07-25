@@ -11,11 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('botines', function (Blueprint $table) {
-            $table->dropForeign(['fk_equipo']); // Elimina la clave foránea primero, si existe
-            $table->dropColumn('fk_equipo');   // Luego elimina la columna
+        Schema::create('imagenpelotas', function (Blueprint $table) {
+            $table->id();
+            $table->string('url_img');
+            $table->unsignedBigInteger('fk_pelota');
+            $table->timestamps();
+
+            $table->foreign('fk_pelota')->references('id')->on('pelotas');
 
         });
+
+
     }
 
     /**
@@ -23,8 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('botines', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('imagenpelotas');
     }
 };

@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pelotas', function (Blueprint $table) {
+        Schema::create('imagencamisetas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fk_tipo_marca');
-            $table->String('nombre');
-            $table->integer('precio');
-            $table->text('Descripcion');
+            $table->string('url_img');
+            $table->unsignedBigInteger('fk_camiseta');
             $table->timestamps();
 
-            $table->foreign('fk_tipo_marca')->references('id')->on('tipo_marcas');
+            $table->foreign('fk_camiseta')->references('id')->on('camisetas');
 
         });
+
     }
 
     /**
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pelotas');
+        Schema::dropIfExists('imagencamisetas');
     }
 };

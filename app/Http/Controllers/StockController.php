@@ -28,12 +28,23 @@ class StockController extends Controller
             'cantidad' => 'required|integer|min:1'
         ]);
 
-        Stock::create([
-            'fk_camiseta' => $camiseta->id,
-            'fk_tipo_talle' => $request->fk_tipo_talle,
-            'cantidad' => $request->cantidad
-        ]);
+        $stock = Stock::where('fk_camiseta', $camiseta->id)
+                       ->where('fk_tipo_talle', $request->fk_tipo_talle)
+                       ->first();
 
-        return redirect()->route('camisetas.show', $camiseta)->with('status', 'Stock agregado correctamente');
+        if ($stock) {
+
+            $stock->cantidad += $request->cantidad;
+            $stock->save();
+        } else {
+
+            Stock::create([
+                'fk_camiseta' => $camiseta->id,
+                'fk_tipo_talle' => $request->fk_tipo_talle,
+                'cantidad' => $request->cantidad
+            ]);
+        }
+
+        return redirect()->route('camisetas.show', $camiseta)->with('status', 'Stock actualizado correctamente');
     }
 }

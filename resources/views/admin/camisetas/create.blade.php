@@ -37,7 +37,7 @@
 
         <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
-            <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+            <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio">
         </div>
 
 

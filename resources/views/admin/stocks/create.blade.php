@@ -21,8 +21,12 @@
             <input type="number" class="form-control" name="cantidad" id="cantidad" min="1" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar Stock</button>
-        <a href="{{ route('camisetas.show', $camiseta) }}" class="btn btn-secondary">Cancelar</a>
+        <div class="mb-3">
+
+            <button type="submit" class="btn btn-primary">Agregar Stock</button>
+            <a href="{{ route('camisetas.show', $camiseta) }}" class="btn btn-danger">Cancelar</a>
+
+        </div>
     </form>
 </div>
 @endsection

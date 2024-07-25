@@ -5,7 +5,7 @@
 
 
 <div class="container">
-        <h1>Botin {{ $botin->nombre }}</h1>
+        <h1>Botin {{ $botin->nombre}}</h1>
 
 
 

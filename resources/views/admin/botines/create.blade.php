@@ -22,7 +22,7 @@
             <select class="form-select" name="fk_talle_calzado" id="fk_talle_calzado">
 
                 @foreach ($tallecalzado as $talle)
-                <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
+                    <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
                 @endforeach
 
             </select>
@@ -38,6 +38,7 @@
             <label for="precio" class="form-label">Precio</label>
             <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
         </div>
+
 
         <div class="mb-3">
             <label for="fk_fotos" class="form-label">Imagen</label>

@@ -65,9 +65,9 @@ class BotinController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+
+
+
     public function show(Botin $botin)
     {
         return view('admin.botines.show', [
@@ -85,6 +85,7 @@ class BotinController extends Controller
         $tipotalle = TalleCalzado::orderBy('id')->get();
 
         return view('admin.botines.edit', [
+            'botin' =>$botin,
             'tipomarca' => $tipomarca,
             'tipotalle' => $tipotalle
         ]);

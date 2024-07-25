@@ -113,6 +113,7 @@ Route::put('/botines/{botin}',
     'update'
 ])->name('botines.update');
 
+
 Route::delete('/botines/{botin}',
     [BotinController::class,
     'destroy'

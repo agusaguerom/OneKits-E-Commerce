@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CamisetaController;
+use App\Http\Controllers\BotinController;
+use App\Http\Controllers\PelotaController;
+
 
 
 Route::get('/', function () {
@@ -32,7 +35,7 @@ Route::get('/nosotros', function () {
 Route::get('/camisetas',[
     CamisetaController::class,
     'index'
-    ])->name('camisetas.index');
+])->name('camisetas.index');
 
 
 Route::get('/camisetas/create',[
@@ -76,13 +79,27 @@ Route::delete('/camisetas/{camiseta}',
 //BOTINES
 
 Route::get('/botines',[
-    CamisetaController::class,
+    BotinController::class,
     'index'
-    ])->name('botines.index');
+])->name('botines.index');
 
 
+Route::get('/botines/create',[
+    BotinController::class,
+    'create'
+])->name ('botines.create');
 
 
+Route::post('/botines',[
+    BotinController::class,
+    'store'
+])->name('botines.store');
+
+
+Route::get('/botines/{botin}',[
+    BotinController::class,
+    'show'
+])->name('botines.show');
 
 
 

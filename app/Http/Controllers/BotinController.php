@@ -14,7 +14,12 @@ class BotinController extends Controller
      */
     public function index()
     {
-        //
+        $botines = Botin::orderBy('fk_tipo_marca')->get();
+
+
+        return view('admin.botines.index', [
+            'botines' => $botines
+        ]);
     }
 
     /**
@@ -22,7 +27,15 @@ class BotinController extends Controller
      */
     public function create()
     {
-        //
+
+        $tipomarca = TipoMarca::orderBy('nombre')->get();
+        $tallecalzado = TalleCalzado::orderBy('id')->get();
+
+        return view('admin.botines.create',[
+            'tipomarca' => $tipomarca,
+            'tallecalzado' => $tallecalzado
+        ]);
+
     }
 
     /**
@@ -30,7 +43,26 @@ class BotinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'fk_tipo_marca' => 'required',
+            'fk_talle_calzado' => 'required',
+            'nombre' => 'required',
+            'precio' => 'required',
+            'fk_fotos' => 'nullable',
+            'Descripcion' => 'nullable',
+        ]);
+
+        Botin::create([
+            'fk_tipo_marca' => $request->fk_tipo_marca,
+            'fk_talle_calzado' => $request->fk_talle_calzado,
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'fk_fotos' => $request->fk_fotos,
+            'Descripcion' => $request->Descripcion,
+        ]);
+
+        return redirect()->route('botines.index')->with('status', 'El botin ha sido creado correctamente');
+
     }
 
     /**
@@ -38,7 +70,10 @@ class BotinController extends Controller
      */
     public function show(Botin $botin)
     {
-        //
+        return view('admin.botines.show', [
+            'botin' => $botin
+
+        ]);
     }
 
     /**

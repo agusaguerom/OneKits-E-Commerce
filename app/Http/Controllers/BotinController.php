@@ -81,7 +81,13 @@ class BotinController extends Controller
      */
     public function edit(Botin $botin)
     {
-        //
+        $tipomarca = TipoMarca::orderBy('nombre')->get();
+        $tipotalle = TalleCalzado::orderBy('id')->get();
+
+        return view('admin.botines.edit', [
+            'tipomarca' => $tipomarca,
+            'tipotalle' => $tipotalle
+        ]);
     }
 
     /**
@@ -89,7 +95,27 @@ class BotinController extends Controller
      */
     public function update(Request $request, Botin $botin)
     {
-        //
+        $request->validate([
+            'fk_tipo_marca' => 'required',
+            'fk_talle_calzado' => 'required',
+            'nombre' => 'required',
+            'precio' => 'required',
+            'fk_fotos' => 'nullable',
+            'Descripcion' => 'nullable',
+        ]);
+
+        $botin->update([
+
+            'fk_tipo_marca' => $request->fk_tipo_marca,
+            'fk_talle_calzado' => $request->fk_talle_calzado,
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'fk_fotos' => $request->fk_fotos,
+            'Descripcion' => $request->Descripcion,
+        ]);
+
+        return redirect()->route('botines.index')->with('status', 'El botin ha sido Modificado correctamente');
+
     }
 
     /**

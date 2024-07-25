@@ -102,6 +102,22 @@ Route::get('/botines/{botin}',[
 ])->name('botines.show');
 
 
+Route::get('/botines/{botin}/edit',[
+    BotinController::class,
+    'edit'
+])->name('botines.edit');
+
+
+Route::put('/botines/{botin}',
+    [BotinController::class,
+    'update'
+])->name('botines.update');
+
+Route::delete('/botines/{botin}',
+    [BotinController::class,
+    'destroy'
+])->name('botines.destroy');
+
 
 
 

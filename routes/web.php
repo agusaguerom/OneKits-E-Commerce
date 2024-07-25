@@ -65,6 +65,11 @@ Route::put('/camisetas/{camiseta}',
 ])->name('camisetas.update');
 
 
+Route::delete('/camisetas/{camiseta}',
+    [CamisetaController::class,
+    'destroy'
+])->name('camisetas.destroy');
+
 
 
 

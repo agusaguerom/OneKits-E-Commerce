@@ -40,6 +40,13 @@
         <div class="mb-3">
             <a href="{{route('camisetas.index')}}" class="btn btn-primary">Volver</a>
             <a href="{{route('camisetas.edit',$camiseta)}}" class="btn btn-primary">Editar</a>
+
+            <form action="{{route('camisetas.destroy',$camiseta)}}"" method="POST" class="d-inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger"> Eliminar </button>
+            </form>
+
         </div>
 </div>
 

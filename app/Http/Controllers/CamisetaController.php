@@ -44,18 +44,28 @@ class CamisetaController extends Controller
      */
     public function store(Request $request)
     {
-        Camiseta::create([
 
-            'fk_tipo_marca' =>  $request ->marca,
-            'fk_equipo' => $request ->equipo,
-            'fk_tipo_talle' => $request ->talle,
-            'nombre' => $request ->dorsal,
-            'precio' => $request ->precio,
-            'fk_fotos' => $request ->imagen,
-            'Descripcion' => $request ->descripcion,
+        $request->validate([
+            'fk_tipo_marca' => 'required',
+            'fk_equipo' => 'required',
+            'fk_tipo_talle' => 'required',
+            'nombre' => 'required',
+            'precio' => 'required',
+            'fk_fotos' => 'nullable',
+            'Descripcion' => 'nullable',
         ]);
 
-        return redirect()->route('camisetas.index');
+        Camiseta::create([
+            'fk_tipo_marca' => $request->fk_tipo_marca,
+            'fk_equipo' => $request->fk_equipo,
+            'fk_tipo_talle' => $request->fk_tipo_talle,
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'fk_fotos' => $request->fk_fotos,
+            'Descripcion' => $request->Descripcion,
+        ]);
+
+        return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido creada correctamente');
 
     }
 
@@ -88,35 +98,40 @@ class CamisetaController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
+
     public function update(Request $request, Camiseta $camiseta)
     {
+
+
+
         $request->validate([
             'fk_tipo_marca' =>  'required' ,
             'fk_equipo' => 'required' ,
             'fk_tipo_talle' => 'required' ,
-            'nombre' => 'required' ,
+            'dorsal' => 'required' ,
             'precio' => 'required' ,
-            'fk_fotos' => 'required' ,
+            'fk_fotos' => 'nullable' ,
             'Descripcion' => 'required',
 
         ]);
 
         $camiseta->update([
 
-            'fk_tipo_marca' =>  $request ->marca,
-            'fk_equipo' => $request ->equipo,
-            'fk_tipo_talle' => $request ->talle,
-            'nombre' => $request ->dorsal,
-            'precio' => $request ->precio,
-            'fk_fotos' => $request ->imagen,
-            'Descripcion' => $request ->descripcion,
+            'fk_tipo_marca' => $request->fk_tipo_marca,
+            'fk_equipo' => $request->fk_equipo,
+            'fk_tipo_talle' => $request->fk_tipo_talle,
+            'nombre' => $request->dorsal,
+            'precio' => $request->precio,
+            'fk_fotos' => $request->fk_fotos,
+            'Descripcion' => $request->descripcion,
 
          ]);
 
-         return redirect()->route('camisetas.index');
+         return redirect()
+         ->route('camisetas.index')
+         ->with('status', 'La camiseta se ha modificado correctamente');
+
     }
 
     /**

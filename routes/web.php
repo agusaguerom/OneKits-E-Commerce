@@ -59,10 +59,11 @@ Route::get('/camisetas/{camiseta}/edit',[
 ])->name('camisetas.edit');
 
 
-Route::put('/camisetas/{camiseta}',[
-    CamisetaController::class,
+Route::put('/camisetas/{camiseta}',
+    [CamisetaController::class,
     'update'
 ])->name('camisetas.update');
+
 
 
 

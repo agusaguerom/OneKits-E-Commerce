@@ -35,12 +35,12 @@
             <img src="{{ $camiseta->fk_fotos }}" alt="Imagen de la camiseta">
         </div>
 
-        <a href="{{route('camisetas.index')}}" class="btn btn-primary">Volver</a>
 
 
-        <a href="{{route('camisetas.edit',$camiseta)}}" class="btn btn-primary">Editar</a>
-
-
+        <div class="mb-3">
+            <a href="{{route('camisetas.index')}}" class="btn btn-primary">Volver</a>
+            <a href="{{route('camisetas.edit',$camiseta)}}" class="btn btn-primary">Editar</a>
+        </div>
 </div>
 
 @endsection

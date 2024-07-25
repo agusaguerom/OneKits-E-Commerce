@@ -31,8 +31,8 @@
 
 
         <div class="mb-3">
-            <label for="nombre" class="form-label">Dorsal</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Dorsal">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
         </div>
 
         <div class="mb-3">

@@ -9,8 +9,8 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label for="marca" class="form-label">Marca</label>
-            <select class="form-select" name="fk_tipo_marca" id="marca">
+            <label for="fk_tipo_marca" class="form-label">Marca</label>
+            <select class="form-select" name="fk_tipo_marca" id="fk_tipo_marca">
 
                 @foreach ($tipomarca as $marca)
                 <option value="{{ $marca->id }}" {{ $camiseta->fk_tipo_marca == $marca->id ? 'selected' : '' }}>
@@ -21,8 +21,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="equipo" class="form-label">Equipo</label>
-            <select class="form-select" name="fk_equipo" id="equipo">
+            <label for="fk_equipo" class="form-label">Equipo</label>
+            <select class="form-select" name="fk_equipo" id="fk_equipo">
 
                 @foreach ($equipos as $equipo)
                 <option value="{{ $equipo->id }}" {{ $camiseta->fk_equipo == $equipo->id ? 'selected' : '' }}>
@@ -33,8 +33,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="talle" class="form-label">Talle</label>
-            <select class="form-select" name="fk_tipo_talle" id="talle">
+            <label for="fk_tipo_talle" class="form-label">Talle</label>
+            <select class="form-select" name="fk_tipo_talle" id="fk_tipo_talle">
 
                 @foreach ($tipotalle as $talle)
                 <option value="{{ $talle->id }}" {{ $camiseta->fk_tipo_talle == $talle->id ? 'selected' : '' }}>
@@ -45,9 +45,10 @@
         </div>
 
         <div class="mb-3">
-            <label for="dorsal" class="form-label">Dorsal</label>
-            <input type="text" class="form-control" name="dorsal" id="dorsal" placeholder="Dorsal" value="{{$camiseta->nombre}}">
+            <label for="nombre" class="form-label">Dorsal</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Dorsal" value="{{$camiseta->nombre}}">
         </div>
+
 
         <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
@@ -61,8 +62,8 @@
 
 
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{ $camiseta->Descripcion }}
+            <label for="Descripcion" class="form-label">Descripcion</label>
+            <textarea class="form-control" name="descripcion" id="Descripcion" rows="3">{{ $camiseta->Descripcion }}
             </textarea>
 
         </div>

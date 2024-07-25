@@ -106,13 +106,13 @@ class CamisetaController extends Controller
 
 
         $request->validate([
-            'fk_tipo_marca' =>  'required' ,
-            'fk_equipo' => 'required' ,
-            'fk_tipo_talle' => 'required' ,
-            'dorsal' => 'required' ,
-            'precio' => 'required' ,
-            'fk_fotos' => 'nullable' ,
-            'Descripcion' => 'required',
+            'fk_tipo_marca' => 'required',
+            'fk_equipo' => 'required',
+            'fk_tipo_talle' => 'required',
+            'nombre' => 'required',
+            'precio' => 'required',
+            'fk_fotos' => 'nullable',
+            'Descripcion' => 'nullable',
 
         ]);
 
@@ -121,16 +121,15 @@ class CamisetaController extends Controller
             'fk_tipo_marca' => $request->fk_tipo_marca,
             'fk_equipo' => $request->fk_equipo,
             'fk_tipo_talle' => $request->fk_tipo_talle,
-            'nombre' => $request->dorsal,
+            'nombre' => $request->nombre,
             'precio' => $request->precio,
             'fk_fotos' => $request->fk_fotos,
             'Descripcion' => $request->descripcion,
 
          ]);
 
-         return redirect()
-         ->route('camisetas.index')
-         ->with('status', 'La camiseta se ha modificado correctamente');
+         return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido modificada correctamente');
+
 
     }
 

@@ -6,6 +6,8 @@ use App\Http\Controllers\BotinController;
 use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\ImagenCamisetaController;
+use App\Http\Controllers\StockCalzadoController;
+
 
 
 
@@ -131,10 +133,13 @@ Route::delete('/botines/{botin}',
 
 
 
+
 //stock
 Route::get('/camisetas/{camiseta}/stock/create',
     [StockController::class, 'create'])
 ->name('stock.create');
+
+
 
 
 

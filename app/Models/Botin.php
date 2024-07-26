@@ -22,18 +22,16 @@ class Botin extends Model
     }
 
 
-    public function tallecalzado()
+    public function imagenes()
     {
-        return $this->belongsTo(TalleCalzado::class,'fk_talle_calzado');
+        return $this->hasMany(ImagenBotin::class, 'fk_botin');
     }
 
 
     protected $fillable = [
         'fk_tipo_marca',
-        'fk_talle_calzado',
         'nombre',
         'precio',
-        'fk_fotos',
         'Descripcion',
     ];
 

@@ -11,7 +11,6 @@ class ImagenCamiseta extends Model
 
     protected $table = 'imagencamisetas';
 
-
     protected $fillable = ['url_img', 'fk_camiseta'];
 
 

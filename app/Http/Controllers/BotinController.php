@@ -5,26 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Botin;
 use App\Models\TipoMarca;
 use App\Models\TalleCalzado;
+use App\Models\ImagenBotin;
 use Illuminate\Http\Request;
 
 class BotinController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+
+
     public function index()
     {
         $botines = Botin::orderBy('fk_tipo_marca')->get();
-
-
         return view('admin.botines.index', [
             'botines' => $botines
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
+
+
     public function create()
     {
 
@@ -38,31 +37,39 @@ class BotinController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
+
     public function store(Request $request)
     {
         $request->validate([
             'fk_tipo_marca' => 'required',
-            'fk_talle_calzado' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
-            'fk_fotos' => 'nullable',
             'Descripcion' => 'nullable',
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Botin::create([
+        $botin = Botin::create([
             'fk_tipo_marca' => $request->fk_tipo_marca,
-            'fk_talle_calzado' => $request->fk_talle_calzado,
             'nombre' => $request->nombre,
             'precio' => $request->precio,
-            'fk_fotos' => $request->fk_fotos,
             'Descripcion' => $request->Descripcion,
         ]);
 
-        return redirect()->route('botines.index')->with('status', 'El botin ha sido creado correctamente');
 
+        if ($request->hasFile('imagenes')) {
+            foreach ($request->file('imagenes') as $imagen) {
+                $path = $imagen->store('imagenes', 'public');
+
+                ImagenBotin::create([
+                    'url_img' => $path,
+                    'fk_botin' => $botin->id,
+                ]);
+            }
+        }
+
+        return redirect()->route('botines.index')->with('status', 'El botin ha sido creado correctamente');
     }
 
 
@@ -76,9 +83,8 @@ class BotinController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+
     public function edit(Botin $botin)
     {
         $tipomarca = TipoMarca::orderBy('nombre')->get();
@@ -91,14 +97,12 @@ class BotinController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
+
     public function update(Request $request, Botin $botin)
     {
         $request->validate([
             'fk_tipo_marca' => 'required',
-            'fk_talle_calzado' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
             'fk_fotos' => 'nullable',
@@ -108,7 +112,6 @@ class BotinController extends Controller
         $botin->update([
 
             'fk_tipo_marca' => $request->fk_tipo_marca,
-            'fk_talle_calzado' => $request->fk_talle_calzado,
             'nombre' => $request->nombre,
             'precio' => $request->precio,
             'fk_fotos' => $request->fk_fotos,

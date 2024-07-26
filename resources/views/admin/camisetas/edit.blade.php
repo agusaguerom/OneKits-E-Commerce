@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <form action=" {{route('camisetas.update',$camiseta)}}" method="POST">
+    <form action=" {{route('camisetas.update',$camiseta)}}" method="POST" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')
@@ -50,8 +50,15 @@
             <label for="Descripcion" class="form-label">Descripcion</label>
             <textarea class="form-control" name="descripcion" id="Descripcion" rows="3">{{ $camiseta->Descripcion }}
             </textarea>
-
         </div>
+
+        <div class="mb-3">
+            <label for="imagenes" class="form-label">Imágenes</label>
+            <input type="file" class="form-control" name="imagenes[]" id="imagenes" multiple>
+        </div>
+
+
+
 
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Modificar</button>

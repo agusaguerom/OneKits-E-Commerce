@@ -11,7 +11,7 @@
     @endif
 
 
-    <h1>Lista de botines</h1>
+    <h1>Panel de botines</h1>
 
     <a href="{{ route('botines.create')}}" class="btn btn-primary">Agregar Botin</a>
 
@@ -19,8 +19,7 @@
         <thead>
           <tr>
             <th scope="col">Marca</th>
-            <th scope="col">Talle</th>
-            <th scope="col">nombre</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
             <th scope="col"></th>
 
@@ -30,7 +29,6 @@
             @foreach ($botines as $botin)
             <tr>
               <td> {{$botin->tipomarca->nombre}} </td>
-              <td> {{$botin->tallecalzado->nombre_talle}} </td>
               <td> {{$botin->nombre}} </td>
               <td> {{$botin->precio}} </td>
 

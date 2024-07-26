@@ -48,7 +48,7 @@
 
 
         <div class="mb-3">
-            <label for="imagenes" class="form-label">Imágenes</label>
+            <label for="imagenes" class="form-label">Imagen</label>
             <input type="file" class="form-control" name="imagenes[]" id="imagenes" multiple>
         </div>
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ImagenCamiseta;
+use App\Models\ImagenBotin;
 
 
-class ImagenCamisetaController extends Controller
+class ImagenBotinController extends Controller
 {
 
 
@@ -17,20 +17,19 @@ class ImagenCamisetaController extends Controller
             'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+
         if ($request->hasFile('imagenes')) {
             foreach ($request->file('imagenes') as $imagen) {
                 $path = $imagen->store('imagenes', 'public');
 
-                ImagenCamiseta::create([
+                ImagenBotin::create([
                     'url_img' => $path,
-                    'fk_camiseta' => $request->fk_camiseta,
+                    'fk_botin' => $request->fk_botin,
                 ]);
             }
         }
 
-        return redirect()->route('camisetas.show', $request->fk_camiseta);
+        return redirect()->route('botines.show', $request->fk_botin);
     }
-
-
 
 }

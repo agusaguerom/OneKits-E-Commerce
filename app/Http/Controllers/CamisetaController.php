@@ -80,13 +80,14 @@ class CamisetaController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show(Camiseta $camiseta)
     {
         $stocks = $camiseta->stocks()
             ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
-            ->orderBy('stocks.cantidad') // Ordenar por cantidad numéricamente
-            ->orderBy('tipo_talles.nombre_talle') // Ordenar por nombre_talle alfabéticamente
-            ->select('stocks.*', 'tipo_talles.nombre_talle') // Seleccionar los campos necesarios
+            ->orderBy('stocks.cantidad')
+            ->orderBy('tipo_talles.nombre_talle')
+            ->select('stocks.*', 'tipo_talles.nombre_talle')
             ->get();
 
         return view('admin.camisetas.show', [
@@ -117,13 +118,14 @@ class CamisetaController extends Controller
     {
 
 
-
         $request->validate([
             'fk_tipo_marca' => 'required',
             'fk_equipo' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
             'Descripcion' => 'nullable',
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
 
         ]);
 
@@ -137,9 +139,18 @@ class CamisetaController extends Controller
 
          ]);
 
-         return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido modificada correctamente');
+         if ($request->hasFile('imagenes')) {
+            foreach ($request->file('imagenes') as $imagen) {
+                $path = $imagen->store('imagenes', 'public');
 
+                ImagenCamiseta::create([
+                    'url_img' => $path,
+                    'fk_camiseta' => $camiseta->id,
+                ]);
+            }
+        }
 
+        return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido modificada correctamente');
     }
 
     /**

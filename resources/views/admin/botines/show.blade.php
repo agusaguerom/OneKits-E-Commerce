@@ -7,15 +7,10 @@
 <div class="container">
         <h1>Botin {{ $botin->nombre}}</h1>
 
-
-
         <div class="Botin-marca">
             <p>Marca: {{ $botin->tipomarca->nombre }}</p>
         </div>
 
-        <div class="Botin-talle">
-            <p>Talle: {{ $botin->tallecalzado->nombre_talle }}</p>
-        </div>
 
         <div class="Botin-precio">
             <p>Precio: {{ $botin->precio }}</p>
@@ -30,8 +25,11 @@
         </div>
 
         <div class="Botin-imagen">
-            <img src="{{ $botin->fk_fotos }}" alt="Imagen del Botin">
+            @foreach ($botin->imagenes as $imagen)
+                <img src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen del Botin">
+            @endforeach
         </div>
+
 
 
 

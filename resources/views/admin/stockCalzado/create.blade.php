@@ -14,6 +14,7 @@
                 @foreach ($tallecalzado as $talle)
                     <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
                 @endforeach
+
             </select>
             @error('fk_talle_calzados')
                 <div class="invalid-feedback">
@@ -34,11 +35,12 @@
             @enderror
         </div>
 
-        <!-- Botones de Acción -->
+
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Agregar Stock</button>
             <a href="{{ route('botines.show', $botin) }}" class="btn btn-secondary">Volver</a>
         </div>
+
     </form>
 </div>
 @endsection

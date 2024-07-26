@@ -9,15 +9,14 @@
 
         <div class="mb-3">
             <label for="tipo_talle" class="form-label">Tipo de Talle</label>
-            <select class="form-select" name="fk_talle_calzados" id="tipo_talle" required>
-
+            <select class="form-select" name="fk_tipo_talle" id="tipo_talle" required>
                 <option value="" disabled selected>Seleccione un tipo de talle</option>
-                    @foreach ($tallecalzado as $talle)
-                <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
-                    @endforeach
+                @foreach ($tipotalle as $talle)
+                    <option value="{{ $talle->id }}">{{ $talle->nombre_talle }}</option>
+                @endforeach
 
             </select>
-            @error('fk_talle_calzados')
+            @error('fk_tipo_talle')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

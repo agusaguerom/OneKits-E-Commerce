@@ -15,7 +15,6 @@ class StockCalzadoController extends Controller
     public function create(Botin $botin)
     {
         $tallecalzado = TalleCalzado::all();
-
         return view('admin.stockCalzado.create', [
             'botin' => $botin,
             'tallecalzado' => $tallecalzado
@@ -25,9 +24,11 @@ class StockCalzadoController extends Controller
 
     public function store(Request $request, Botin $botin)
     {
+
         $request->validate([
-            'fk_talle_calzados' => 'required|exists:tipo_talles,id',
+            'fk_talle_calzados' => 'required|exists:talle_calzados,id',
             'cantidad' => 'required|integer|min:1'
+
         ]);
 
         $stockcalzado = StockCalzado::where('fk_botin', $botin->id)
@@ -38,6 +39,7 @@ class StockCalzadoController extends Controller
 
             $stockcalzado->cantidad += $request->cantidad;
             $stockcalzado->save();
+
         } else {
 
             StockCalzado::create([

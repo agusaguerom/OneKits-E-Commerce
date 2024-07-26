@@ -139,7 +139,15 @@ class CamisetaController extends Controller
 
          ]);
 
+
+         $imagenes = ImagenCamiseta::where('fk_camiseta', $camiseta->id)->get();
+         foreach ($imagenes as $imagen) {
+             \Storage::disk('public')->delete($imagen->url_img);
+             $imagen->delete();
+         }
+
          if ($request->hasFile('imagenes')) {
+
             foreach ($request->file('imagenes') as $imagen) {
                 $path = $imagen->store('imagenes', 'public');
 

@@ -109,8 +109,8 @@ class BotinController extends Controller
             'fk_tipo_marca' => 'required',
             'nombre' => 'required',
             'precio' => 'required',
-            'fk_fotos' => 'nullable',
             'Descripcion' => 'nullable',
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $botin->update([
@@ -118,9 +118,27 @@ class BotinController extends Controller
             'fk_tipo_marca' => $request->fk_tipo_marca,
             'nombre' => $request->nombre,
             'precio' => $request->precio,
-            'fk_fotos' => $request->fk_fotos,
             'Descripcion' => $request->Descripcion,
         ]);
+
+
+        $imagenes = ImagenBotin::where('fk_botin', $botin->id)->get();
+        foreach ($imagenes as $imagen) {
+            \Storage::disk('public')->delete($imagen->url_img);
+            $imagen->delete();
+        }
+
+        if ($request->hasFile('imagenes')) {
+
+            foreach ($request->file('imagenes') as $imagen) {
+                $path = $imagen->store('imagenes', 'public');
+
+                ImagenBotin::create([
+                    'url_img' => $path,
+                    'fk_botin' => $botin->id,
+                ]);
+            }
+        }
 
         return redirect()->route('botines.index')->with('status', 'El botin ha sido Modificado correctamente');
 

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\TipoMarca;
 use App\Models\TipoTalle;
 use App\Models\Equipo;
+use App\Models\ImagenCamiseta;
+
 
 
 
@@ -40,28 +42,40 @@ class CamisetaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
-        $request->validate([
-            'fk_tipo_marca' => 'required',
-            'fk_equipo' => 'required',
-            'nombre' => 'required',
-            'precio' => 'required',
-            'Descripcion' => 'nullable',
-        ]);
+    $request->validate([
+        'fk_tipo_marca' => 'required',
+        'fk_equipo' => 'required',
+        'nombre' => 'required',
+        'precio' => 'required',
+        'Descripcion' => 'nullable',
+        'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        Camiseta::create([
-            'fk_tipo_marca' => $request->fk_tipo_marca,
-            'fk_equipo' => $request->fk_equipo,
-            'nombre' => $request->nombre,
-            'precio' => $request->precio,
-            'Descripcion' => $request->Descripcion,
-        ]);
 
-        return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido creada correctamente');
+    $camiseta = Camiseta::create([
+        'fk_tipo_marca' => $request->fk_tipo_marca,
+        'fk_equipo' => $request->fk_equipo,
+        'nombre' => $request->nombre,
+        'precio' => $request->precio,
+        'Descripcion' => $request->Descripcion,
+    ]);
 
+
+    if ($request->hasFile('imagenes')) {
+        foreach ($request->file('imagenes') as $imagen) {
+            $path = $imagen->store('imagenes', 'public');
+
+            ImagenCamiseta::create([
+                'url_img' => $path,
+                'fk_camiseta' => $camiseta->id,
+            ]);
+        }
     }
+
+    return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido creada correctamente');
+}
 
     /**
      * Display the specified resource.

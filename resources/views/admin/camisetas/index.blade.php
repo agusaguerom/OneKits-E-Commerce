@@ -12,7 +12,7 @@
         @endif
 
 
-        <h1>Lista de camisetas</h1>
+        <h1>Panel de camisetas</h1>
 
         <a href="{{ route('camisetas.create')}}" class="btn btn-primary">Agregar Camiseta</a>
 

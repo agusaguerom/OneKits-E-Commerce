@@ -37,13 +37,16 @@
         </div>
 
         <div class="col-md-6">
-            <!-- Imagen de la camiseta -->
             <div class="mb-3">
-                <h4>Imagen</h4>
-                <img src="{{ $camiseta->fk_fotos }}" alt="Imagen de la camiseta" class="img-fluid">
-            </div>
+                @foreach($camiseta->imagenes as $imagen)
+                <div class="col-md-4">
+                    <img src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camiseta->nombre }}" class="img-fluid">
+                </div>
+            @endforeach
         </div>
     </div>
+
+
 
     <div class="my-4">
         <h3>Stock disponible</h3>

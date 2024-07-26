@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <form action="{{ route('camisetas.store') }}" method="POST">
+    <form action="{{ route('camisetas.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="fk_tipo_marca" class="form-label">Marca</label>
@@ -46,9 +46,17 @@
             <textarea class="form-control" name="Descripcion" id="Descripcion" rows="3"></textarea>
         </div>
 
+
+        <div class="mb-3">
+            <label for="imagenes" class="form-label">Imágenes</label>
+            <input type="file" class="form-control" name="imagenes[]" id="imagenes" multiple>
+        </div>
+
+
+
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Agregar Camiseta</button>
-            <a href="{{route ('camisetas.index')}}" class="btn btn-danger">Cancelar</a>
+            <a href="{{route ('camisetas.index')}}" class="btn btn-danger">Volver</a>
         </div>
 
 

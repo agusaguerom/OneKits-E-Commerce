@@ -53,11 +53,9 @@
 
         </div>
 
-        <div class="mb-3">
+        <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Modificar</button>
-
-            <a href="{{route ('camisetas.index')}}" class="btn btn-danger">Cancelar</a>
-
+            <a href="{{ route('camisetas.show', $camiseta) }}" class="btn btn-secondary">Volver</a>
         </div>
 
     </form>

@@ -5,6 +5,8 @@ use App\Http\Controllers\CamisetaController;
 use App\Http\Controllers\BotinController;
 use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\ImagenCamisetaController;
+
 
 
 
@@ -74,6 +76,9 @@ Route::delete('/camisetas/{camiseta}',
     [CamisetaController::class,
     'destroy'
 ])->name('camisetas.destroy');
+
+
+Route::resource('imagenCamiseta', ImagenCamisetaController::class);
 
 
 

@@ -26,6 +26,18 @@ class Camiseta extends Model
         return $this->belongsTo(TipoTalle::class,'fk_tipo_talle');
     }
 
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'fk_camiseta');
+    }
+
+
+    public function imagenes()
+    {
+        return $this->hasMany(ImagenCamiseta::class, 'fk_camiseta');
+    }
+
     protected $fillable = [
         'fk_tipo_marca',
         'fk_equipo',
@@ -36,9 +48,6 @@ class Camiseta extends Model
         'Descripcion',
     ];
 
-    public function stocks()
-    {
-        return $this->hasMany(Stock::class, 'fk_camiseta');
-    }
+
 
 }

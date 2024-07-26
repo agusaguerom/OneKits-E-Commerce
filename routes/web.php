@@ -5,8 +5,8 @@ use App\Http\Controllers\CamisetaController;
 use App\Http\Controllers\BotinController;
 use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\ImagenCamisetaController;
 use App\Http\Controllers\StockCalzadoController;
+use App\Http\Controllers\ImagenCamisetaController;
 
 
 
@@ -134,19 +134,35 @@ Route::delete('/botines/{botin}',
 
 
 
-//stock
+
+//stock camisetas
 Route::get('/camisetas/{camiseta}/stock/create',
     [StockController::class, 'create'])
-->name('stock.create');
-
-
+->name('camisetas.stock.create');
 
 
 
 
 Route::post('/camisetas/{camiseta}/stock',
     [StockController::class, 'store'])
-->name('stock.store');
+->name('camisetas.stock.store');
+
+
+
+
+
+//stock botines
+Route::get('/botines/{botin}/stock/create',
+    [StockCalzadoController::class, 'create'])
+->name('botines.stock.create');
+
+
+
+Route::post('/botines/{botin}/stock',
+    [StockCalzadoController::class, 'store'])
+->name('botines.stock.store');
+
+
 
 
 

@@ -6,6 +6,7 @@ use App\Models\Botin;
 use App\Models\TipoMarca;
 use App\Models\TalleCalzado;
 use App\Models\ImagenBotin;
+use App\Models\StockCalzado;
 use Illuminate\Http\Request;
 
 class BotinController extends Controller
@@ -77,10 +78,13 @@ class BotinController extends Controller
 
     public function show(Botin $botin)
     {
-        return view('admin.botines.show', [
-            'botin' => $botin
+        $stockcalzado = StockCalzado::where('fk_botin', $botin->id)->get();
 
+        return view('admin.botines.show', [
+            'botin' => $botin,
+            'stockcalzado' => $stockcalzado
         ]);
+
     }
 
 

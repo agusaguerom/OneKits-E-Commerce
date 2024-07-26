@@ -69,7 +69,7 @@
     <div class="mb-3">
         <a href="{{route('camisetas.index')}}" class="btn btn-primary">Volver</a>
         <a href="{{route('camisetas.edit', $camiseta)}}" class="btn btn-warning">Editar</a>
-        <a href="{{ route('stock.create', $camiseta) }}" class="btn btn-secondary">Agregar Stock</a>
+        <a href="{{ route('camisetas.stock.create', $camiseta) }}" class="btn btn-secondary">Agregar Stock</a>
 
         <form action="{{route('camisetas.destroy', $camiseta)}}" method="POST" class="d-inline">
             @csrf

@@ -31,11 +31,29 @@
         </div>
 
 
+        <div class="my-4">
+            <h3>Stock disponible</h3>
+            @if ($stockcalzado->isEmpty())
+                <p>No hay stock disponible.</p>
+            @else
+                <ul class="list-group">
+                    @foreach ($stockcalzado as $stock)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $stock->talleCalzado->nombre_talle }}
+                            <span class="badge bg-primary rounded-pill">{{ $stock->cantidad }} unidades</span>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+
+
 
 
         <div class="mb-3">
             <a href="{{route('botines.index')}}" class="btn btn-primary">Volver</a>
             <a href="{{route('botines.edit',$botin)}}" class="btn btn-primary">Editar</a>
+            <a href="{{ route('botines.stock.create', $botin) }}" class="btn btn-secondary">Agregar Stock</a>
 
             <form action="{{route('botines.destroy',$botin)}}"" method="POST" class="d-inline">
                 @csrf

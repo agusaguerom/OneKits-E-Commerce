@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('fk_tipo_marca');
             $table->String('nombre');
             $table->integer('precio');
-            $table->unsignedBigInteger('fk_fotos');
             $table->text('Descripcion');
             $table->timestamps();
 
+            $table->foreign('fk_tipo_marca')->references('id')->on('tipo_marcas');
 
         });
     }

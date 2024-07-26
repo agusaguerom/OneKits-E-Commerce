@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('imagenes', function (Blueprint $table) {
+        Schema::create('imagenpelotas', function (Blueprint $table) {
             $table->id();
-            $table->String('url_imagen');
-            $table->unsignedBigInteger('fk_botines');
-            $table->unsignedBigInteger('fk_camisetas');
-            $table->unsignedBigInteger('fk_pelotas');
+            $table->string('url_img');
+            $table->unsignedBigInteger('fk_pelota');
             $table->timestamps();
 
+            $table->foreign('fk_pelota')->references('id')->on('pelotas');
 
         });
+
+
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('imagens');
+        Schema::dropIfExists('imagenpelotas');
     }
 };

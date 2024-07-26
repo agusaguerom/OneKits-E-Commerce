@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('botines', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fk_tipo_marca');
-            $table->unsignedBigInteger('fk_equipo');
             $table->unsignedBigInteger('fk_talle_calzado');
             $table->String('nombre');
             $table->integer('precio');
-            $table->unsignedBigInteger('fk_fotos');
             $table->text('Descripcion');
             $table->timestamps();
 
+            $table->foreign('fk_tipo_marca')->references('id')->on('tipo_marcas');
+            $table->foreign('fk_talle_calzado')->references('id')->on('talle_calzados');
 
         });
     }

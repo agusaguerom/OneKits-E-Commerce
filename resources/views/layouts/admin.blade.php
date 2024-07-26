@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="text-black linksheader" href="#">Inicio</a>
+                <a class="text-black linksheader" href="{{ url('/')}}">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="text-black linksheader" href="#">Panel Productos</a>

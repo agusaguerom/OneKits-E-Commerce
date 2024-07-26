@@ -1,14 +1,17 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamisetaController;
 use App\Http\Controllers\AdminController;
-
+Route::get('/a', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('inicio');
-});
+})->name('inicio');
 
 
 
@@ -81,8 +84,14 @@ Route::delete('gestionadmin/{user}',[
 
 Route::get('/admin', [AdminController::class, 'index']);
 
+Route::get('/dashboard', function () {
+    return view('inicio');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-
-
-
+require __DIR__.'/auth.php';

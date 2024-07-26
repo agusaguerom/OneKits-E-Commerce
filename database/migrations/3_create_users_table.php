@@ -18,9 +18,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('fk_tipo_usuario')->default(1);
+            $table->unsignedBigInteger('fk_domicilio');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('fk_tipo_usuario')->references('id')->on('tipo_usuarios');
+            $table->foreign('fk_domicilio')->references('id')->on('domicilios');
         });
+        
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

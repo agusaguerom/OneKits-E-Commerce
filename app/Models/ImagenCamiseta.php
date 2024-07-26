@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stock extends Model
+class ImagenCamiseta extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'fk_camiseta',
-        'fk_tipo_talle',
-        'cantidad'
-    ];
+    protected $table = 'imagencamisetas';
 
-    public function tipoTalle()
-    {
-        return $this->belongsTo(TipoTalle::class, 'fk_tipo_talle');
-    }
+    protected $fillable = ['url_img', 'fk_camiseta'];
+
 
     public function camiseta()
     {
         return $this->belongsTo(Camiseta::class, 'fk_camiseta');
     }
-    }
+
+}

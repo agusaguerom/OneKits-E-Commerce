@@ -2,64 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock_calzado;
 use Illuminate\Http\Request;
+use App\Models\TalleCalzado;
+use App\Models\StockCalzado;
+use App\Models\Botin;
+
+
 
 class StockCalzadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function create(Botin $botin)
     {
-        //
+        $tallecalzado = TalleCalzado::all();
+        return view('admin.stockCalzado.create', [
+            'botin' => $botin,
+            'tallecalzado' => $tallecalzado
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function store(Request $request, Botin $botin)
     {
-        //
+
+        $request->validate([
+            'fk_talle_calzados' => 'required|exists:talle_calzados,id',
+            'cantidad' => 'required|integer|min:1'
+
+        ]);
+
+        $stockcalzado = StockCalzado::where('fk_botin', $botin->id)
+                       ->where('fk_talle_calzados', $request->fk_talle_calzados)
+                       ->first();
+
+        if ($stockcalzado) {
+
+            $stockcalzado->cantidad += $request->cantidad;
+            $stockcalzado->save();
+
+        } else {
+
+            StockCalzado::create([
+                'fk_botin' => $botin->id,
+                'fk_talle_calzados' => $request->fk_talle_calzados,
+                'cantidad' => $request->cantidad
+            ]);
+        }
+
+
+        return redirect()->route('botines.show', $botin)->with('status', 'Stock actualizado correctamente');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Stock_calzado $stock_calzado)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Stock_calzado $stock_calzado)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Stock_calzado $stock_calzado)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Stock_calzado $stock_calzado)
-    {
-        //
-    }
+
+
 }

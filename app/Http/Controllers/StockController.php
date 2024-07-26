@@ -2,64 +2,49 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
 use Illuminate\Http\Request;
+use App\Models\TipoTalle;
+use App\Models\Camiseta;
+use App\Models\Stock;
+
 
 class StockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function create(Camiseta $camiseta)
     {
-        //
+        $tipotalle = TipoTalle::all();
+
+        return view('admin.stocks.create', [
+            'camiseta' => $camiseta,
+            'tipotalle' => $tipotalle
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, Camiseta $camiseta)
     {
-        //
-    }
+        $request->validate([
+            'fk_tipo_talle' => 'required|exists:tipo_talles,id',
+            'cantidad' => 'required|integer|min:1'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Stock $stock)
-    {
-        //
-    }
+        $stock = Stock::where('fk_camiseta', $camiseta->id)
+                       ->where('fk_tipo_talle', $request->fk_tipo_talle)
+                       ->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Stock $stock)
-    {
-        //
-    }
+        if ($stock) {
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Stock $stock)
-    {
-        //
-    }
+            $stock->cantidad += $request->cantidad;
+            $stock->save();
+        } else {
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Stock $stock)
-    {
-        //
+            Stock::create([
+                'fk_camiseta' => $camiseta->id,
+                'fk_tipo_talle' => $request->fk_tipo_talle,
+                'cantidad' => $request->cantidad
+            ]);
+        }
+
+        return redirect()->route('camisetas.show', $camiseta)->with('status', 'Stock actualizado correctamente');
     }
 }

@@ -1,6 +1,3 @@
-<!--admin.blade.php-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +22,13 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="text-black linksheader" href="{{ url('/')}}">Inicio</a>
+                <a class="text-black linksheader" href="#">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="text-black linksheader" href="#">Panel Productos</a>
             </li>
             <li class="nav-item">
-                <a class="text-black linksheader" href={{ url('/usuarios') }}>Panel Clientes</a>
+                <a class="text-black linksheader" href="#">Panel Clientes</a>
             </li>
         </ul>
   </div>

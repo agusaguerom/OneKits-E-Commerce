@@ -27,5 +27,27 @@ class Camiseta extends Model
     }
 
 
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'fk_camiseta');
+    }
+
+
+    public function imagenes()
+    {
+        return $this->hasMany(ImagenCamiseta::class, 'fk_camiseta');
+    }
+
+    protected $fillable = [
+        'fk_tipo_marca',
+        'fk_equipo',
+        'fk_tipo_talle',
+        'nombre',
+        'precio',
+        'fk_fotos',
+        'Descripcion',
+    ];
+
+
 
 }

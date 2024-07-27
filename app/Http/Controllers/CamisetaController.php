@@ -24,7 +24,13 @@ class CamisetaController extends Controller
             'camisetas' => $camisetas
         ]);
     }
-
+   public function indexTienda()
+    {
+        $camisetas = Camiseta::orderBy('fk_equipo')->get();
+        return view('tienda.productos', [
+            'camisetas' => $camisetas
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -95,7 +101,20 @@ class CamisetaController extends Controller
             'stocks' => $stocks
         ]);
     }
+    public function showtienda(Camiseta $camiseta)
+    {
+        $stocks = $camiseta->stocks()
+            ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
+            ->orderBy('stocks.cantidad')
+            ->orderBy('tipo_talles.nombre_talle')
+            ->select('stocks.*', 'tipo_talles.nombre_talle')
+            ->get();
 
+        return view('tienda.camisetaselect', [
+            'camiseta' => $camiseta,
+            'stocks' => $stocks
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      */

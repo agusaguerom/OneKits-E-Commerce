@@ -2,64 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Imagencamiseta;
 use Illuminate\Http\Request;
+use App\Models\ImagenCamiseta;
 
-class ImagencamisetaController extends Controller
+
+class ImagenCamisetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'imagenes.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('imagenes')) {
+            foreach ($request->file('imagenes') as $imagen) {
+                $path = $imagen->store('imagenes', 'public');
+
+                ImagenCamiseta::create([
+                    'url_img' => $path,
+                    'fk_camiseta' => $request->fk_camiseta,
+                ]);
+            }
+        }
+
+        return redirect()->route('camisetas.show', $request->fk_camiseta);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Imagencamiseta $imagencamiseta)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Imagencamiseta $imagencamiseta)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Imagencamiseta $imagencamiseta)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Imagencamiseta $imagencamiseta)
-    {
-        //
-    }
 }

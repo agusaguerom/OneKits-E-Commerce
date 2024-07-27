@@ -133,3 +133,67 @@ footer {
     background-color: #fff; 
     border: 1px solid #ddd; 
 }
+
+/*Seccion Productos*/
+
+.containermainProductos{
+    margin: 20px;
+}
+.cardProducto{
+    margin: 5px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-style: 10px;
+    overflow: hidden; 
+    transition: transform 0.3s;
+}
+.bodyproductos{
+    padding: 15px;
+}
+.nombreproductotienda{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.precioproductotienda{
+    font-size: 1em;
+    color: #888;
+    margin-bottom: 15px;
+}
+.cardProducto:hover {
+    transform: translateY(-20px);
+}
+
+.linkproductostienda{
+    text-decoration: none;
+}
+
+/*Camisetas seleccionadas ("Mostrador")*/
+.camisetaseleccionada{
+    font-size: 2em;
+}
+
+.titulocamisetaselec {
+    font-size: 2rem; 
+    font-weight: bold; 
+    color: #333; 
+    margin-bottom: 0.5em;
+}
+
+.precioocamisetaselec {
+    font-size: 1.5em; 
+    color: #e74c3c; 
+    margin-top: 0; 
+    margin-bottom: 1em; 
+    font-weight: bold; 
+}
+
+.btnformagregarcarrito{
+    margin-top: 27px;
+}
+
+.infocamisetaselec{
+    margin-top: 60px;
+}

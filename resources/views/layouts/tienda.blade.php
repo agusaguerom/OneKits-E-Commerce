@@ -24,7 +24,7 @@
         <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
     </li>
       <li class="nav-item">
-        <a class="text-black linksheader" href="#">Productos</a>
+        <a class="text-black linksheader" href="{{ url('/productos') }}">Productos</a>
       </li>
       <li class="nav-item">
         <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>

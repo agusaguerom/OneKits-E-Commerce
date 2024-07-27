@@ -1,0 +1,51 @@
+@extends("layouts.tienda")
+
+
+@section('content')
+
+    <div class="container">
+        <div class="row align-items-center">
+        <div class="col-md-6">
+            @foreach($camiseta->imagenes as $imagen)
+            <img src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camiseta->nombre }}" class="img-fluid" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+             @endforeach
+        </div>
+
+        <div class="col-md-6">
+            <h1 class="titulocamisetaselec">{{$camiseta->nombre}}</h1>
+            <p class="precioocamisetaselec">${{$camiseta->precio}}</p>
+
+            @if ($stocks->isEmpty())
+            <p>No hay stock disponible.</p>
+            @else
+                <form action="" class="formagregarcarrito">
+                    @csrf
+                    @foreach($stocks as $stock)
+                    
+                   
+               
+                    <div class="form-group">
+                        <label for="talleelegido">Escoge el talle</label>
+                        <select name="talleelegido" id="talleelegido" class="form-control">
+                            <option value="{{$stock->nombre_talle}}">{{$stock->nombre_talle}}</option>
+                        </select>
+                    </div>
+                    @endforeach
+                    
+                    <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
+                </form>
+
+                @endif   
+
+        </div>
+    </div>
+    
+    <div class="infocamisetaselec">  
+        <h2>Descripcion</h2>
+        <p>{{$camiseta->Descripcion}}</p>
+
+        <h2>Marca</h2>
+        <p>{{$camiseta->tipomarca->nombre}}</p>
+    </div>
+    </div>
+@endsection

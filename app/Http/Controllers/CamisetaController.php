@@ -90,11 +90,10 @@ class CamisetaController extends Controller
     public function show(Camiseta $camiseta)
     {
         $stocks = $camiseta->stocks()
-            ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
-            ->orderBy('stocks.cantidad')
-            ->orderBy('tipo_talles.nombre_talle')
-            ->select('stocks.*', 'tipo_talles.nombre_talle')
-            ->get();
+        ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
+        ->select('stocks.*', 'tipo_talles.nombre_talle')
+        ->get();
+
 
         return view('admin.camisetas.show', [
             'camiseta' => $camiseta,
@@ -111,7 +110,7 @@ class CamisetaController extends Controller
             ->get();
 
             $recomendaciones = Camiseta::where('id', '!=', $camiseta->id)
-            ->limit(4)  
+            ->limit(4)
             ->get();
 
         return view('tienda.camisetaselect', [

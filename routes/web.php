@@ -10,13 +10,10 @@ use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
+
 Route::get('/a', function () {
     return view('welcome');
 });
-
-
-
-
 
 
 
@@ -40,9 +37,6 @@ Route::get('/nosotros', function () {
 
 
 
-
-
-
 // camisetas
 
 Route::get('/camisetas',[
@@ -50,8 +44,8 @@ Route::get('/camisetas',[
     'index'
     ])->name('camisetas.index');
 
-    Route::get('/productos',[
-        CamisetaController::class,
+Route::get('/productos',[
+    CamisetaController::class,
         'indexTienda'
         ])->name('productos');
 
@@ -59,6 +53,8 @@ Route::get('/camisetas',[
             CamisetaController::class,
             'showtienda'
         ])->name('camisetas.select');
+
+
 
 Route::get('/camisetas/create',[
     CamisetaController::class,
@@ -77,7 +73,7 @@ Route::get('/usuarios/{user}/edit', [
 ])->name('admin.usuarios.usuariosedit');
 
 Route::put('usuarios/{user}', [
-    UserController::class, 
+    UserController::class,
     'update'
 ])->name('admin.usuarios.usuariosupdate');
 
@@ -97,7 +93,7 @@ Route::get('/gestionadmin/{user}/edit', [
 ])->name('admin.usuarios.adminedit');
 
 Route::put('gestionadmin/{user}', [
-    AdminController::class, 
+    AdminController::class,
     'update'
 ])->name('admin.usuarios.adminupdate');
 

@@ -95,14 +95,12 @@
             <a href="#!" class="text-reset">Incio</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Nosotros</a>
+            <a href="#!" class="text-reset">Panel Usuarios</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Contacto</a>
+            <a href="#!" class="text-reset">Panel Productos</a>
           </p>
-          <p>
-            <a href="#!" class="text-reset">Productos</a>
-          </p>
+
         </div>
 
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">

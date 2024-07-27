@@ -47,33 +47,6 @@
 
 
 <footer class="text-center text-lg-start  text-muted footer">
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <div class="me-5 d-none d-lg-block">
-        <span>Siguenos en Nuestras Redes</span>
-        </div>
-
-        <div>
-        <a href="" class="me-4 text-reset">
-            <i class="bi bi-facebook"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-            <i class="bi bi-twitter-x"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-            <i class="bi bi-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-            <i class="bi bi-instagram"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-            <i class="bi bi-linkedin"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-        <i class="bi bi-github"></i>
-        </a>
-        </div>
-
-    </section>
 
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -103,16 +76,7 @@
 
         </div>
 
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <p class="text-uppercase fw-bold mb-4">Contacto</p>
-          <p><i class="fas fa-home me-3"></i> CABA, Buenos Aires</p>
-          <p>
-            <i class="fas fa-envelope me-3"></i>
-            nombre@example.com
-          </p>
-          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-        </div>
+
       </div>
     </div>
   </section>

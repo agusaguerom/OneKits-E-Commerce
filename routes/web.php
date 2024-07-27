@@ -1,12 +1,19 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamisetaController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BotinController;
 use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
+Route::get('/a', function () {
+    return view('welcome');
+});
+
 
 
 
@@ -15,7 +22,7 @@ use App\Http\Controllers\ImagenCamisetaController;
 
 Route::get('/', function () {
     return view('inicio');
-});
+})->name('inicio');
 
 
 
@@ -41,13 +48,63 @@ Route::get('/nosotros', function () {
 Route::get('/camisetas',[
     CamisetaController::class,
     'index'
-])->name('camisetas.index');
+    ])->name('camisetas.index');
 
+    Route::get('/productos',[
+        CamisetaController::class,
+        'indexTienda'
+        ])->name('productos');
+
+        Route::get('/productos/{camiseta}',[
+            CamisetaController::class,
+            'showtienda'
+        ])->name('camisetas.select');
 
 Route::get('/camisetas/create',[
     CamisetaController::class,
     'create'
 ])->name ('camisetas.create');
+
+// Usuarios
+Route::get('/usuarios',[
+    UserController::class, 'index'
+])->name('admin.usuarios.index');
+
+
+Route::get('/usuarios/{user}/edit', [
+    UserController::class,
+    'edit'
+])->name('admin.usuarios.usuariosedit');
+
+Route::put('usuarios/{user}', [
+    UserController::class, 
+    'update'
+])->name('admin.usuarios.usuariosupdate');
+
+Route::delete('usuarios/{user}',[
+    UserController::class,
+    'destroy'
+])->name('admin.usuarios.usuariosdestroy');
+
+
+Route::get('/gestionadmin',[
+    AdminController::class, 'index'
+])->name('admin.usuarios.admin');
+
+Route::get('/gestionadmin/{user}/edit', [
+    AdminController::class,
+    'edit'
+])->name('admin.usuarios.adminedit');
+
+Route::put('gestionadmin/{user}', [
+    AdminController::class, 
+    'update'
+])->name('admin.usuarios.adminupdate');
+
+Route::delete('gestionadmin/{user}',[
+    AdminController::class,
+    'destroy'
+])->name('admin.usuarios.admindestroy');
 
 
 Route::post('/camisetas',[
@@ -170,11 +227,20 @@ Route::post('/botines/{botin}/stock',
 
 
 
-use App\Http\Controllers\AdminController;
 
 Route::get('/admin', [AdminController::class, 'index']);
 
+Route::get('/dashboard', function () {
+    return view('inicio');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 
 

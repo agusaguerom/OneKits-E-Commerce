@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 <header>
 <nav class="navbar navbar-expand-lg navheader">
   <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
@@ -25,7 +24,7 @@
         <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
     </li>
       <li class="nav-item">
-        <a class="text-black linksheader" href="#">Productos</a>
+        <a class="text-black linksheader" href="{{ url('/productos') }}">Productos</a>
       </li>
       <li class="nav-item">
         <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
@@ -36,9 +35,11 @@
     </ul>
   </div>
 
+
+
   <div class="iconosheader">
   <i class="bi bi-cart4 icono"></i>
-  <i class="bi bi-person icono"></i>
+ <a href=" {{route('profile.edit')}}"> <i class="bi bi-person icono"></i></a>
   </div>
 
 </nav>

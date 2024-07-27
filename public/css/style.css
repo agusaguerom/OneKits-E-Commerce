@@ -1,6 +1,24 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 /*Header y Footer*/
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .navheader{
     height: 80px;
     background-color: white;
@@ -84,4 +102,135 @@
 }
 .bannerprom img{
     width: 100%;
+}
+
+/* Nosotros Seccion*/
+.nosotrostitulo {
+    margin: 15px;
+    text-align: center;
+}
+.imgnosotros {
+    margin-top: 23px;
+    width: 100%;
+}
+.parrafo1nosotros {
+    margin: 50px;
+    text-align: center;
+}
+/*Contacto Seccion*/
+/*CSS Contacto*/
+
+.titulocontacto{
+    margin: 20px;
+    text-align: center;
+}
+.parrafocontacto{
+    text-align: center;
+}
+.formcont{
+    margin: 30px;
+}
+.formcont label{
+    font-weight: bold;
+}
+
+.submitdiv{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+
+/* Tablas usuarios ABM*/
+
+.tablasclientescont{
+    margin: 20px;
+}
+
+.linkstablasclientes {
+    color: black;
+    text-decoration: none;
+	border-radius:6px;
+	border-bottom:1px solid #dcdcdc;
+    border-right:1px solid #dcdcdc;
+	border-left:1px solid #dcdcdc;
+
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+}
+
+/*Edit Usuario */
+
+.containereditUser {
+    margin: 20px auto;
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+}
+
+/*Seccion Productos*/
+
+.containermainProductos{
+    margin: 20px;
+}
+.cardProducto{
+    margin: 5px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-style: 10px;
+    overflow: hidden; 
+    transition: transform 0.3s;
+}
+.bodyproductos{
+    padding: 15px;
+}
+.nombreproductotienda{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.precioproductotienda{
+    font-size: 1em;
+    color: #888;
+    margin-bottom: 15px;
+}
+.cardProducto:hover {
+    transform: translateY(-20px);
+}
+
+.linkproductostienda{
+    text-decoration: none;
+}
+
+/*Camisetas seleccionadas ("Mostrador")*/
+.camisetaseleccionada{
+    font-size: 2em;
+}
+
+.titulocamisetaselec {
+    font-size: 2rem; 
+    font-weight: bold; 
+    color: #333; 
+    margin-bottom: 0.5em;
+}
+
+.precioocamisetaselec {
+    font-size: 1.5em; 
+    color: #e74c3c; 
+    margin-top: 0; 
+    margin-bottom: 1em; 
+    font-weight: bold; 
+}
+
+.btnformagregarcarrito{
+    margin-top: 27px;
+}
+
+.infocamisetaselec{
+    margin-top: 60px;
 }

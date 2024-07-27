@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,8 +12,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
-
+        
+        $users = User::where('fk_tipo_usuario', 2)->get();
+        return view('admin.usuarios.admin', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -42,24 +46,38 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.usuarios.adminedit', [
+            'user' => $user
+        ]);  
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+    return redirect()->route('admin.usuarios.admin')->with('status', 'Administrador modificado Exitosamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+            $user->delete();
+            return redirect()->route('admin.usuarios.admin')->with('statusDelete', 'Administrador eliminado Exitosamente');
+
     }
 }

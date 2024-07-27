@@ -110,9 +110,14 @@ class CamisetaController extends Controller
             ->select('stocks.*', 'tipo_talles.nombre_talle')
             ->get();
 
+            $recomendaciones = Camiseta::where('id', '!=', $camiseta->id)
+            ->limit(4)  
+            ->get();
+
         return view('tienda.camisetaselect', [
             'camiseta' => $camiseta,
-            'stocks' => $stocks
+            'stocks' => $stocks,
+            'recomendaciones' => $recomendaciones
         ]);
     }
     /**

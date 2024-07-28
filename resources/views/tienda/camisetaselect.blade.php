@@ -17,8 +17,8 @@
             @if ($stocks->isEmpty())
                 <p>No hay stock disponible.</p>
             @else
-                <form action="" class="formagregarcarrito">
-                    @csrf
+            <form action="{{ route('cart.add', $camiseta->id) }}" method="POST">
+                @csrf
 
                     <div class="form-group">
                         <label for="talleelegido">Escoge el talle</label>

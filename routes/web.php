@@ -10,6 +10,9 @@ use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
+use App\Http\Controllers\CartController;
+
+
 
 Route::get('/a', function () {
     return view('welcome');
@@ -60,6 +63,7 @@ Route::get('/camisetas/create',[
     CamisetaController::class,
     'create'
 ])->name ('camisetas.create');
+
 
 // Usuarios
 Route::get('/usuarios',[
@@ -216,6 +220,18 @@ Route::post('/botines/{botin}/stock',
 ->name('botines.stock.store');
 
 
+
+//carrito
+Route::get('/cart',
+[CartController::class, 'index'])->name('cart.index');
+
+Route::post('/cart/add/{id}',
+    [CartController::class, 'add'])
+->name('cart.add');
+
+Route::delete('/cart/remove/{id}',
+    [CartController::class, 'remove'])
+->name('cart.remove');
 
 
 

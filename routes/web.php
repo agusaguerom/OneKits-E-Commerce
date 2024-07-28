@@ -10,7 +10,7 @@ use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\CarritoController;
 
 
 
@@ -222,16 +222,11 @@ Route::post('/botines/{botin}/stock',
 
 
 //carrito
-Route::get('/cart',
-[CartController::class, 'index'])->name('cart.index');
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/add', [CarritoController::class, 'add'])->name('carrito.add');
+Route::patch('/carrito/update/{id}', [CarritoController::class, 'update'])->name('carrito.update');
+Route::delete('/carrito/remove/{id}', [CarritoController::class, 'remove'])->name('carrito.remove');
 
-Route::post('/cart/add/{id}',
-    [CartController::class, 'add'])
-->name('cart.add');
-
-Route::delete('/cart/remove/{id}',
-    [CartController::class, 'remove'])
-->name('cart.remove');
 
 
 

@@ -19,7 +19,6 @@
             @else
             <form action="{{ route('cart.add', $camiseta->id) }}" method="POST">
                 @csrf
-
                     <div class="form-group">
                         <label for="talleelegido">Escoge el talle</label>
                         <select name="talleelegido" id="talleelegido" class="form-control">
@@ -28,6 +27,7 @@
                             @endforeach
                         </select>
                     </div>
+
 
                     <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
                 </form>

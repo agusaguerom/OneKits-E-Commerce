@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Camiseta;
+use App\Models\Stock;
+use App\Models\TipoTalle;
+
 
 class CarritoController extends Controller
 {

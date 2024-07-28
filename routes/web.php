@@ -222,10 +222,21 @@ Route::post('/botines/{botin}/stock',
 
 
 //carrito
-Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
-Route::post('/carrito/add', [CarritoController::class, 'add'])->name('carrito.add');
-Route::patch('/carrito/update/{id}', [CarritoController::class, 'update'])->name('carrito.update');
-Route::delete('/carrito/remove/{id}', [CarritoController::class, 'remove'])->name('carrito.remove');
+Route::get('/carrito',
+    [CarritoController::class, 'index'])
+->name('carrito.index');
+
+Route::post('/carrito/add',
+    [CarritoController::class, 'add'])
+->name('carrito.add');
+
+Route::patch('/carrito/update/{id}',
+    [CarritoController::class, 'update'])
+->name('carrito.update');
+
+Route::delete('/carrito/remove/{id}',
+    [CarritoController::class, 'remove'])
+->name('carrito.remove');
 
 
 

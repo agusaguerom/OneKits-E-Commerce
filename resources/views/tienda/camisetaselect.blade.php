@@ -17,20 +17,21 @@
             @if ($stocks->isEmpty())
                 <p>No hay stock disponible.</p>
             @else
-            <form action="{{ route('cart.add', $camiseta->id) }}" method="POST">
+            <form action="{{ route('carrito.add') }}" method="POST">
                 @csrf
-                    <div class="form-group">
-                        <label for="talleelegido">Escoge el talle</label>
-                        <select name="talleelegido" id="talleelegido" class="form-control">
-                            @foreach($stocks as $stock)
-                                <option value="{{ $stock->nombre_talle }}">{{ $stock->nombre_talle }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
+                <div class="form-group">
+                    <label for="talleelegido">Escoge el talle</label>
+                    <select name="talleelegido" id="talleelegido" class="form-control">
+                        @foreach($stocks as $stock)
+                            <option value="{{ $stock->id }}">{{ $stock->nombre_talle }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-
+                    <input type="number" name="cantidad" value="1" min="1" class="form-control">
                     <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
-                </form>
+            </form>
 
             @endif
 

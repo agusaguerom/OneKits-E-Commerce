@@ -12,7 +12,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Camiseta</th>
+                <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -47,5 +47,15 @@
             @endforelse
         </tbody>
     </table>
+
+
+    @if($carrito)
+    <div class="text-right">
+        <form action="{{ route('carrito.checkout') }}" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-success">Confirmar Compra</button>
+        </form>
+    </div>
+@endif
 </div>
 @endsection

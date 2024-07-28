@@ -238,6 +238,9 @@ Route::delete('/carrito/remove/{id}',
     [CarritoController::class, 'remove'])
 ->name('carrito.remove');
 
+Route::get('carrito/checkout',
+    [CarritoController::class, 'checkout'])
+->name('carrito.checkout');
 
 
 

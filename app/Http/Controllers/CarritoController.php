@@ -19,6 +19,8 @@ class CarritoController extends Controller
     public function add(Request $request)
     {
         $camiseta = Camiseta::findOrFail($request->fk_camiseta);
+        $talle = $request->talleelegido;
+
 
         $carrito = session()->get('carrito', []);
 
@@ -28,7 +30,9 @@ class CarritoController extends Controller
             $carrito[$camiseta->id] = [
                 "nombre" => $camiseta->nombre,
                 "cantidad" => $request->cantidad,
-                "precio" => $camiseta->precio
+                "precio" => $camiseta->precio,
+                "talle" => $talle
+
             ];
         }
 
@@ -57,6 +61,16 @@ class CarritoController extends Controller
         }
 
         return redirect()->route('carrito.index')->with('success', 'Producto eliminado del carrito');
+    }
+
+
+    public function checkout()
+    {
+        $carrito = session()->get('carrito', []);
+
+
+        return view('carrito.checkout', compact('carrito'));
+
     }
 
 

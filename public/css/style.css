@@ -160,6 +160,13 @@ footer {
 	padding:6px 24px;
 }
 
+.btnagregarclientetabla{
+    margin: 20px;
+
+}
+.columnatablausuarios{
+    margin-top: 20px;
+}
 /*Edit Usuario */
 
 .containereditUser {
@@ -233,4 +240,10 @@ footer {
 
 .infocamisetaselec{
     margin-top: 60px;
+}
+
+.titulorecomendados{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.6em;
 }

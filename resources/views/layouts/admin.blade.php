@@ -25,10 +25,10 @@
                 <a class="text-black linksheader" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="text-black linksheader" href="#">Panel Productos</a>
+                <a class="text-black linksheader" href="{{route('camisetas.index')}}">Panel Productos</a>
             </li>
             <li class="nav-item">
-                <a class="text-black linksheader" href="#">Panel Clientes</a>
+                <a class="text-black linksheader" href="{{route('admin.usuarios.index')}}">Panel Clientes</a>
             </li>
         </ul>
   </div>

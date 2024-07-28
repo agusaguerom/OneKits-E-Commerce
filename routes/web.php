@@ -60,15 +60,16 @@ Route::get('/camisetas',[
             'showtienda'
         ])->name('camisetas.select');
 
-Route::get('/camisetas/create',[
-    CamisetaController::class,
-    'create'
-])->name ('camisetas.create');
+        Route::get('/camisetas/create',[
+        CamisetaController::class,
+        'create'
+        ])->name('camisetas.create');
 
 // Usuarios
 Route::get('/usuarios',[
     UserController::class, 'index'
 ])->name('admin.usuarios.index');
+
 
 
 Route::get('/usuarios/{user}/edit', [
@@ -105,6 +106,11 @@ Route::delete('gestionadmin/{user}',[
     AdminController::class,
     'destroy'
 ])->name('admin.usuarios.admindestroy');
+
+Route::get('/usuarios/create',[
+    UserController::class,
+    'create'
+])->name ('usuarios.create');
 
 
 Route::post('/camisetas',[

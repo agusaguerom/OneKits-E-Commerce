@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Domicilio;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -33,12 +34,25 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'calle' => 'required|string|max:255',
+            'altura' => 'required|integer',
+            'piso' => 'nullable|string|max:255',
+            'nrodepto' => 'nullable|string|max:255',
         ]);
+
+        $domicilio = Domicilio::create([
+            'direccion' => $request->calle,
+            'altura' => $request->altura,
+            'piso' => $request->piso,
+            'nroDepto' => $request->nrodepto,
+        ]);
+
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'fk_domicilio' => $domicilio->id,
         ]);
 
         event(new Registered($user));

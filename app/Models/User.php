@@ -11,6 +11,16 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function domicilio()
+    {
+        return $this->belongsTo(Domicilio::class, 'fk_domicilio');
+    }
+
+    public function tipousuario()
+    {
+        return $this->belongsTo(Tipo_usuario::class,'fk_tipo_usuario');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'fk_domicilio'
     ];
 
     /**

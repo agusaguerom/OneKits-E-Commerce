@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         
-        $users = User::where('fk_tipo_usuario', 2)->get();
+        $users = User::where('fk_tipo_usuario', 2)->with('domicilio')->get();
         return view('admin.usuarios.admin', [
             'users' => $users
         ]);

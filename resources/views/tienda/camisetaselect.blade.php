@@ -15,6 +15,8 @@
             <h1 class="titulocamisetaselec">{{$camiseta->nombre}}</h1>
             <p class="precioocamisetaselec">${{$camiseta->precio}}</p>
 
+
+            
             @if ($stocks->isEmpty())
             <p>No hay stock disponible.</p>
             @else
@@ -31,11 +33,20 @@
                         </select>
                     </div>
                     @endforeach
-                    
                     <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
                 </form>
 
                 @endif   
+
+                <div class="metodosPago">
+                    <div class="container containermetodospago">
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/mercado-pago.png" alt="mercado-pago"/>
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/visa.png" alt="visa"/>
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/mastercard-logo.png" alt="mastercard-logo"/>
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/american-express-squared.png" alt="american-express-squared"/>
+                    <img width="48" height="48" src="https://img.icons8.com/color/48/paypal.png" alt="paypal"/>
+                    </div>
+                    </div>
 
         </div>
     </div>
@@ -51,7 +62,7 @@
 
     <div class="container containermainProductos">
 
-        <h1>Recomendados</h1>
+        <h1 class="titulorecomendados">Recomendados</h1>
 
         <div class="row">
         @foreach($recomendaciones as $recomendacion)

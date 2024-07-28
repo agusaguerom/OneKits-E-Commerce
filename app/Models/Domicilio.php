@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Domicilio extends Model
 {
     use HasFactory;
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'fk_domicilio');
+    }
+
+    protected $fillable = [
+        'direccion',
+        'altura',
+        'piso',
+        'nroDepto',
+    ];
 }

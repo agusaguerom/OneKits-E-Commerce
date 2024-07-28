@@ -142,7 +142,7 @@
   </div>
 
   <div class="metodosPago">
-    <div class="container containermetodospago">
+  <div class="container containermetodospago">
   <img width="48" height="48" src="https://img.icons8.com/color/48/mercado-pago.png" alt="mercado-pago"/>
   <img width="48" height="48" src="https://img.icons8.com/color/48/visa.png" alt="visa"/>
   <img width="48" height="48" src="https://img.icons8.com/color/48/mastercard-logo.png" alt="mastercard-logo"/>

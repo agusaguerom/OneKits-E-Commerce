@@ -29,7 +29,7 @@
     </table>
 
     <div class="text-right">
-        <form action="#" method="POST">
+        <form action="{{ route('carrito.complete') }}" method="POST">
             @csrf
             <button type="submit" class="btn btn-success">Confirmar Pedido</button>
         </form>

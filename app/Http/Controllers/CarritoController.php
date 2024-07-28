@@ -74,6 +74,18 @@ class CarritoController extends Controller
     }
 
 
+    public function complete()
+    {
+        $carrito = session()->get('carrito', []);
+
+
+        session()->forget('carrito');
+
+
+        return redirect()->route('carrito.index')->with('success', 'Compra realizada con éxito');
+    }
+
+
 
 
 }

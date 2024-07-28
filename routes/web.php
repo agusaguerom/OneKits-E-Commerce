@@ -242,6 +242,11 @@ Route::get('carrito/checkout',
     [CarritoController::class, 'checkout'])
 ->name('carrito.checkout');
 
+Route::post('carrito/complete',
+    [CarritoController::class, 'complete'])
+->name('carrito.complete');
+
+
 
 
 

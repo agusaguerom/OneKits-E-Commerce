@@ -26,11 +26,16 @@
                         @foreach($stocks as $stock)
                             <option value="{{ $stock->id }}">{{ $stock->nombre_talle }}</option>
                         @endforeach
+
+
+
                     </select>
                 </div>
 
+                <div class="mb-3">
                     <input type="number" name="cantidad" value="1" min="1" class="form-control">
                     <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
+                </div>
             </form>
 
             @endif

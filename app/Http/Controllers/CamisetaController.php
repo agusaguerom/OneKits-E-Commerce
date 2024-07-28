@@ -104,7 +104,6 @@ class CamisetaController extends Controller
 
     public function showtienda(Camiseta $camiseta)
     {
-    // Define el orden de los talles
     $ordenTalles = [
         'S' => 1,
         'M' => 2,
@@ -112,7 +111,6 @@ class CamisetaController extends Controller
         'XL' => 4,
         'XXL' => 5,
         'XXXL'=>6
-        // Añade más talles si es necesario
     ];
 
     // Obtén los stocks con talles

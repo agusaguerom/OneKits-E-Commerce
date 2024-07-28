@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TipoMarcaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CamisetaController;
@@ -145,8 +147,27 @@ Route::delete('/camisetas/{camiseta}',
 
 Route::resource('imagenCamiseta', ImagenCamisetaController::class);
 
+//MARCA
+Route::get('/marca/create', [
+    TipoMarcaController::class,
+    'create'
+])->name('marca.create');
 
+Route::post('/crearmarca', [
+    TipoMarcaController::class,
+    'store'
+])->name('marcas.store');
 
+//EQUIPOS
+Route::get('/equipos/create', [
+    EquipoController::class,
+    'create'
+])->name('equipos.create');
+
+Route::post('/crearequipo', [
+    EquipoController::class,
+    'store'
+])->name('equipos.store');
 
 //BOTINES
 

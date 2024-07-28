@@ -9,6 +9,7 @@ class TipoMarca extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nombre'];
     public function camisetas()
     {
         return $this->hasMany(Camiseta::class, 'fk_tipo_marca');

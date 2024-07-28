@@ -9,6 +9,7 @@ class Equipo extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nombre'];
 
     public function camisetas()
     {

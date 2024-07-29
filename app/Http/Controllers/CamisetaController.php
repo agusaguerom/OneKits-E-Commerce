@@ -281,9 +281,8 @@ class CamisetaController extends Controller
      */
     public function destroy(Camiseta $camiseta)
     {
-
+        $camiseta->imagenes()->delete();
         $camiseta->delete();
-
         return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido eliminada correctamente');
     }
 }

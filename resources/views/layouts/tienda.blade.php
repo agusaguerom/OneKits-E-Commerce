@@ -118,7 +118,7 @@
 
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <p class="text-uppercase fw-bold mb-4">Contacto</p>
-          <p><i class="fas fa-home me-3"></i> CABA, Buenos Aires</p>
+          <p><i class="fas fa-home me-3"></i> Av de Mayo 892, Ciudad Autonoma Buenos Aires</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
             onekits@gmail.com

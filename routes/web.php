@@ -13,6 +13,8 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ProductoController;
+
 
 Route::get('/a', function () {
     return view('welcome');
@@ -288,6 +290,9 @@ Route::delete('/botines/{botin}',
 
 
 
+
+
+
 //stock camisetas
 Route::get('/camisetas/{camiseta}/stock/create',
     [StockController::class, 'create'])
@@ -341,6 +346,12 @@ Route::get('carrito/checkout',
 Route::post('carrito/complete',
     [CarritoController::class, 'complete'])
 ->name('carrito.complete');
+
+
+Route::get('/productos',
+    [ProductoController::class, 'index'])
+->name('productos.index');
+
 
 
 

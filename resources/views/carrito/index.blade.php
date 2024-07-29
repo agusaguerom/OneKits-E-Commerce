@@ -21,6 +21,7 @@
         <thead>
             <tr>
                 <th>Producto</th>
+                <th>talle</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -32,6 +33,7 @@
 
                 <tr>
                     <td>{{ $details['nombre'] }}</td>
+                    <td>{{ $details['talle'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
                     <td>{{ $details['precio'] }}</td>
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>

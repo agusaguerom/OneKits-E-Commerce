@@ -10,13 +10,9 @@ use App\Models\Equipo;
 use App\Models\ImagenCamiseta;
 
 
-
-
 class CamisetaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $camisetas = Camiseta::orderBy('fk_equipo')->get();
@@ -31,6 +27,7 @@ class CamisetaController extends Controller
             'camisetas' => $camisetas
         ]);
     }
+
     public function indexInicio()
     {
         $tipoMarcaAdidas = TipoMarca::where('nombre', 'Adidas')->value('id');

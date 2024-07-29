@@ -463,3 +463,101 @@ footer {
   .marca-camiseta {
     font-size: 1.2rem;
   }
+
+
+
+/* confirmacion-container */
+.confirmacion-container {
+    padding: 20px;
+}
+
+/* confirmacion-title */
+.confirmacion-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* user-info-container */
+.user-info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* user-info */
+.user-info {
+    width: 45%;
+}
+
+/* user-info-title */
+.user-info-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* user-info-item */
+.user-info-item {
+    margin-bottom: 5px;
+}
+
+/* user-address */
+.user-address {
+    width: 45%;
+}
+
+/* user-address-title */
+.user-address-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* user-address-item */
+.user-address-item {
+    margin-bottom: 5px;
+}
+
+/* no-address */
+.no-address {
+    color: #ff0000;
+}
+
+/* confirmacion-table */
+.confirmacion-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.table-header {
+    padding: 10px;
+    text-align: left;
+}
+
+
+.item-name, .item-quantity, .item-price, .item-total {
+    padding: 10px;
+}
+
+/* confirmacion-button-container */
+.confirmacion-button-container {
+    margin-top: 20px;
+}
+
+/* confirmacion-form */
+.confirmacion-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* confirmacion-btn */
+.confirmacion-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.confirmacion-btn:hover {
+    background-color: #218838;
+}

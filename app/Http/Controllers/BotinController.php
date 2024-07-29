@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 class BotinController extends Controller
 {
 
-
-
     public function index()
     {
         $botines = Botin::orderBy('fk_tipo_marca')->get();
@@ -21,6 +19,13 @@ class BotinController extends Controller
             'botines' => $botines
         ]);
     }
+
+
+
+
+
+
+
 
 
 
@@ -89,6 +94,16 @@ class BotinController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
     public function edit(Botin $botin)
     {
         $tipomarca = TipoMarca::orderBy('nombre')->get();
@@ -121,13 +136,6 @@ class BotinController extends Controller
             'Descripcion' => $request->Descripcion,
         ]);
 
-
-        $imagenes = ImagenBotin::where('fk_botin', $botin->id)->get();
-        foreach ($imagenes as $imagen) {
-            \Storage::disk('public')->delete($imagen->url_img);
-            $imagen->delete();
-        }
-
         if ($request->hasFile('imagenes')) {
 
             foreach ($request->file('imagenes') as $imagen) {
@@ -139,6 +147,7 @@ class BotinController extends Controller
                 ]);
             }
         }
+
 
         return redirect()->route('botines.index')->with('status', 'El botin ha sido Modificado correctamente');
 

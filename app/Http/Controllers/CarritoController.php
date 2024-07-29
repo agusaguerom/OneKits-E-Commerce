@@ -26,7 +26,6 @@ class CarritoController extends Controller
 
         $talle = $request->talleelegido;
 
-
         $carrito = session()->get('carrito', []);
 
         if (isset($carrito[$camiseta->id])) {

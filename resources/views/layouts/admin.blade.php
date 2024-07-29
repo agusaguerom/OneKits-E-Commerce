@@ -29,7 +29,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="text-black linksheader" href="#">Inicio</a>
+                <a class="text-black linksheader" href="/">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="text-black linksheader" href="{{route('camisetas.index')}}">Panel Productos</a>
@@ -41,8 +41,9 @@
   </div>
 
   <div class="iconosheader">
-    <i class="bi bi-cart4 icono"></i>
+    <a href="{{ route('profile.edit') }}">
     <i class="bi bi-person icono"></i>
+    </a>
   </div>
 
     </nav>
@@ -61,9 +62,9 @@
       <!-- Grid row -->
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <p class="text-uppercase fw-bold mb-4">Nombre</p>
+          <p class="text-uppercase fw-bold mb-4">One Kit</p>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ex elementum, molestie sem sit amet, congue mauris. Aliquam posuere.
+          Panel de Administracion exclusivo para empleados          
           </p>
         </div>
 
@@ -73,13 +74,13 @@
             Productos
           </p>
           <p>
-            <a href="#!" class="text-reset">Incio</a>
+            <a href="/" class="text-reset">Incio</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Panel Usuarios</a>
+            <a href="{{route('admin.usuarios.index')}}" class="text-reset">Panel Usuarios</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Panel Productos</a>
+            <a href="{{route('camisetas.index')}}" class="text-reset">Panel Productos</a>
           </p>
 
         </div>

@@ -39,6 +39,8 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Eliminar</button>  
         </form>    
+        <a href="{{ route('admin.usuarios.changerol', $user) }}" class="btn btn-secondary">Cambiar Rol</a> 
+
       </tr>
     @endforeach
 

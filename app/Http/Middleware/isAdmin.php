@@ -19,7 +19,7 @@ class isAdmin
         if(Auth::user() and Auth::user()->fk_tipo_usuario == 2){
             return $next($request);
         }else{
-            return redirect()->route('login');
+            return redirect()->route('inicio');
         }
     }
 }

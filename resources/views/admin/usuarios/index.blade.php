@@ -1,6 +1,5 @@
 <!--index.blade.php-->
 
-
 @extends('layouts.users')
 
 @section('contentTables')
@@ -12,6 +11,12 @@
 @if (session('statusDelete'))
     <div class="alert alert-danger">
         {{ session('statusDelete') }}
+    </div>
+@endif
+
+@if (session('successRol'))
+    <div class="alert alert-success">
+        {{ session('successRol') }}
     </div>
 @endif
 
@@ -48,6 +53,7 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Eliminar</button>  
         </form>
+        <a href="{{ route('admin.usuarios.changerol', $user) }}" class="btn btn-secondary">Cambiar Rol</a> 
 
   
 

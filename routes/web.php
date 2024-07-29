@@ -83,6 +83,8 @@ Route::middleware('is_admin')->group(function () {
      Route::get('/usuarios/{user}/edit', [UserController::class, 'edit'])->name('admin.usuarios.usuariosedit');
      Route::put('usuarios/{user}', [UserController::class, 'update'])->name('admin.usuarios.usuariosupdate');
      Route::delete('usuarios/{user}', [UserController::class, 'destroy'])->name('admin.usuarios.usuariosdestroy');
+     Route::get('usuarios/{user}/changerol', [UserController::class, 'changerol'])->name('admin.usuarios.changerol');
+
      
      Route::get('/gestionadmin', [AdminController::class, 'index'])->name('admin.usuarios.admin');
      Route::get('/gestionadmin/{user}/edit', [AdminController::class, 'edit'])->name('admin.usuarios.adminedit');

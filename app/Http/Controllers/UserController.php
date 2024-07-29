@@ -68,7 +68,20 @@ class UserController extends Controller
     return redirect()->route('admin.usuarios.index')->with('status', 'Usuario modificado Exitosamente');
     }
 
+    public function changerol(User $user){
+        $rolactual = $user->fk_tipo_usuario;
 
+        if($rolactual == 1){
+            $user->fk_tipo_usuario = 2;
+        }else{
+            $user->fk_tipo_usuario = 1;
+        }
+        $user->save();
+
+        return redirect()->route('admin.usuarios.index')->with('successRol', 'Rol de usuario cambiado correctamente.');
+
+
+    }
 
     public function create()
     {

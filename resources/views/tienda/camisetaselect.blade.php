@@ -13,7 +13,6 @@
       @endforeach
     </div>
 
-
     <div class="col-md-6 detalles-camiseta">
       <h1 class="titulocamisetaselec">{{ $camiseta->nombre }}</h1>
       <p class="precioocamisetaselec">${{ $camiseta->precio }}</p>
@@ -30,7 +29,11 @@
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
-                    <option value="{{ $stock->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
+                    @if ($stock->tipoTalle)
+                        <option value="{{ $stock->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
+                    @else
+                        <option value="" disabled>Sin talle disponible</option>
+                    @endif
                 @endforeach
             </select>
         </div>

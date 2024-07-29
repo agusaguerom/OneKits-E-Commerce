@@ -143,11 +143,11 @@ footer {
 
 /* Tablas usuarios ABM*/
 
-.tablasclientescont{
+.tablasclientescont, .seleccionarmarca{
     margin: 20px;
 }
 
-.linkstablasclientes {
+.linkstablasclientes,.linkselectmarca {
     color: black;
     text-decoration: none;
 	border-radius:6px;
@@ -183,6 +183,7 @@ footer {
 .containermainProductos{
     margin: 20px;
 }
+
 .cardProducto{
     margin: 5px;
     border: none;

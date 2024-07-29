@@ -31,6 +31,72 @@ class CamisetaController extends Controller
             'camisetas' => $camisetas
         ]);
     }
+    public function indexInicio()
+    {
+        $tipoMarcaAdidas = TipoMarca::where('nombre', 'Adidas')->value('id');
+        $tipoMarcapuma = TipoMarca::where('nombre', 'Puma')->value('id');
+        $tipoMarcanike = TipoMarca::where('nombre', 'Nike')->value('id');
+
+
+        $camisetasadidas = Camiseta::where('fk_tipo_marca', $tipoMarcaAdidas)->limit(4)->get();
+        $camisetaspuma = Camiseta::where('fk_tipo_marca', $tipoMarcapuma)->limit(4)->get();
+        $camisetasnike = Camiseta::where('fk_tipo_marca', $tipoMarcanike)->limit(4)->get();
+
+
+        return view('inicio', [
+            'camisetasadidas' => $camisetasadidas,
+            'camisetaspuma' => $camisetaspuma,
+            'camisetasnike' => $camisetasnike
+
+        ]);
+            
+    }
+
+    public function filtroAdidas()
+    {
+        $tipoMarcaAdidas = TipoMarca::where('nombre', 'Adidas')->value('id');
+
+
+        $adidas = Camiseta::where('fk_tipo_marca', $tipoMarcaAdidas)->get();
+
+
+        return view('tienda.adidas', [
+            'adidascamiseta' => $adidas,
+        
+
+        ]);
+            
+    }
+
+    public function filtroPuma()
+    {
+        $tipoMarcaPuma = TipoMarca::where('nombre', 'Puma')->value('id');
+
+
+        $puma = Camiseta::where('fk_tipo_marca', $tipoMarcaPuma)->get();
+
+
+        return view('tienda.puma', [
+            'pumacamiseta' => $puma,
+        
+        ]);
+            
+    }
+
+    public function filtroNike()
+    {
+        $tipoMarcaNike = TipoMarca::where('nombre', 'Nike')->value('id');
+
+
+        $nike = Camiseta::where('fk_tipo_marca', $tipoMarcaNike)->get();
+
+
+        return view('tienda.nike', [
+            'nikecamiseta' => $nike,
+        
+        ]);
+            
+    }
     /**
      * Show the form for creating a new resource.
      */

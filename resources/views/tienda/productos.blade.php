@@ -1,9 +1,8 @@
-@extends("layouts.tienda")
+@extends("layouts.productolayout")
 
 
-@section('content')
+@section('seccionproductos')
 
-<h1 class="container text-center">Camisetas</h1>
 
 <div class="container containermainProductos">
 <div class="row">

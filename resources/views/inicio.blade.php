@@ -6,13 +6,13 @@
 <div id="carouselExampleControls" class="carousel slide carrusel" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="https://fakeimg.pl/800x300/" alt="First slide">
+      <img class="d-block w-100" src="{{URL('/img/banner1.png')}}" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://fakeimg.pl/800x301/" alt="Second slide">
+      <img class="d-block w-100" src="{{URL('/img/banner2.png')}}" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://fakeimg.pl/800x302/" alt="Third slide">
+      <img class="d-block w-100" src="{{URL('/img/banner3.png')}}" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -29,53 +29,28 @@
   <div class="container containerMasNuevo">
     <div class="row columnalomasnuevo">
 
-    <h1 class="tituloNuevo col-auto">Lo Mas Nuevo</h1>
+    <h1 class="tituloNuevo col-auto">Adidas</h1>
     <div class="linea col"></div>
 
     </div>
 
     <div class="contenedorcards row container">
 
+      @foreach($camisetasadidas as $camisetaadi)
       <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
+
+        @foreach($camisetaadi->imagenes as $imagen)
+        <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camisetaadi->nombre }}">
+
+        @endforeach
       <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">{{$camisetaadi->nombre}}</p>
       </div>
       <div class="container">
-      <p>5000</p>
+      <p>$ {{$camisetaadi->precio}}</p>
       </div>
       </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
+@endforeach
     </div>
 
 
@@ -84,62 +59,64 @@
     <div class="container containerOferta">
     <div class="row columnaOferta">
 
-    <h1 class="tituloOferta col-auto">Ofertas</h1>
+    <h1 class="tituloOferta col-auto">Puma</h1>
     <div class="linea col"></div>
 
     </div>
 
     <div class="contenedorcards row container">
 
+      @foreach($camisetaspuma as $puma)
       <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
+
+        @foreach($puma->imagenes as $imagen)
+        <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $puma->nombre }}">
+
+        @endforeach
       <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">{{$puma->nombre}}</p>
       </div>
       <div class="container">
-      <p>5000</p>
+      <p>$ {{$puma->precio}}</p>
       </div>
       </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
-      <div class="card cardInicio col-auto" style="width: 18rem;">
-      <img class="card-img-top" src="https://fakeimg.pl/250x250/" alt="Card image cap">
-      <div class="card-body">
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <div class="container">
-      <p>5000</p>
-      </div>
-      </div>
-
+  @endforeach
     </div>
+
+
+    <div class="container containerOferta">
+      <div class="row columnaOferta">
+  
+      <h1 class="tituloOferta col-auto">Nike</h1>
+      <div class="linea col"></div>
+  
+      </div>
+  
+      <div class="contenedorcards row container">
+  
+        @foreach($camisetasnike as $nike)
+        <div class="card cardInicio col-auto" style="width: 18rem;">
+  
+          @foreach($nike->imagenes as $imagen)
+          <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $nike->nombre }}">
+  
+          @endforeach
+        <div class="card-body">
+        <p class="card-text">{{$nike->nombre}}</p>
+        </div>
+        <div class="container">
+        <p>$ {{$nike->precio}}</p>
+        </div>
+        </div>
+    @endforeach
+      </div>
+
 
     </div>
 
   </div>
 
-  <div class="bannerprom container">
-    <img src="https://fakeimg.pl/800x300/">
-  </div>
+
 
   <div class="metodosPago">
   <div class="container containermetodospago">

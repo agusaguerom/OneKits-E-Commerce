@@ -22,10 +22,25 @@ Route::get('/a', function () {
 
 
 
-Route::get('/', function () {
-    return view('inicio');
-})->name('inicio');
+Route::get('/',[
+    CamisetaController::class,
+    'indexInicio'
+])->name('inicio');
 
+Route::get('/adidas',[
+    CamisetaController::class,
+    'filtroAdidas'
+])->name('adidas');
+
+Route::get('/nike',[
+    CamisetaController::class,
+    'filtroNike'
+])->name('nike');
+
+Route::get('/puma',[
+    CamisetaController::class,
+    'filtroPuma'
+])->name('puma');
 
 
 Route::get('/contacto', function () {

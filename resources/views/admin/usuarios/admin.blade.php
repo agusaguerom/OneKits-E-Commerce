@@ -16,6 +16,7 @@
       <th scope="col">e-Mail</th>
       <th scope="col">Domicilio</th>
       <th scope="col"></th>
+      <th scope="col"></th>
 
     </tr>
   </thead>

@@ -26,6 +26,7 @@
       <th scope="col">e-Mail</th>
       <th scope="col">Direccion</th>
       <th scope="col"></th>
+      <th scope="col"></th>
 
     </tr>
   </thead>
@@ -38,6 +39,10 @@
         <td>{{$user->name}}</td>
         <td>{{ $user->email }}</td>
         <td>{{ $user->domicilio->direccion }} {{ $user->domicilio->altura }}</td>
+    <tr>
+        <th scope="row">{{$user->id}}</th>
+        <td>{{$user->name}}</td>
+        <td>{{ $user->email }}</td>
 
         <td>
           <a href="{{ route('admin.usuarios.usuariosedit', $user) }}" class="btn btn-warning">Modificar</a> 

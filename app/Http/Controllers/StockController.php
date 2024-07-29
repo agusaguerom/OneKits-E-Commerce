@@ -21,6 +21,7 @@ class StockController extends Controller
     }
 
 
+
     public function store(Request $request, Camiseta $camiseta)
     {
         $request->validate([
@@ -47,4 +48,7 @@ class StockController extends Controller
 
         return redirect()->route('camisetas.show', $camiseta)->with('status', 'Stock actualizado correctamente');
     }
+
+
+
 }

@@ -15,6 +15,19 @@ use App\Http\Controllers\ImagenCamisetaController;
 Route::get('/a', function () {
     return view('welcome');
 });
+use App\Http\Controllers\CarritoController;
+
+
+
+Route::get('/a', function () {
+    return view('welcome');
+});
+
+
+
+Route::get('/', function () {
+    return view('inicio');
+})->name('inicio');
 
 
 
@@ -57,9 +70,6 @@ Route::get('/nosotros', function () {
 
 
 
-
-
-
 // camisetas
 
 Route::get('/camisetas',[
@@ -67,8 +77,9 @@ Route::get('/camisetas',[
     'index'
     ])->name('camisetas.index');
 
-    Route::get('/productos',[
-        CamisetaController::class,
+
+Route::get('/productos',[
+    CamisetaController::class,
         'indexTienda'
         ])->name('productos');
 
@@ -128,6 +139,48 @@ Route::get('/usuarios/create',[
     UserController::class,
     'create'
 ])->name ('usuarios.create');
+
+
+// Usuarios
+Route::get('/usuarios',[
+    UserController::class, 'index'
+])->name('admin.usuarios.index');
+
+
+Route::get('/usuarios/{user}/edit', [
+    UserController::class,
+    'edit'
+])->name('admin.usuarios.usuariosedit');
+
+Route::put('usuarios/{user}', [
+    UserController::class,
+    'update'
+])->name('admin.usuarios.usuariosupdate');
+
+Route::delete('usuarios/{user}',[
+    UserController::class,
+    'destroy'
+])->name('admin.usuarios.usuariosdestroy');
+
+
+Route::get('/gestionadmin',[
+    AdminController::class, 'index'
+])->name('admin.usuarios.admin');
+
+Route::get('/gestionadmin/{user}/edit', [
+    AdminController::class,
+    'edit'
+])->name('admin.usuarios.adminedit');
+
+Route::put('gestionadmin/{user}', [
+    AdminController::class,
+    'update'
+])->name('admin.usuarios.adminupdate');
+
+Route::delete('gestionadmin/{user}',[
+    AdminController::class,
+    'destroy'
+])->name('admin.usuarios.admindestroy');
 
 
 Route::post('/camisetas',[
@@ -261,6 +314,32 @@ Route::post('/botines/{botin}/stock',
     [StockCalzadoController::class, 'store'])
 ->name('botines.stock.store');
 
+
+
+//carrito
+Route::get('/carrito',
+    [CarritoController::class, 'index'])
+->name('carrito.index');
+
+Route::post('/carrito/add',
+    [CarritoController::class, 'add'])
+->name('carrito.add');
+
+Route::patch('/carrito/update/{id}',
+    [CarritoController::class, 'update'])
+->name('carrito.update');
+
+Route::delete('/carrito/remove/{id}',
+    [CarritoController::class, 'remove'])
+->name('carrito.remove');
+
+Route::get('carrito/checkout',
+    [CarritoController::class, 'checkout'])
+->name('carrito.checkout');
+
+Route::post('carrito/complete',
+    [CarritoController::class, 'complete'])
+->name('carrito.complete');
 
 
 

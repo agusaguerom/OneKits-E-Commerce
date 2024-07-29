@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $users = User::where('fk_tipo_usuario', 1)->with('domicilio')->get();
         return view('admin.usuarios.index', [
-            'users' => $users,
+            'users' => $users
         ]);
     }
 
@@ -52,6 +52,12 @@ class UserController extends Controller
             'domicilio' => $domicilio,
             'tipousuario' => $tipousuario,
         ]);
+    }
+    public function destroy(User $user)
+    {
+            $user->delete();
+            return redirect()->route('admin.usuarios.index')->with('statusDelete', 'Usuario eliminado Exitosamente');
+
     }
 
 }

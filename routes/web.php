@@ -75,26 +75,17 @@ Route::get('/nosotros', function () {
 
 // camisetas
 
-Route::get('/camisetas',[
-    CamisetaController::class,
-    'index'
-    ])->name('camisetas.index');
+Route::get('/camisetas',[CamisetaController::class,'index'])->name('camisetas.index');
 
 
-Route::get('/productos',[
-    CamisetaController::class,
-        'indexTienda'
-        ])->name('productos');
+Route::get('/productos',[CamisetaController::class,'indexTienda'])->name('productos');
 
-        Route::get('/productos/camisetas/{camiseta}',[
-            CamisetaController::class,
-            'showtienda'
-        ])->name('camisetas.select');
 
-        Route::get('/camisetas/create',[
-        CamisetaController::class,
-        'create'
-        ])->name('camisetas.create');
+Route::get('/productos/camisetas/{camiseta}',[CamisetaController::class,'showtienda'])->name('camisetas.select');
+
+
+Route::get('/camisetas/create',[CamisetaController::class,'create'])->name('camisetas.create');
+
 
 
 
@@ -303,34 +294,23 @@ Route::get('/productos/botines/{botin}',[BotinController::class, 'showtienda'])-
 
 
 //carrito
-Route::get('/carrito',
-    [CarritoController::class, 'index'])
-->name('carrito.index');
+Route::get('/carrito',[CarritoController::class, 'index'])->name('carrito.index');
 
-Route::post('/carrito/add',
-    [CarritoController::class, 'add'])
-->name('carrito.add');
+Route::post('/carrito/add',[CarritoController::class, 'add'])->name('carrito.add');
 
-Route::patch('/carrito/update/{id}',
-    [CarritoController::class, 'update'])
-->name('carrito.update');
+Route::patch('/carrito/update/{id}',[CarritoController::class, 'update'])->name('carrito.update');
 
-Route::delete('/carrito/remove/{id}',
-    [CarritoController::class, 'remove'])
-->name('carrito.remove');
+Route::delete('/carrito/remove/{id}',[CarritoController::class, 'remove'])->name('carrito.remove');
 
-Route::get('carrito/checkout',
-    [CarritoController::class, 'checkout'])
-->name('carrito.checkout');
+Route::get('carrito/checkout',[CarritoController::class, 'checkout'])->name('carrito.checkout');
 
-Route::post('carrito/complete',
-    [CarritoController::class, 'complete'])
-->name('carrito.complete');
+Route::post('carrito/complete',[CarritoController::class, 'complete'])->name('carrito.complete');
 
 
-Route::get('/productos',
-    [ProductoController::class, 'index'])
-->name('productos.index');
+
+
+
+Route::get('/productos',[ProductoController::class, 'index'])->name('productos.index');
 
 
 

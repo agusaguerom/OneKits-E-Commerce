@@ -13,7 +13,7 @@
       @endforeach
     </div>
 
-    <!-- Sección de detalles del producto -->
+
     <div class="col-md-6 detalles-camiseta">
       <h1 class="titulocamisetaselec">{{ $camiseta->nombre }}</h1>
       <p class="precioocamisetaselec">${{ $camiseta->precio }}</p>
@@ -21,23 +21,26 @@
       @if ($stocks->isEmpty())
         <p class="no-stock">No hay stock disponible.</p>
       @else
-        <form action="{{ route('carrito.add') }}" method="POST" class="form-agregar-carrito">
-          @csrf
-          <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
-          <div class="form-group">
+
+      <form action="{{ route('carrito.add') }}" method="POST" class="form-agregar-carrito">
+        @csrf
+        <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
+        <input type="hidden" name="tipo" value="camiseta">
+        <div class="form-group">
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
-              @foreach($stocks as $stock)
-                <option value="{{ $stock->id }}">{{ $stock->nombre_talle }}</option>
-              @endforeach
+                @foreach($stocks as $stock)
+                    <option value="{{ $stock->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
+                @endforeach
             </select>
-          </div>
+        </div>
 
-          <div class="mb-3 cantidad-carrito">
+        <div class="mb-3 cantidad-carrito">
             <input type="number" name="cantidad" value="1" min="1" class="form-control input-cantidad">
             <button class="btn btn-success btnformagregarcarrito" type="submit">Agregar al Carrito</button>
-          </div>
-        </form>
+        </div>
+    </form>
+
       @endif
     </div>
   </div>

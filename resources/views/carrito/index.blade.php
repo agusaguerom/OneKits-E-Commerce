@@ -1,6 +1,5 @@
 @extends("layouts.tienda")
 
-
 @section('content')
 <div class="container">
     <h1>Carrito de Compras</h1>
@@ -21,7 +20,7 @@
         <thead>
             <tr>
                 <th>Producto</th>
-                <th>talle</th>
+                <th>Talle</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -30,7 +29,6 @@
         </thead>
         <tbody>
             @forelse($carrito as $id => $details)
-
                 <tr>
                     <td>{{ $details['nombre'] }}</td>
                     <td>{{ $details['talle'] }}</td>
@@ -51,16 +49,13 @@
                         </form>
                     </td>
                 </tr>
-
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">Tu carrito está vacío</td>
+                    <td colspan="6" class="text-center">Tu carrito está vacío</td>
                 </tr>
-
             @endforelse
         </tbody>
     </table>
-
 
     @if($carrito)
     <div class="text-right">

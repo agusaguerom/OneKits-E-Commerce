@@ -86,7 +86,7 @@ Route::get('/productos',[
         'indexTienda'
         ])->name('productos');
 
-        Route::get('/productos/{camiseta}',[
+        Route::get('/productos/camisetas/{camiseta}',[
             CamisetaController::class,
             'showtienda'
         ])->name('camisetas.select');
@@ -220,6 +220,13 @@ Route::delete('/camisetas/{camiseta}',
 
 Route::resource('imagenCamiseta', ImagenCamisetaController::class);
 
+
+//stock camisetas
+Route::get('/camisetas/{camiseta}/stock/create',[StockController::class, 'create'])->name('camisetas.stock.create');
+
+Route::post('/camisetas/{camiseta}/stock',[StockController::class, 'store'])->name('camisetas.stock.store');
+
+
 //MARCA
 Route::get('/marca/create', [
     TipoMarcaController::class,
@@ -249,11 +256,6 @@ Route::post('/crearequipo', [
 
 
 
-
-
-
-
-// Listar botines
 Route::get('/botines',[BotinController::class,'index'])->name('botines.index');
 
 
@@ -281,7 +283,7 @@ Route::post('/botines/{botin}/stock',[StockCalzadoController::class, 'store'])->
 
 
 //mostrar botin en tienda
-Route::get('/productos/{botin}',[BotinController::class, 'showtienda'])->name('botines.select');
+Route::get('/productos/botines/{botin}',[BotinController::class, 'showtienda'])->name('botines.select');
 
 
 
@@ -290,16 +292,7 @@ Route::get('/productos/{botin}',[BotinController::class, 'showtienda'])->name('b
 
 
 
-//stock camisetas
-Route::get('/camisetas/{camiseta}/stock/create',
-    [StockController::class, 'create'])
-->name('camisetas.stock.create');
 
-
-
-Route::post('/camisetas/{camiseta}/stock',
-    [StockController::class, 'store'])
-->name('camisetas.stock.store');
 
 
 

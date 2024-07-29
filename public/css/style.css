@@ -265,3 +265,130 @@ footer {
 
     margin-top: 40px;
 }
+
+
+
+
+/* todo carrito */
+
+/* Contenedor Principal */
+.carrito-container {
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Título */
+.carrito-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Alertas */
+.carrito-alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Tabla */
+.carrito-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+.carrito-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.item-name, .item-quantity, .item-price, .item-total {
+    padding: 10px;
+}
+
+.item-actions {
+    text-align: center;
+}
+
+.quantity-input {
+    width: 60px;
+}
+
+.update-btn, .remove-btn {
+    margin: 5px;
+}
+
+.empty-cart {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Confirmar Compra */
+.checkout-container {
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+
+
+
+/* checkout */
+
+
+.confirmacion-container {
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Título */
+.confirmacion-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Tabla */
+.confirmacion-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+.confirmacion-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.item-name, .item-quantity, .item-price, .item-total {
+    padding: 10px;
+}
+
+.empty-cart {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Botón de Confirmar Pedido */
+.confirmacion-button-container {
+    margin-top: 20px;
+}
+
+.confirmacion-btn {
+    background-color: #28a745;
+    color: white;
+}

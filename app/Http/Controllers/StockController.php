@@ -34,11 +34,9 @@ class StockController extends Controller
                        ->first();
 
         if ($stock) {
-
             $stock->cantidad += $request->cantidad;
             $stock->save();
         } else {
-
             Stock::create([
                 'fk_camiseta' => $camiseta->id,
                 'fk_tipo_talle' => $request->fk_tipo_talle,

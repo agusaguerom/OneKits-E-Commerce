@@ -4,11 +4,19 @@
 @section('content')
 <div class="container">
     <h1>Carrito de Compras</h1>
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
@@ -25,6 +33,7 @@
                     <td>{{ $details['nombre'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
                     <td>{{ $details['precio'] }}</td>
+
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>
                     <td>
                         <form action="{{ route('carrito.update', $id) }}" method="POST">

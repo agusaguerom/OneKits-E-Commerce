@@ -1,37 +1,38 @@
 @extends("layouts.tienda")
 
 @section('content')
-<div class="container">
-    <h1>Confirmar Compra</h1>
-    <table class="table">
+<div class="container confirmacion-container">
+    <h1 class="confirmacion-title">Confirmar Compra</h1>
+
+    <table class="table confirmacion-table">
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Total</th>
+                <th class="table-header">Producto</th>
+                <th class="table-header">Cantidad</th>
+                <th class="table-header">Precio</th>
+                <th class="table-header">Total</th>
             </tr>
         </thead>
         <tbody>
             @forelse($carrito as $id => $details)
-                <tr>
-                    <td>{{ $details['nombre'] }}</td>
-                    <td>{{ $details['cantidad'] }}</td>
-                    <td>{{ $details['precio'] }}</td>
-                    <td>{{ $details['cantidad'] * $details['precio'] }}</td>
+                <tr class="confirmacion-item">
+                    <td class="item-name">{{ $details['nombre'] }}</td>
+                    <td class="item-quantity">{{ $details['cantidad'] }}</td>
+                    <td class="item-price">{{ $details['precio'] }}</td>
+                    <td class="item-total">{{ $details['cantidad'] * $details['precio'] }}</td>
                 </tr>
             @empty
-                <tr>
+                <tr class="empty-cart">
                     <td colspan="4" class="text-center">Tu carrito está vacío</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
 
-    <div class="text-right">
+    <div class="confirmacion-button-container text-right">
         <form action="{{ route('carrito.complete') }}" method="POST">
             @csrf
-            <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+            <button type="submit" class="btn btn-success confirmacion-btn">Confirmar Pedido</button>
         </form>
     </div>
 </div>

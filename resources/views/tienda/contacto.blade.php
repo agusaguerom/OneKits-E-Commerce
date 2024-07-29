@@ -4,9 +4,9 @@
 @section('content')
 
     <div class="container">
-    
-    
-    
+
+
+
     <h1 class="titulocontacto">Contacto</h1>
     <p class="parrafocontacto">No dudes en ponerte en contacto ante  cualquier duda o sugerencia</p>
 

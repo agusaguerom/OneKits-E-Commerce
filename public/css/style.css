@@ -147,7 +147,7 @@ footer {
     margin: 20px;
 }
 
-.linkstablasclientes,.linkselectmarca {
+.linkstablasclientes, .linkselectmarca
 .tablasclientescont{
     margin: 20px;
 }
@@ -176,11 +176,11 @@ footer {
 
 .containereditUser {
     margin: 20px auto;
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    background-color: #fff; 
-    border: 1px solid #ddd; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
 /*Seccion Productos*/
@@ -194,7 +194,7 @@ footer {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-style: 10px;
-    overflow: hidden; 
+    overflow: hidden;
     transition: transform 0.3s;
 }
 .bodyproductos{
@@ -226,18 +226,18 @@ footer {
 }
 
 .titulocamisetaselec {
-    font-size: 2rem; 
-    font-weight: bold; 
-    color: #333; 
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 0.5em;
 }
 
 .precioocamisetaselec {
-    font-size: 1.5em; 
-    color: #e74c3c; 
-    margin-top: 0; 
-    margin-bottom: 1em; 
-    font-weight: bold; 
+    font-size: 1.5em;
+    color: #e74c3c;
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-weight: bold;
 }
 
 .btnformagregarcarrito{
@@ -256,12 +256,210 @@ footer {
 
 .containeragregarmarca{
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 50vh; 
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
 }
 
 .btnagregarmarca{
 
     margin-top: 40px;
 }
+
+
+
+
+/* todo carrito */
+
+/* Contenedor Principal */
+.carrito-container {
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Título */
+.carrito-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Alertas */
+.carrito-alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Tabla */
+.carrito-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+.carrito-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.item-name, .item-quantity, .item-price, .item-total {
+    padding: 10px;
+}
+
+.item-actions {
+    text-align: center;
+}
+
+.quantity-input {
+    width: 60px;
+}
+
+.update-btn, .remove-btn {
+    margin: 5px;
+}
+
+.empty-cart {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Confirmar Compra */
+.checkout-container {
+    margin-top: 20px;
+}
+
+.checkout-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+
+
+
+/* checkout */
+
+
+.confirmacion-container {
+    margin: auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* Título */
+.confirmacion-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Tabla */
+.confirmacion-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+.confirmacion-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.item-name, .item-quantity, .item-price, .item-total {
+    padding: 10px;
+}
+
+.empty-cart {
+    text-align: center;
+    font-style: italic;
+}
+
+/* Botón de Confirmar Pedido */
+.confirmacion-button-container {
+    margin-top: 20px;
+}
+
+.confirmacion-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+
+
+
+
+/* Sección de imágenes */
+.imagenes-camiseta {
+    text-align: center;
+  }
+
+  .img-camiseta {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  /* Sección de detalles del producto */
+  .detalles-camiseta {
+    padding: 20px;
+  }
+
+  .titulocamisetaselec {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .precioocamisetaselec {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .no-stock {
+    color: red;
+  }
+
+  .form-agregar-carrito {
+    margin-top: 20px;
+  }
+
+  .label-talle {
+    font-weight: bold;
+  }
+
+  .select-talle {
+    margin-top: 10px;
+  }
+
+  .cantidad-carrito {
+    margin-top: 15px;
+  }
+
+  .input-cantidad {
+    width: 80px;
+  }
+
+  .btnformagregarcarrito {
+    margin-top: 10px;
+  }
+
+  /* Sección de descripción y marca */
+  .infocamisetaselec {
+    padding: 20px 0;
+  }
+
+  .descripcion-camiseta {
+    font-size: 1.2rem;
+  }
+
+  .marca-camiseta {
+    font-size: 1.2rem;
+  }

@@ -50,6 +50,7 @@ class CamisetaController extends Controller
 
         ]);
             
+
     }
 
     public function filtroAdidas()
@@ -66,6 +67,9 @@ class CamisetaController extends Controller
 
         ]);
             
+
+
+
     }
 
     public function filtroPuma()
@@ -81,6 +85,8 @@ class CamisetaController extends Controller
         
         ]);
             
+
+
     }
 
     public function filtroNike()
@@ -96,6 +102,9 @@ class CamisetaController extends Controller
         
         ]);
             
+
+    
+
     }
     /**
      * Show the form for creating a new resource.
@@ -166,48 +175,29 @@ class CamisetaController extends Controller
             'stocks' => $stocks
         ]);
     }
-    public function showtienda(Camiseta $camiseta)
-    {
-        $stocks = $camiseta->stocks()
-            ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
-            ->orderBy('stocks.cantidad')
-            ->orderBy('tipo_talles.nombre_talle')
-            ->select('stocks.*', 'tipo_talles.nombre_talle')
-            ->get();
 
-            $recomendaciones = Camiseta::where('id', '!=', $camiseta->id)
-            ->limit(4)  
-            ->get();
 
-        return view('tienda.camisetaselect', [
-            'camiseta' => $camiseta,
-            'stocks' => $stocks,
-            'recomendaciones' => $recomendaciones
-        ]);
-
-    {
+   public function showtienda(Camiseta $camiseta)
+{
     $ordenTalles = [
         'S' => 1,
         'M' => 2,
         'L' => 3,
         'XL' => 4,
         'XXL' => 5,
-        'XXXL'=>6
+        'XXXL' => 6
     ];
 
-    // Obtén los stocks con talles
     $stocks = $camiseta->stocks()
         ->join('tipo_talles', 'stocks.fk_tipo_talle', '=', 'tipo_talles.id')
         ->select('stocks.*', 'tipo_talles.nombre_talle')
         ->get()
         ->sort(function ($a, $b) use ($ordenTalles) {
-            // Ordena usando el arreglo de talles
-            $ordenA = $ordenTalles[$a->nombre_talle] ?? 999; // Usa un valor alto para talles no definidos
+            $ordenA = $ordenTalles[$a->nombre_talle] ?? 999;
             $ordenB = $ordenTalles[$b->nombre_talle] ?? 999;
             return $ordenA <=> $ordenB;
         });
 
-    // Recomendaciones
     $recomendaciones = Camiseta::where('id', '!=', $camiseta->id)
         ->limit(4)
         ->get();
@@ -220,7 +210,7 @@ class CamisetaController extends Controller
 
 
     }
-}
+
     /**
      * Show the form for editing the specified resource.
      */

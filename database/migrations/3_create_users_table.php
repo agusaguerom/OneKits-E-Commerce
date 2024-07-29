@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('fk_tipo_usuario')->references('id')->on('tipo_usuarios');
             $table->foreign('fk_domicilio')->references('id')->on('domicilios');
         });
-        
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

@@ -96,6 +96,8 @@ Route::get('/productos',[
         'create'
         ])->name('camisetas.create');
 
+
+
 // Usuarios
 Route::get('/usuarios',[
     UserController::class, 'index'
@@ -240,51 +242,46 @@ Route::post('/crearequipo', [
     'store'
 ])->name('equipos.store');
 
-//BOTINES
-
-Route::get('/botines',[
-    BotinController::class,
-    'index'
-])->name('botines.index');
-
-
-Route::get('/botines/create',[
-    BotinController::class,
-    'create'
-])->name ('botines.create');
-
-
-Route::post('/botines',[
-    BotinController::class,
-    'store'
-])->name('botines.store');
-
-
-Route::get('/botines/{botin}',[
-    BotinController::class,
-    'show'
-])->name('botines.show');
-
-
-Route::get('/botines/{botin}/edit',[
-    BotinController::class,
-    'edit'
-])->name('botines.edit');
-
-
-Route::put('/botines/{botin}',
-    [BotinController::class,
-    'update'
-])->name('botines.update');
-
-
-Route::delete('/botines/{botin}',
-    [BotinController::class,
-    'destroy'
-])->name('botines.destroy');
 
 
 
+
+
+
+
+
+
+
+
+// Listar botines
+Route::get('/botines',[BotinController::class,'index'])->name('botines.index');
+
+
+// Crear nuevo botín
+Route::get('/botines/create',[BotinController::class,'create'])->name ('botines.create');
+Route::post('/botines',[BotinController::class,'store'])->name('botines.store');
+
+
+// Mostrar botín específico
+Route::get('/botines/{botin}',[BotinController::class,'show'])->name('botines.show');
+
+
+// Editar botín específico
+Route::get('/botines/{botin}/edit',[BotinController::class,'edit'])->name('botines.edit');
+Route::put('/botines/{botin}',[BotinController::class,'update'])->name('botines.update');
+
+
+//eliminar botin
+Route::delete('/botines/{botin}',[BotinController::class,'destroy'])->name('botines.destroy');
+
+
+//stock botines
+Route::get('/botines/{botin}/stock/create',[StockCalzadoController::class, 'create']) ->name('botines.stock.create');
+Route::post('/botines/{botin}/stock',[StockCalzadoController::class, 'store'])->name('botines.stock.store');
+
+
+//mostrar botin en tienda
+Route::get('/productos/{botin}',[BotinController::class, 'showtienda'])->name('botines.select');
 
 
 
@@ -300,7 +297,6 @@ Route::get('/camisetas/{camiseta}/stock/create',
 
 
 
-
 Route::post('/camisetas/{camiseta}/stock',
     [StockController::class, 'store'])
 ->name('camisetas.stock.store');
@@ -309,16 +305,7 @@ Route::post('/camisetas/{camiseta}/stock',
 
 
 
-//stock botines
-Route::get('/botines/{botin}/stock/create',
-    [StockCalzadoController::class, 'create'])
-->name('botines.stock.create');
 
-
-
-Route::post('/botines/{botin}/stock',
-    [StockCalzadoController::class, 'store'])
-->name('botines.stock.store');
 
 
 
@@ -351,6 +338,11 @@ Route::post('carrito/complete',
 Route::get('/productos',
     [ProductoController::class, 'index'])
 ->name('productos.index');
+
+
+
+
+
 
 
 

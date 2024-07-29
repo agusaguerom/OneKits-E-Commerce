@@ -29,7 +29,7 @@
     <div class="row">
         @foreach($botines as $botin)
             <div class="card cardProducto" style="width: 18rem;">
-                <a class="linkproductostienda" href="#">
+                <a class="linkproductostienda" href="{{ route('botines.select', $botin->id) }}">
                     @foreach($botin->imagenes as $imagen)
                         <img src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $botin->nombre }}" class="img-fluid" style="max-width: 100%; height: auto;">
                     @endforeach

@@ -7,7 +7,6 @@ use App\Models\TipoTalle;
 use App\Models\Camiseta;
 use App\Models\Stock;
 
-
 class StockController extends Controller
 {
     public function create(Camiseta $camiseta)
@@ -19,7 +18,6 @@ class StockController extends Controller
             'tipotalle' => $tipotalle
         ]);
     }
-
 
 
     public function store(Request $request, Camiseta $camiseta)

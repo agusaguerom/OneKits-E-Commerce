@@ -22,11 +22,23 @@ class BotinController extends Controller
 
 
 
+    public function showtienda(Botin $botin)
+    {
+        $stocks = $botin->stocks()
+            ->join('talle_calzados', 'stock_calzados.fk_talle_calzados', '=', 'talle_calzados.id')
+            ->select('stock_calzados.*', 'talle_calzados.nombre_talle')
+            ->get();
 
+        $recomendaciones = Botin::where('id', '!=', $botin->id)
+            ->limit(4)
+            ->get();
 
-
-
-
+        return view('tienda.botinselect', [
+            'botin' => $botin,
+            'stocks' => $stocks,
+            'recomendaciones' => $recomendaciones
+        ]);
+    }
 
 
 

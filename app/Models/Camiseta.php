@@ -38,6 +38,8 @@ class Camiseta extends Model
         return $this->hasMany(ImagenCamiseta::class, 'fk_camiseta');
     }
 
+
+
     protected $fillable = [
         'fk_tipo_marca',
         'fk_equipo',

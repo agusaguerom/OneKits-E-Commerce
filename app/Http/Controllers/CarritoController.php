@@ -13,33 +13,46 @@ class CarritoController extends Controller
     public function index()
     {
         $carrito = session()->get('carrito', []);
+
         return view('carrito.index', compact('carrito'));
     }
 
+
+
     public function add(Request $request)
+
     {
         $camiseta = Camiseta::findOrFail($request->fk_camiseta);
+
         $talle = $request->talleelegido;
 
 
         $carrito = session()->get('carrito', []);
 
-        if(isset($carrito[$camiseta->id])) {
+        if (isset($carrito[$camiseta->id])) {
+
             $carrito[$camiseta->id]['cantidad'] += $request->cantidad;
         } else {
+
             $carrito[$camiseta->id] = [
-                "nombre" => $camiseta->nombre,
-                "cantidad" => $request->cantidad,
-                "precio" => $camiseta->precio,
-                "talle" => $talle
+                'nombre' => $camiseta->nombre,
+                'cantidad' => $request->cantidad,
+                'precio' => $camiseta->precio,
+                'talle' => $talle,
 
             ];
         }
+
 
         session()->put('carrito', $carrito);
 
         return redirect()->route('carrito.index')->with('success', 'Producto añadido al carrito');
     }
+
+
+
+
+
 
     public function update(Request $request, $id)
     {
@@ -76,7 +89,7 @@ class CarritoController extends Controller
 
     public function complete(Request $request)
 {
-    // Verificar si el usuario está autenticado
+
     if (!auth()->check()) {
         return redirect()->route('login')->with('error', 'Necesitas iniciar sesión para completar la compra');
     }

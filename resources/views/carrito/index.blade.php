@@ -29,11 +29,11 @@
         </thead>
         <tbody>
             @forelse($carrito as $id => $details)
+
                 <tr>
                     <td>{{ $details['nombre'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
                     <td>{{ $details['precio'] }}</td>
-
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>
                     <td>
                         <form action="{{ route('carrito.update', $id) }}" method="POST">
@@ -49,10 +49,12 @@
                         </form>
                     </td>
                 </tr>
+
             @empty
                 <tr>
                     <td colspan="5" class="text-center">Tu carrito está vacío</td>
                 </tr>
+
             @endforelse
         </tbody>
     </table>

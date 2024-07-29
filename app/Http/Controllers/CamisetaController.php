@@ -34,13 +34,13 @@ class CamisetaController extends Controller
     public function indexInicio()
     {
         $tipoMarcaAdidas = TipoMarca::where('nombre', 'Adidas')->value('id');
-        $tipoMarcapuma = TipoMarca::where('nombre', 'Puma')->value('id');
-        $tipoMarcanike = TipoMarca::where('nombre', 'Nike')->value('id');
+        $tipoMarcapuma   = TipoMarca::where('nombre', 'Puma')->value('id');
+        $tipoMarcanike   = TipoMarca::where('nombre', 'Nike')->value('id');
 
 
         $camisetasadidas = Camiseta::where('fk_tipo_marca', $tipoMarcaAdidas)->limit(4)->get();
-        $camisetaspuma = Camiseta::where('fk_tipo_marca', $tipoMarcapuma)->limit(4)->get();
-        $camisetasnike = Camiseta::where('fk_tipo_marca', $tipoMarcanike)->limit(4)->get();
+        $camisetaspuma   = Camiseta::where('fk_tipo_marca', $tipoMarcapuma)->limit(4)->get();
+        $camisetasnike   = Camiseta::where('fk_tipo_marca', $tipoMarcanike)->limit(4)->get();
 
 
         return view('inicio', [
@@ -168,6 +168,7 @@ class CamisetaController extends Controller
     }
 
 
+
    public function showtienda(Camiseta $camiseta)
 {
     $ordenTalles = [
@@ -219,7 +220,6 @@ class CamisetaController extends Controller
 
     public function update(Request $request, Camiseta $camiseta)
     {
-
 
         $request->validate([
             'fk_tipo_marca' => 'required',

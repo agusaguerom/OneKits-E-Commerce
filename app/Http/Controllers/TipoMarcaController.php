@@ -20,7 +20,7 @@ class TipoMarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.camisetas.createmarca');
     }
 
     /**
@@ -28,7 +28,17 @@ class TipoMarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+        ]);
+
+        $marca = TipoMarca::create([
+            'nombre' =>$request->nombre,
+        ]);
+
+
+        return redirect()->route('camisetas.index')->with('statusmarca', 'La marca ha sido registrada correctamente');
+
     }
 
     /**

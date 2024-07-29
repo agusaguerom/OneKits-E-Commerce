@@ -143,6 +143,11 @@ footer {
 
 /* Tablas usuarios ABM*/
 
+.tablasclientescont, .seleccionarmarca{
+    margin: 20px;
+}
+
+.linkstablasclientes, .linkselectmarca
 .tablasclientescont{
     margin: 20px;
 }
@@ -160,15 +165,22 @@ footer {
 	padding:6px 24px;
 }
 
+.btnagregarclientetabla{
+    margin: 20px;
+
+}
+.columnatablausuarios{
+    margin-top: 20px;
+}
 /*Edit Usuario */
 
 .containereditUser {
     margin: 20px auto;
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    background-color: #fff; 
-    border: 1px solid #ddd; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
 /*Seccion Productos*/
@@ -176,12 +188,13 @@ footer {
 .containermainProductos{
     margin: 20px;
 }
+
 .cardProducto{
     margin: 5px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-style: 10px;
-    overflow: hidden; 
+    overflow: hidden;
     transition: transform 0.3s;
 }
 .bodyproductos{
@@ -213,18 +226,18 @@ footer {
 }
 
 .titulocamisetaselec {
-    font-size: 2rem; 
-    font-weight: bold; 
-    color: #333; 
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 0.5em;
 }
 
 .precioocamisetaselec {
-    font-size: 1.5em; 
-    color: #e74c3c; 
-    margin-top: 0; 
-    margin-bottom: 1em; 
-    font-weight: bold; 
+    font-size: 1.5em;
+    color: #e74c3c;
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-weight: bold;
 }
 
 .btnformagregarcarrito{
@@ -233,4 +246,22 @@ footer {
 
 .infocamisetaselec{
     margin-top: 60px;
+}
+
+.titulorecomendados{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+}
+
+.containeragregarmarca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.btnagregarmarca{
+
+    margin-top: 40px;
 }

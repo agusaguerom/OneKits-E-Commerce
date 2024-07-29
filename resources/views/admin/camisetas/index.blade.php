@@ -14,7 +14,9 @@
 
         <h1>Panel de camisetas</h1>
 
-        <a href="{{ route('camisetas.create')}}" class="btn btn-primary">Agregar Camiseta</a>
+        <a href="{{ route('camisetas.create') }}" class="btn btn-success">Agregar Camiseta</a>
+        <a href="{{ route('equipos.create') }}" class="btn btn-primary">Agregar Club</a>
+        <a href="{{ route('marca.create') }}" class="btn btn-primary">Agregar Marca</a>
 
         <table class="table">
             <thead>

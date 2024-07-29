@@ -21,7 +21,7 @@ class EquipoController extends Controller
     public function create()
     {
         $equipos = Equipo::orderBy('nombre')->get();
-        return view('admin.camisetas.create', [
+        return view('admin.camisetas.createequipo', [
             'equipos' => $equipos
         ]);
     }
@@ -31,7 +31,16 @@ class EquipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+        ]);
+
+        $marca = Equipo::create([
+            'nombre' =>$request->nombre,
+        ]);
+
+
+        return redirect()->route('camisetas.index')->with('statusequipo', 'El equipo ha sido registrada correctamente');
     }
 
     /**

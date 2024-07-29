@@ -39,6 +39,30 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <div class="mt-4">
+            <x-input-label for="direccion" :value="__('Calle')" />
+            <x-text-input id="calle" class="block mt-1 w-full" type="text" name="calle" :value="old('calle')" required autocomplete="calle" />
+            <x-input-error :messages="$errors->get('nombre')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="altura" :value="__('Altura')" />
+            <x-text-input id="altura" class="block mt-1 w-full" type="number" name="altura" :value="old('altura')" required autocomplete="altura" />
+            <x-input-error :messages="$errors->get('altura')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="piso" :value="__('Piso')" />
+            <x-text-input id="piso" class="block mt-1 w-full" type="text" name="piso" :value="old('piso')"  autocomplete="piso" />
+            <x-input-error :messages="$errors->get('piso')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="nrodepto" :value="__('Departamento')" />
+            <x-text-input id="nrodepto" class="block mt-1 w-full" type="text" name="nrodepto" :value="old('nrodepto')"  autocomplete="nrodepto" />
+            <x-input-error :messages="$errors->get('nrodepto')" class="mt-2" />
+        </div>
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

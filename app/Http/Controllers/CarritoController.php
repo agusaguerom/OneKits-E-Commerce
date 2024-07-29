@@ -74,35 +74,12 @@ class CarritoController extends Controller
     }
 
 
-    public function complete(Request $request)
+    public function complete()
     {
         $carrito = session()->get('carrito', []);
 
-        foreach ($carrito as $id => $details) {
-            $stock = Stock::find($details['talle']);
-
-            if ($stock) {
-                if ($stock->cantidad < $details['cantidad']) {
-                    return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-                }
-            } else {
-                return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
-            }
-        }
-
-        foreach ($carrito as $id => $details) {
-            $stock = Stock::find($details['talle']);
-            $stock->cantidad -= $details['cantidad'];
-            $stock->save();
-        }
 
         session()->forget('carrito');
-
-
-        session()->forget('carrito');
-
-
-
 
 
         return redirect()->route('carrito.index')->with('success', 'Compra realizada con éxito');

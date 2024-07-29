@@ -38,10 +38,10 @@
 
   <div class="iconosheader">
     <!-- Hacer el ícono del carrito clickeable -->
-    <a href="{{ route('carrito.index') }}" class="text-black">
+    <a href="{{ route('carrito.index') }}">
       <i class="bi bi-cart4 icono"></i>
     </a>
-    <a href="{{ route('profile.edit') }}" class="text-black">
+    <a href="{{ route('profile.edit') }}">
       <i class="bi bi-person icono"></i>
     </a>
   </div>
@@ -86,9 +86,9 @@
       <!-- Grid row -->
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <p class="text-uppercase fw-bold mb-4">Nombre</p>
+          <p class="text-uppercase fw-bold mb-4">One Kits</p>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ex elementum, molestie sem sit amet, congue mauris. Aliquam posuere.
+            Nuestra misión es proporcionar a los aficionados una experiencia de compra única, donde la pasión por el fútbol se refleja en cada detalle.          
           </p>
         </div>
 
@@ -121,7 +121,7 @@
           <p><i class="fas fa-home me-3"></i> CABA, Buenos Aires</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            nombre@example.com
+            onekits@gmail.com
           </p>
           <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
           <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>

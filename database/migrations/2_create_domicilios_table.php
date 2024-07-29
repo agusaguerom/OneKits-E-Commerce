@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->String('direccion');
             $table->integer('altura');
-            $table->integer('piso');
-            $table->String('nroDepto');
+            $table->integer('piso')->nullable();
+            $table->String('nroDepto')->nullable();
             $table->timestamps();
         });
     }

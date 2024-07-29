@@ -36,7 +36,7 @@
 
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>
                     <td>
-                        <form action="{{ route('carrito.update', $id) }}" method="POST">
+                        <form action="{{ route('carrito.update', $id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('PATCH')
                             <input type="number" name="cantidad" value="{{ $details['cantidad'] }}" min="1">

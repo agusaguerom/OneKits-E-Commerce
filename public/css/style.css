@@ -106,16 +106,18 @@ footer {
 
 /* Nosotros Seccion*/
 .nosotrostitulo {
-    margin: 15px;
-    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 2rem 0;
+    color: #333;
 }
-.imgnosotros {
-    margin-top: 23px;
-    width: 100%;
-}
+
 .parrafo1nosotros {
-    margin: 50px;
-    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 1rem 0;
+    text-align: justify;
 }
 /*Contacto Seccion*/
 /*CSS Contacto*/

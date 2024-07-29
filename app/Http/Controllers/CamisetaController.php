@@ -185,7 +185,6 @@ class CamisetaController extends Controller
             'recomendaciones' => $recomendaciones
         ]);
 
-    public function showtienda(Camiseta $camiseta)
     {
     $ordenTalles = [
         'S' => 1,
@@ -221,6 +220,7 @@ class CamisetaController extends Controller
 
 
     }
+}
     /**
      * Show the form for editing the specified resource.
      */

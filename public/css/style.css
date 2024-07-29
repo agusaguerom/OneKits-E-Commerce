@@ -392,3 +392,74 @@ footer {
     background-color: #28a745;
     color: white;
 }
+
+
+
+
+
+/* Sección de imágenes */
+.imagenes-camiseta {
+    text-align: center;
+  }
+
+  .img-camiseta {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  /* Sección de detalles del producto */
+  .detalles-camiseta {
+    padding: 20px;
+  }
+
+  .titulocamisetaselec {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .precioocamisetaselec {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .no-stock {
+    color: red;
+  }
+
+  .form-agregar-carrito {
+    margin-top: 20px;
+  }
+
+  .label-talle {
+    font-weight: bold;
+  }
+
+  .select-talle {
+    margin-top: 10px;
+  }
+
+  .cantidad-carrito {
+    margin-top: 15px;
+  }
+
+  .input-cantidad {
+    width: 80px;
+  }
+
+  .btnformagregarcarrito {
+    margin-top: 10px;
+  }
+
+  /* Sección de descripción y marca */
+  .infocamisetaselec {
+    padding: 20px 0;
+  }
+
+  .descripcion-camiseta {
+    font-size: 1.2rem;
+  }
+
+  .marca-camiseta {
+    font-size: 1.2rem;
+  }

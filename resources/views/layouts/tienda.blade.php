@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{{asset ('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -36,11 +36,14 @@
     </ul>
   </div>
 
-
-
   <div class="iconosheader">
-  <i class="bi bi-cart4 icono"></i>
- <a href=" {{route('profile.edit')}}"> <i class="bi bi-person icono"></i></a>
+    <!-- Hacer el ícono del carrito clickeable -->
+    <a href="{{ route('carrito.index') }}" class="text-black">
+      <i class="bi bi-cart4 icono"></i>
+    </a>
+    <a href="{{ route('profile.edit') }}" class="text-black">
+      <i class="bi bi-person icono"></i>
+    </a>
   </div>
 
 </nav>
@@ -50,11 +53,10 @@
         @yield("content")
     </main>
 
-
-<footer class="text-center text-lg-start  text-muted footer">
+<footer class="text-center text-lg-start text-muted footer">
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <div class="me-5 d-none d-lg-block">
-      <span>Siguenos en Nuestras Redes</span>
+      <span>Síguenos en Nuestras Redes</span>
     </div>
 
     <div>
@@ -96,16 +98,21 @@
             Productos
           </p>
           <p>
-            <a href="#!" class="text-reset">Incio</a>
+
+
+
+
+
+            <a href="{{ url('/') }}" class="text-reset">Inicio</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Nosotros</a>
+            <a href="{{ url('/nosotros') }}" class="text-reset">Nosotros</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Contacto</a>
+            <a href="{{ url('/contacto') }}" class="text-reset">Contacto</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Productos</a>
+            <a href="{{ url('/productos') }}" class="text-reset">Productos</a>
           </p>
         </div>
 
@@ -123,7 +130,7 @@
     </div>
   </section>
 
-  <div class="text-center p-4"  >
+  <div class="text-center p-4">
     © Copyright
   </div>
 </footer>

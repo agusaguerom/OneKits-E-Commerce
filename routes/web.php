@@ -12,10 +12,11 @@ use App\Http\Controllers\PelotaController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
+use App\Http\Controllers\CarritoController;
+
 Route::get('/a', function () {
     return view('welcome');
 });
-use App\Http\Controllers\CarritoController;
 
 
 
@@ -359,10 +360,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/carrito/complete', [CarritoController::class, 'complete'])->name('carrito.complete');
+    Route::get('/carrito/checkout', [CarritoController::class, 'checkout'])->name('carrito.checkout');
+
+
+
 });
 
 require __DIR__.'/auth.php';
-
 
 
 

@@ -65,6 +65,6 @@
             <button type="submit" class="btn btn-success">Confirmar Compra</button>
         </form>
     </div>
-@endif
+    @endif
 </div>
 @endsection

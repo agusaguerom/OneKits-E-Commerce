@@ -24,11 +24,14 @@ class CamisetaController extends Controller
             'camisetas' => $camisetas
         ]);
     }
-   public function indexTienda()
+    public function indexTienda()
     {
-        $camisetas = Camiseta::orderBy('fk_equipo')->get();
+        $camisetas = Camiseta::with('tipomarca')->orderBy('fk_equipo')->get();
+        $marca = TipoMarca::orderBy('nombre')->get();
+    
         return view('tienda.productos', [
-            'camisetas' => $camisetas
+            'camisetas' => $camisetas,
+            'marca' => $marca
         ]);
     }
     public function indexInicio()

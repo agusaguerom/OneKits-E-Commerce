@@ -2,7 +2,6 @@
 
 @section('seccionproductos')
 
-
 <div class="container containermainProductos">
   <div class="row">
     @foreach($camisetas as $camiseta)
@@ -13,7 +12,10 @@
           @endforeach
           <div class="card-body bodyproductos">
             <h1 class="nombreproductotienda">{{$camiseta->nombre}}</h1>
-            <p class="card-text precioproductotienda">${{$camiseta->precio}}</p>
+            <p class="marcaproductotienda">{{ $camiseta->tipomarca->nombre }}</p>
+            <div>
+            <p class="card-text precioproductotienda">${{ number_format($camiseta->precio, 0, ',', '.') }}</p>
+          </div>
           </div>
         </a>
       </div>

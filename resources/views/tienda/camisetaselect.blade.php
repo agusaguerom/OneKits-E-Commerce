@@ -16,7 +16,7 @@
     <!-- Sección de detalles del producto -->
     <div class="col-md-6 detalles-camiseta">
       <h1 class="titulocamisetaselec">{{ $camiseta->nombre }}</h1>
-      <p class="precioocamisetaselec">${{ $camiseta->precio }}</p>
+      <p class="preciocamisetaselec">${{ number_format($camiseta->precio, 0, ',', '.') }}</p>
 
       @if ($stocks->isEmpty())
         <p class="no-stock">No hay stock disponible.</p>

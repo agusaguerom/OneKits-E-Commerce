@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 class BotinController extends Controller
 {
 
-
-
     public function index()
     {
         $botines = Botin::orderBy('fk_tipo_marca')->get();
@@ -22,6 +20,25 @@ class BotinController extends Controller
         ]);
     }
 
+
+
+    public function showtienda(Botin $botin)
+    {
+        $stocks = $botin->stocks()
+            ->join('talle_calzados', 'stock_calzados.fk_talle_calzados', '=', 'talle_calzados.id')
+            ->select('stock_calzados.*', 'talle_calzados.nombre_talle')
+            ->get();
+
+        $recomendaciones = Botin::where('id', '!=', $botin->id)
+            ->limit(4)
+            ->get();
+
+        return view('tienda.botinselect', [
+            'botin' => $botin,
+            'stocks' => $stocks,
+            'recomendaciones' => $recomendaciones
+        ]);
+    }
 
 
 
@@ -89,6 +106,16 @@ class BotinController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
     public function edit(Botin $botin)
     {
         $tipomarca = TipoMarca::orderBy('nombre')->get();
@@ -121,13 +148,6 @@ class BotinController extends Controller
             'Descripcion' => $request->Descripcion,
         ]);
 
-
-        $imagenes = ImagenBotin::where('fk_botin', $botin->id)->get();
-        foreach ($imagenes as $imagen) {
-            \Storage::disk('public')->delete($imagen->url_img);
-            $imagen->delete();
-        }
-
         if ($request->hasFile('imagenes')) {
 
             foreach ($request->file('imagenes') as $imagen) {
@@ -139,6 +159,7 @@ class BotinController extends Controller
                 ]);
             }
         }
+
 
         return redirect()->route('botines.index')->with('status', 'El botin ha sido Modificado correctamente');
 

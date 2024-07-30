@@ -36,12 +36,10 @@ class StockCalzadoController extends Controller
                        ->first();
 
         if ($stockcalzado) {
-
             $stockcalzado->cantidad += $request->cantidad;
             $stockcalzado->save();
 
         } else {
-
             StockCalzado::create([
                 'fk_botin' => $botin->id,
                 'fk_talle_calzados' => $request->fk_talle_calzados,
@@ -52,7 +50,6 @@ class StockCalzadoController extends Controller
 
         return redirect()->route('botines.show', $botin)->with('status', 'Stock actualizado correctamente');
     }
-
 
 
 

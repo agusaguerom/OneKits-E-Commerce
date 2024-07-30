@@ -14,6 +14,8 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\StockCalzadoController;
 use App\Http\Controllers\ImagenCamisetaController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ProductoController;
+
 
 Route::get('/a', function () {
     return view('welcome');
@@ -64,15 +66,25 @@ Route::get('/productos',[
         'indexTienda'
         ])->name('productos');
 
-        Route::get('/productos/{camiseta}',[
-            CamisetaController::class,
-            'showtienda'
-        ])->name('camisetas.select');
 
-        Route::get('/camisetas/create',[
-        CamisetaController::class,
-        'create'
-        ])->name('camisetas.create');
+
+
+
+// camisetas
+
+Route::get('/camisetas',[CamisetaController::class,'index'])->name('camisetas.index');
+
+
+Route::get('/productos',[CamisetaController::class,'indexTienda'])->name('productos');
+
+
+Route::get('/productos/camisetas/{camiseta}',[CamisetaController::class,'showtienda'])->name('camisetas.select');
+
+
+Route::get('/camisetas/create',[CamisetaController::class,'create'])->name('camisetas.create');
+
+
+
 
 
 
@@ -128,50 +140,20 @@ Route::middleware('is_admin')->group(function () {
 Route::resource('imagenCamiseta', ImagenCamisetaController::class);
 
 
+//stock camisetas
+Route::get('/camisetas/{camiseta}/stock/create',[StockController::class, 'create'])->name('camisetas.stock.create');
+
+Route::post('/camisetas/{camiseta}/stock',[StockController::class, 'store'])->name('camisetas.stock.store');
 
 
-//BOTINES
-
-Route::get('/botines',[
-    BotinController::class,
-    'index'
-])->name('botines.index');
-
-
-Route::get('/botines/create',[
-    BotinController::class,
+//MARCA
+Route::get('/marca/create', [
+    TipoMarcaController::class,
     'create'
-])->name ('botines.create');
+])->name('marca.create');
 
 
-Route::post('/botines',[
-    BotinController::class,
-    'store'
-])->name('botines.store');
 
-
-Route::get('/botines/{botin}',[
-    BotinController::class,
-    'show'
-])->name('botines.show');
-
-
-Route::get('/botines/{botin}/edit',[
-    BotinController::class,
-    'edit'
-])->name('botines.edit');
-
-
-Route::put('/botines/{botin}',
-    [BotinController::class,
-    'update'
-])->name('botines.update');
-
-
-Route::delete('/botines/{botin}',
-    [BotinController::class,
-    'destroy'
-])->name('botines.destroy');
 
 
 
@@ -181,48 +163,76 @@ Route::delete('/botines/{botin}',
 
 
 //stock camisetas
+Route::get('/botines',[BotinController::class,'index'])->name('botines.index');
 
 
+// Crear nuevo botín
+Route::get('/botines/create',[BotinController::class,'create'])->name ('botines.create');
+Route::post('/botines',[BotinController::class,'store'])->name('botines.store');
 
+
+// Mostrar botín específico
+Route::get('/botines/{botin}',[BotinController::class,'show'])->name('botines.show');
+
+
+// Editar botín específico
+Route::get('/botines/{botin}/edit',[BotinController::class,'edit'])->name('botines.edit');
+Route::put('/botines/{botin}',[BotinController::class,'update'])->name('botines.update');
+
+
+//eliminar botin
+Route::delete('/botines/{botin}',[BotinController::class,'destroy'])->name('botines.destroy');
 
 
 //stock botines
-Route::get('/botines/{botin}/stock/create',
-    [StockCalzadoController::class, 'create'])
-->name('botines.stock.create');
+Route::get('/botines/{botin}/stock/create',[StockCalzadoController::class, 'create']) ->name('botines.stock.create');
+Route::post('/botines/{botin}/stock',[StockCalzadoController::class, 'store'])->name('botines.stock.store');
+
+
+//mostrar botin en tienda
+Route::get('/productos/botines/{botin}',[BotinController::class, 'showtienda'])->name('botines.select');
 
 
 
-Route::post('/botines/{botin}/stock',
-    [StockCalzadoController::class, 'store'])
-->name('botines.stock.store');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 //carrito
-Route::get('/carrito',
-    [CarritoController::class, 'index'])
-->name('carrito.index');
+Route::get('/carrito',[CarritoController::class, 'index'])->name('carrito.index');
 
-Route::post('/carrito/add',
-    [CarritoController::class, 'add'])
-->name('carrito.add');
+Route::post('/carrito/add',[CarritoController::class, 'add'])->name('carrito.add');
 
-Route::patch('/carrito/update/{id}',
-    [CarritoController::class, 'update'])
-->name('carrito.update');
+Route::patch('/carrito/update/{id}',[CarritoController::class, 'update'])->name('carrito.update');
 
-Route::delete('/carrito/remove/{id}',
-    [CarritoController::class, 'remove'])
-->name('carrito.remove');
+Route::delete('/carrito/remove/{id}',[CarritoController::class, 'remove'])->name('carrito.remove');
 
-Route::get('carrito/checkout',
-    [CarritoController::class, 'checkout'])
-->name('carrito.checkout');
+Route::get('carrito/checkout',[CarritoController::class, 'checkout'])->name('carrito.checkout');
 
-Route::post('carrito/complete',
-    [CarritoController::class, 'complete'])
-->name('carrito.complete');
+Route::post('carrito/complete',[CarritoController::class, 'complete'])->name('carrito.complete');
+
+
+
+
+
+Route::get('/productos',[ProductoController::class, 'index'])->name('productos.index');
+
+
+
+
+
+
 
 
 

@@ -5,35 +5,31 @@
 <div class="container">
   <div class="row align-items-center">
     <!-- Sección de imágenes -->
-    <div class="col-md-6 imagenes-camiseta">
-      @foreach($camiseta->imagenes as $imagen)
+    <div class="col-md-6 imagenes-botin">
+      @foreach($botin->imagenes as $imagen)
         <img src="{{ asset('storage/' . $imagen->url_img) }}"
-             alt="Imagen de {{ $camiseta->nombre }}"
-             class="img-fluid img-camiseta">
+             alt="Imagen de {{ $botin->nombre }}"
+             class="img-fluid img-botin">
       @endforeach
     </div>
 
-    <div class="col-md-6 detalles-camiseta">
-      <h1 class="titulocamisetaselec">{{ $camiseta->nombre }}</h1>
-      <p class="preciocamisetaselec">${{ number_format($camiseta->precio, 0, ',', '.') }}</p>
+    <!-- Sección de detalles del producto -->
+    <div class="col-md-6 detalles-botin">
+      <h1 class="titulobotin">{{ $botin->nombre }}</h1>
+      <p class="precioobotin">${{ $botin->precio }}</p>
 
       @if ($stocks->isEmpty())
         <p class="no-stock">No hay stock disponible.</p>
       @else
-
       <form action="{{ route('carrito.add') }}" method="POST" class="form-agregar-carrito">
         @csrf
-        <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
-        <input type="hidden" name="tipo" value="camiseta">
+        <input type="hidden" name="fk_botin" value="{{ $botin->id }}">
+        <input type="hidden" name="tipo" value="botin">
         <div class="form-group">
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
-                    @if ($stock->tipoTalle)
-                        <option value="{{ $stock->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
-                    @else
-                        <option value="" disabled>Sin talle disponible</option>
-                    @endif
+                    <option value="{{ $stock->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
                 @endforeach
             </select>
         </div>
@@ -44,17 +40,18 @@
         </div>
     </form>
 
+
       @endif
     </div>
   </div>
 
   <!-- Sección de descripción y marca -->
-  <div class="infocamisetaselec mt-4">
+  <div class="infobotin mt-4">
     <h2>Descripción</h2>
-    <p class="descripcion-camiseta">{{ $camiseta->Descripcion }}</p>
+    <p class="descripcion-botin">{{ $botin->Descripcion }}</p>
 
     <h2>Marca</h2>
-    <p class="marca-camiseta">{{ $camiseta->tipomarca->nombre }}</p>
+    <p class="marca-botin">{{ $botin->tipomarca->nombre }}</p>
   </div>
 
   <!-- Sección de productos recomendados -->
@@ -64,7 +61,7 @@
     <div class="row">
       @foreach($recomendaciones as $recomendacion)
         <div class="card cardProducto" style="width: 18rem;">
-          <a class="linkproductostienda" href="{{ route('camisetas.select', $recomendacion->id) }}">
+          <a class="linkproductostienda" href="{{ route('botines.select', $recomendacion->id) }}">
             @foreach($recomendacion->imagenes as $imagen)
               <img src="{{ asset('storage/' . $imagen->url_img) }}"
                    alt="Imagen de {{ $recomendacion->nombre }}"

@@ -28,6 +28,14 @@ class Botin extends Model
     }
 
 
+    public function stocks()
+    {
+        return $this->hasMany(StockCalzado::class, 'fk_botin');
+    }
+
+
+
+
     protected $fillable = [
         'fk_tipo_marca',
         'nombre',

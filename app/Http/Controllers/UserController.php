@@ -22,8 +22,8 @@ class UserController extends Controller
 
         return view('admin.usuarios.usuariosedit', [
             'user' => $user
-        ]);    
-    
+        ]);
+
     }
 
     public function update(Request $request, User $user)
@@ -98,6 +98,11 @@ class UserController extends Controller
             $user->delete();
             return redirect()->route('admin.usuarios.index')->with('statusDelete', 'Usuario eliminado Exitosamente');
 
+    }
+
+    public function domicilio()
+    {
+        return $this->belongsTo(Domicilio::class, 'fk_domicilio');
     }
 
 }

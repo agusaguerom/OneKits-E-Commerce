@@ -14,6 +14,9 @@ class Domicilio extends Model
         return $this->hasMany(User::class, 'fk_domicilio');
     }
 
+
+
+
     protected $fillable = [
         'direccion',
         'altura',

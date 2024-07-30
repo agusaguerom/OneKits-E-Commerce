@@ -1,6 +1,5 @@
 @extends("layouts.tienda")
 
-
 @section('content')
 <div class="container">
     <h1>Carrito de Compras</h1>
@@ -21,6 +20,7 @@
         <thead>
             <tr>
                 <th>Producto</th>
+                <th>Talle</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -31,9 +31,9 @@
             @forelse($carrito as $id => $details)
                 <tr>
                     <td>{{ $details['nombre'] }}</td>
+                    <td>{{ $details['talle'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
                     <td>{{ $details['precio'] }}</td>
-
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>
                     <td>
                         <form action="{{ route('carrito.update', $id) }}" method="POST" class="d-inline">
@@ -51,12 +51,11 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center">Tu carrito está vacío</td>
+                    <td colspan="6" class="text-center">Tu carrito está vacío</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
-
 
     @if($carrito)
     <div class="text-right">

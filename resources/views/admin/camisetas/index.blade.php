@@ -1,6 +1,5 @@
-@extends("layouts.admin")
-@section('content')
-
+@extends("layouts.productosadmin")
+@section('contentTables')
 
 
     <div class="container">

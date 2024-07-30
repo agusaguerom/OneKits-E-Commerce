@@ -29,11 +29,15 @@ class CarritoController extends Controller
         if ($request->has('fk_camiseta')) {
             $camiseta = Camiseta::findOrFail($request->fk_camiseta);
             $tipo = 'camiseta';
-            $talle = TipoTalle::findOrFail($request->talleelegido)->nombre_talle;
+            $talle = $request->talleelegido;
+            $tallenombre = TipoTalle::findOrFail($request->talleelegido)->nombre_talle;
+
         } elseif ($request->has('fk_botin')) {
             $botin = Botin::findOrFail($request->fk_botin);
             $tipo = 'botin';
-            $talle = TalleCalzado::findOrFail($request->talleelegido)->nombre_talle;
+            $talle = $request->talleelegido;
+            $tallenombre = TalleCalzado::findOrFail($request->talleelegido)->nombre_talle;
+
         } else {
             return redirect()->route('carrito.index')->with('error', 'Producto no válido.');
         }
@@ -53,6 +57,8 @@ class CarritoController extends Controller
                 'precio' => $precio,
                 'talle' => $talle,
                 'tipo' => $tipo,
+                'tallenombre' => $tallenombre,
+
             ];
         }
 

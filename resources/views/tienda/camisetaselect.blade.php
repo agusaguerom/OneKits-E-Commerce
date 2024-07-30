@@ -30,7 +30,7 @@
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
                     @if ($stock->tipoTalle)
-                        <option value="{{ $stock->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
+                        <option value="{{ $stock->tipoTalle->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
                     @else
                         <option value="" disabled>Sin talle disponible</option>
                     @endif

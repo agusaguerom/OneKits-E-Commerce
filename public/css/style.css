@@ -174,7 +174,15 @@ footer {
     margin-bottom: 50px;
 }
 
-
+.navbar {
+    position: relative; /* Asegúrate de que el menú tenga posición relativa o absoluta */
+    z-index: 1050; /* Un valor mayor que el del carrusel */
+  }
+  
+  .carousel {
+    position: relative; /* Asegúrate de que el carrusel tenga posición relativa o absoluta */
+    z-index: 1000; /* Un valor menor que el del menú */
+  }
 /* Tablas usuarios ABM*/
 
 .tablasclientescont, .seleccionarmarca{
@@ -182,11 +190,11 @@ footer {
 }
 
 .linkstablasclientes, .linkselectmarca
-.tablasclientescont{
+.tablasclientescont,.linkstablastipoproductos{
     margin: 20px;
 }
 
-.linkstablasclientes,.linkselectmarca {
+.linkstablasclientes,.linkselectmarca,.linkstablastipoproductos {
     color: black;
     text-decoration: none;
 	border-radius:6px;

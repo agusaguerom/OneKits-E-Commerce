@@ -29,7 +29,7 @@
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
-                    <option value="{{ $stock->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
+                    <option value="{{ $stock->talleCalzado->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
                 @endforeach
             </select>
         </div>

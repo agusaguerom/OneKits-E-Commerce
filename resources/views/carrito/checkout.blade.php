@@ -49,6 +49,15 @@
                 </tr>
             @endforelse
         </tbody>
+
+        <tfoot>
+            @if($carrito)
+            <tr class="total-row">
+                <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                <td class="item-total"><strong>${{ number_format($total, 2) }}</strong></td>
+            </tr>
+            @endif
+        </tfoot>
     </table>
 
     <div class="confirmacion-button-container text-right">

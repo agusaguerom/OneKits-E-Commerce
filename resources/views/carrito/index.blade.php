@@ -20,7 +20,6 @@
         <thead>
             <tr>
                 <th>Producto</th>
-                <th>Talle</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -57,10 +56,20 @@
                 </tr>
             @endif
         </tbody>
+
+        <tfoot>
+            @if($carrito)
+            <tr>
+                <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                <td colspan="2"><strong>${{ number_format($total, 2) }}</strong></td>
+            </tr>
+            @endif
+        </tfoot>
+
     </table>
 
-    @if(count($carrito) > 0)
-    <div class="text-right">
+    @if($carrito)
+    <div class="mb-3">
         <form action="{{ route('carrito.checkout') }}" method="GET">
             @csrf
             <button type="submit" class="btn btn-success">Confirmar Compra</button>

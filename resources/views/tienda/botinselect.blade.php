@@ -23,6 +23,7 @@
       @else
       <form action="{{ route('carrito.add') }}" method="POST" class="form-agregar-carrito">
         @csrf
+        <input type="hidden" name="tipo_producto" value="botin">
         <input type="hidden" name="fk_botin" value="{{ $botin->id }}">
         <input type="hidden" name="tipo" value="botin">
         <div class="form-group">

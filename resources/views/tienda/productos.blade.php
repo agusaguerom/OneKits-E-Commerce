@@ -21,10 +21,8 @@
         </a>
       </div>
     @endforeach
-  </div>
 
-
-<h2 class="container text-center mt-5">Botines</h2>
+    <h2 class="container text-center mt-5">Botines</h2>
 
 <div class="container containermainProductos">
     <div class="row">
@@ -37,12 +35,16 @@
 
                     <div class="card-body bodyproductos">
                         <h1 class="nombreproductotienda">{{ $botin->nombre }}</h1>
-                        <p class="card-text precioproductotienda">${{ $botin->precio }}</p>
-                    </div>
+                        <p class="card-text precioproductotienda">${{ number_format($botin->precio, 0, ',', '.') }}</p>
+                      </div>
                 </a>
             </div>
         @endforeach
     </div>
 </div>
+  </div>
+
+
+
 
 @endsection

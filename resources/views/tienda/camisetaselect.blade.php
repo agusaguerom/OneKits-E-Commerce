@@ -65,6 +65,7 @@
 
     <div class="row">
       @foreach($recomendaciones as $recomendacion)
+      <div class="col-md-3 mb-4">
         <div class="card cardProducto" style="width: 18rem;">
           <a class="linkproductostienda" href="{{ route('camisetas.select', $recomendacion->id) }}">
             @foreach($recomendacion->imagenes as $imagen)
@@ -78,9 +79,12 @@
             </div>
           </a>
         </div>
+      </div>
       @endforeach
     </div>
   </div>
+
+  
 </div>
 
 @endsection

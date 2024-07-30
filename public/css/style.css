@@ -144,10 +144,14 @@ footer {
 /*CSS Contacto*/
 
 .titulocontacto{
+    font-family: 'Montserrat', sans-serif;
+  font-weight: 700; 
     margin: 20px;
     text-align: center;
 }
 .parrafocontacto{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; 
     text-align: center;
 }
 .formcont{

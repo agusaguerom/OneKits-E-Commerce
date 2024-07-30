@@ -39,7 +39,59 @@ class BotinController extends Controller
             'recomendaciones' => $recomendaciones
         ]);
     }
+    public function filtroAdidas()
+    {
+        $tipoMarcaAdidas = TipoMarca::where('nombre', 'Adidas')->value('id');
 
+
+        $adidas = Botin::where('fk_tipo_marca', $tipoMarcaAdidas)->get();
+
+
+        return view('tienda.botinesadidas', [
+            'adidasbotin' => $adidas,
+        
+
+        ]);
+            
+
+
+
+    }
+
+    public function filtroPuma()
+    {
+        $tipoMarcaPuma = TipoMarca::where('nombre', 'Puma')->value('id');
+
+
+        $puma = Botin::where('fk_tipo_marca', $tipoMarcaPuma)->get();
+
+
+        return view('tienda.botinespuma', [
+            'pumabotin' => $puma,
+        
+        ]);
+            
+
+
+    }
+
+    public function filtroNike()
+    {
+        $tipoMarcaNike = TipoMarca::where('nombre', 'Nike')->value('id');
+
+
+        $nike = Botin::where('fk_tipo_marca', $tipoMarcaNike)->get();
+
+
+        return view('tienda.botinesnike', [
+            'nikebotin' => $nike,
+        
+        ]);
+            
+
+    
+
+    }
 
 
     public function create()

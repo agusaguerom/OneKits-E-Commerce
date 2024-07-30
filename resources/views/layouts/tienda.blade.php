@@ -13,8 +13,13 @@
 
 <header>
 
-  <nav class="navbar navbar-expand-lg navheader position-relative bg-black">
-    <a class="navbar-brand logoheader text-white" href="#">Nombre</a>
+  <nav class="navbar navbar-expand-lg  navbar-light bg-light navheader">
+
+    <a href="/">
+      <img src="{{ URL('/img/logo.svg') }}" width="70px" height="70px" alt="Logo">
+    </a>
+  
+  
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,21 +27,21 @@
     <div class="collapse navbar-collapse " id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item active">
-          <a class="text-white linksheader" href="{{ url('/') }}">Inicio</a>
+          <a class="text-black linksheader nav-link" href="{{ url('/') }}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="text-white linksheader" href="{{ url('/productos') }}">Productos</a>
+          <a class="text-black linksheader nav-link" href="{{ url('/productos') }}">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="text-white linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
+          <a class="text-black linksheader nav-link" href="{{ url('/nosotros') }}">Nosotros</a>
         </li>
         <li class="nav-item">
-          <a class="text-white linksheader" href="{{ url('/contacto') }}">Contacto</a>
+          <a class="text-black linksheader nav-link" href="{{ url('/contacto') }}">Contacto</a>
         </li>
 
         @if(Auth::user() and Auth::user()->fk_tipo_usuario == 2)
         <li class="nav-item">
-          <a class="text-white linksheader" href="{{ url('/admin') }}">Admin</a>
+          <a class="text-black linksheader nav-link" href="{{ url('/admin') }}">Panel</a>
         </li>
         @endif
       </ul>
@@ -44,12 +49,12 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a href="{{ route('carrito.index') }}" class="nav-link">
-            <i class="bi bi-cart4 icono text-white"></i>
+            <i class="bi bi-cart4 icono text-black"></i>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="bi bi-person icono text-white"></i>
+            <i class="bi bi-person icono text-black"></i>
           </a>
         </li>
       </ul>

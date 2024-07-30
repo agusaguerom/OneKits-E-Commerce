@@ -48,6 +48,20 @@ Route::get('/puma',[
     'filtroPuma'
 ])->name('puma');
 
+Route::get('/adidasb',[
+    BotinController::class,
+    'filtroAdidas'
+])->name('adidasbotines');
+
+Route::get('/nikeb',[
+    BotinController::class,
+    'filtroNike'
+])->name('nikebotines');
+
+Route::get('/pumab',[
+    BotinController::class,
+    'filtroPuma'
+])->name('pumabotines');
 
 Route::get('/contacto', function () {
     return view('tienda.contacto');

@@ -30,7 +30,7 @@ class CarritoController extends Controller
         if($tipoProducto == 'camiseta'){
             $producto = Camiseta::findOrFail($request->fk_camiseta);
 
-        }elseif($tipoProducto == 'camiseta'){
+        }elseif($tipoProducto == 'botin'){
             $producto = Botin::findOrFail($request->fk_botin);
 
         }else{

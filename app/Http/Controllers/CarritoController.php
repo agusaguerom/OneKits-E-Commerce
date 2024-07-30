@@ -10,6 +10,7 @@ use App\Models\StockCalzado;
 use App\Models\TipoTalle;
 
 
+
 class CarritoController extends Controller
 {
     public function index()
@@ -23,26 +24,25 @@ class CarritoController extends Controller
 
     public function add(Request $request)
     {
+        // Determina el tipo de producto y la talla
         if ($request->has('fk_camiseta')) {
             $camiseta = Camiseta::findOrFail($request->fk_camiseta);
             $tipo = 'camiseta';
             $talle = $request->talleelegido;
-
         } elseif ($request->has('fk_botin')) {
             $botin = Botin::findOrFail($request->fk_botin);
             $tipo = 'botin';
             $talle = $request->talleelegido;
-
         } else {
             return redirect()->route('carrito.index')->with('error', 'Producto no válido.');
         }
 
         $carrito = session()->get('carrito', []);
-
         $id = $request->has('fk_camiseta') ? $request->fk_camiseta : $request->fk_botin;
         $nombre = $request->has('fk_camiseta') ? $camiseta->nombre : $botin->nombre;
         $precio = $request->has('fk_camiseta') ? $camiseta->precio : $botin->precio;
 
+        // Añade el producto al carrito o actualiza la cantidad
         if (isset($carrito[$id])) {
             $carrito[$id]['cantidad'] += $request->cantidad;
         } else {
@@ -56,9 +56,9 @@ class CarritoController extends Controller
         }
 
         session()->put('carrito', $carrito);
-
         return redirect()->route('carrito.index')->with('success', 'Producto añadido al carrito');
     }
+
 
 
 
@@ -107,23 +107,31 @@ class CarritoController extends Controller
 
         // Verificar stock suficiente para cada producto en el carrito
         foreach ($carrito as $id => $details) {
+            $stock = null;
             if ($details['tipo'] === 'camiseta') {
                 $stock = Stock::where('fk_camiseta', $id)
-                                ->where('fk_tipo_talle', $details['talle'])
-                                ->first();
+                    ->where('fk_tipo_talle', $details['talle'])
+                    ->first();
             } else {
                 $stock = StockCalzado::where('fk_botin', $id)
-                                    ->where('fk_talle_calzados', $details['talle'])
-                                    ->first();
+                    ->where('fk_talle_calzados', $details['talle'])
+                    ->first();
             }
 
+            // Depuración: Loguear información del stock
+            \Log::info('Checking stock for:', [
+                'id' => $id,
+                'tipo' => $details['tipo'],
+                'talle' => $details['talle'],
+                'stock' => $stock,
+            ]);
+
             // Verificar si el stock existe y si hay suficiente cantidad
-            if ($stock) {
-                if ($stock->cantidad < $details['cantidad']) {
-                    return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-                }
-            } else {
+            if (!$stock) {
                 return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
+            }
+            if ($stock->cantidad < $details['cantidad']) {
+                return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
             }
         }
 
@@ -131,28 +139,27 @@ class CarritoController extends Controller
         foreach ($carrito as $id => $details) {
             if ($details['tipo'] === 'camiseta') {
                 $stock = Stock::where('fk_camiseta', $id)
-                                ->where('fk_tipo_talle', $details['talle'])
-                                ->first();
+                ->where('fk_tipo_talle', $details['talle'])
+                ->first();
             } else {
                 $stock = StockCalzado::where('fk_botin', $id)
-                                    ->where('fk_talle_calzados', $details['talle'])
-                                    ->first();
+                    ->where('fk_talle_calzados', $details['talle'])
+                    ->first();
             }
 
-            // Verificar y actualizar el stock
+            // Actualizar el stock si existe
             if ($stock) {
                 $stock->cantidad -= $details['cantidad'];
-                if ($stock->cantidad < 0) {
-                    $stock->cantidad = 0; // Evitar cantidades negativas
-                }
+                $stock->cantidad = max($stock->cantidad, 0); // Evita cantidades negativas
                 $stock->save();
             }
         }
 
         session()->forget('carrito');
-
         return redirect()->route('carrito.index')->with('success', 'Compra realizada con éxito');
     }
+
+
 
 
 

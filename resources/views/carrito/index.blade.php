@@ -31,7 +31,6 @@
                 @foreach($carrito as $id => $details)
                     <tr>
                         <td>{{ $details['nombre'] }}</td>
-                        <td>{{ $details['tallenombre'] }}</td>
                         <td>{{ $details['cantidad'] }}</td>
                         <td>{{ number_format($details['precio'], 2, ',', '.') }}</td>
                         <td>{{ number_format($details['cantidad'] * $details['precio'], 2, ',', '.') }}</td>

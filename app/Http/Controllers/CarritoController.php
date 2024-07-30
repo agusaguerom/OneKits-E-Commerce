@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TalleCalzado;
 use Illuminate\Http\Request;
 use App\Models\Camiseta;
 use App\Models\Botin;
@@ -28,11 +29,11 @@ class CarritoController extends Controller
         if ($request->has('fk_camiseta')) {
             $camiseta = Camiseta::findOrFail($request->fk_camiseta);
             $tipo = 'camiseta';
-            $talle = $request->talleelegido;
+            $talle = TipoTalle::findOrFail($request->talleelegido)->nombre_talle;
         } elseif ($request->has('fk_botin')) {
             $botin = Botin::findOrFail($request->fk_botin);
             $tipo = 'botin';
-            $talle = $request->talleelegido;
+            $talle = TalleCalzado::findOrFail($request->talleelegido)->nombre_talle;
         } else {
             return redirect()->route('carrito.index')->with('error', 'Producto no válido.');
         }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TipoMarcaController;
@@ -49,6 +50,9 @@ Route::get('/puma',[
 Route::get('/contacto', function () {
     return view('tienda.contacto');
 });
+Route::post('/contacto', [ContactoController::class, 'store'])->name('contactoform');
+
+
 
 
 

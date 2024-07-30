@@ -27,6 +27,7 @@
         <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
         <input type="hidden" name="tipo" value="camiseta">
         <div class="form-group">
+
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)

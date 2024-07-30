@@ -55,10 +55,20 @@
                 </tr>
             @endforelse
         </tbody>
+
+        <tfoot>
+            @if($carrito)
+            <tr>
+                <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                <td colspan="2"><strong>${{ number_format($total, 2) }}</strong></td>
+            </tr>
+            @endif
+        </tfoot>
+
     </table>
 
     @if($carrito)
-    <div class="text-right">
+    <div class="mb-3">
         <form action="{{ route('carrito.checkout') }}" method="GET">
             @csrf
             <button type="submit" class="btn btn-success">Confirmar Compra</button>

@@ -8,6 +8,8 @@ use App\Models\Botin;
 use App\Models\Stock;
 use App\Models\StockCalzado;
 use App\Models\TipoTalle;
+use App\Models\TalleCalzado;
+
 
 
 
@@ -16,8 +18,14 @@ class CarritoController extends Controller
     public function index()
     {
         $carrito = session()->get('carrito', []);
+        $total = 0;
 
-        return view('carrito.index', compact('carrito'));
+
+        foreach ($carrito as $details) {
+            $total += $details['cantidad'] * $details['precio'];
+        }
+
+        return view('carrito.index', compact('carrito','total'));
     }
 
 
@@ -154,8 +162,13 @@ class CarritoController extends Controller
     public function checkout()
     {
         $carrito = session()->get('carrito', []);
+        $total = 0;
 
-        return view('carrito.checkout', compact('carrito'));
+        foreach ($carrito as $details) {
+            $total += $details['cantidad'] * $details['precio'];
+        }
+
+        return view('carrito.checkout', compact('carrito', 'total'));
 
     }
 

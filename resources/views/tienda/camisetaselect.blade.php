@@ -23,6 +23,7 @@
 
       <form action="{{ route('carrito.add') }}" method="POST" class="form-agregar-carrito">
         @csrf
+        <input type="hidden" name="tipo_producto" value="camiseta">
         <input type="hidden" name="fk_camiseta" value="{{ $camiseta->id }}">
         <input type="hidden" name="tipo" value="camiseta">
         <div class="form-group">

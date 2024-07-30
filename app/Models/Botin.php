@@ -34,6 +34,11 @@ class Botin extends Model
     }
 
 
+    public function tipotalle()
+    {
+        return $this->belongsTo(TalleCalzado::class,'fk_talle_calzados');
+    }
+
 
 
     protected $fillable = [
@@ -42,5 +47,7 @@ class Botin extends Model
         'precio',
         'Descripcion',
     ];
+
+
 
 }

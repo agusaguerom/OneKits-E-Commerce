@@ -40,8 +40,8 @@
                 <tr class="confirmacion-item">
                     <td class="item-name">{{ $details['nombre'] }}</td>
                     <td class="item-quantity">{{ $details['cantidad'] }}</td>
-                    <td class="item-price">{{ $details['precio'] }}</td>
-                    <td class="item-total">{{ $details['cantidad'] * $details['precio'] }}</td>
+                    <td class="item-price">{{ number_format($details['precio'], 2, ',', '.') }}</td>
+                    <td class="item-price">{{ number_format($details['cantidad'] * $details['precio'], 2, ',', '.') }}</td>
                 </tr>
             @empty
                 <tr class="empty-cart">

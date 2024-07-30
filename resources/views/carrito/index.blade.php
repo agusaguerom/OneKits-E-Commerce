@@ -33,8 +33,8 @@
                     <td>{{ $details['nombre'] }}</td>
                     <td>{{ $details['talle'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
-                    <td>{{ $details['precio'] }}</td>
-                    <td>{{ $details['cantidad'] * $details['precio'] }}</td>
+                    <td>{{ number_format($details['precio'], 2, ',', '.') }}</td>
+                    <td>{{ number_format($details['cantidad'] * $details['precio'], 2, ',', '.') }}</td>
                     <td>
                         <form action="{{ route('carrito.update', $id) }}" method="POST" class="d-inline">
                             @csrf

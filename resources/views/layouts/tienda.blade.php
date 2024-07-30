@@ -13,40 +13,43 @@
 
 <header>
 
-<nav class="navbar navbar-expand-lg navheader">
-  <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/productos') }}">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/contacto') }}">Contacto</a>
-    </li>
-    </ul>
-  </div>
-
-  <div class="iconosheader">
-    <!-- Hacer el ícono del carrito clickeable -->
-    <a href="{{ route('carrito.index') }}">
-      <i class="bi bi-cart4 icono"></i>
-    </a>
-    <a href="{{ route('profile.edit') }}">
-      <i class="bi bi-person icono"></i>
-    </a>
-  </div>
-
-</nav>
+  <nav class="navbar navbar-expand-lg navheader">
+    <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader" href="{{ url('/productos') }}">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader" href="{{ url('/contacto') }}">Contacto</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="{{ route('carrito.index') }}" class="nav-link">
+            <i class="bi bi-cart4 icono"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('profile.edit') }}" class="nav-link">
+            <i class="bi bi-person icono"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
 </header>
 
     <main>

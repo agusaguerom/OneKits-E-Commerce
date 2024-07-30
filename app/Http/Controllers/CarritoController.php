@@ -83,49 +83,56 @@ class CarritoController extends Controller
         foreach ($carrito as $id => $details) {
             if ($details['tipo'] == 'camiseta') {
                 $stock = Stock::find($details['talle']);
-
-            }elseif($details['tipo'] == 'botin'){
+                if ($stock) {
+                    $tipoTalle = $stock->tipoTalle;
+                    $details['nombre_talle'] = $tipoTalle ? $tipoTalle->nombre : 'N/A';
+                    if ($stock->cantidad < $details['cantidad']) {
+                        return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
+                    }
+                } else {
+                    return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
+                }
+            } elseif ($details['tipo'] == 'botin') {
                 $stock = StockCalzado::find($details['talle']);
-
-            }else{
+                if ($stock) {
+                    $talleCalzado = $stock->talleCalzado;
+                    $details['nombre_talle'] = $talleCalzado ? $talleCalzado->nombre : 'N/A';
+                    if ($stock->cantidad < $details['cantidad']) {
+                        return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
+                    }
+                } else {
+                    return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
+                }
+            } else {
                 return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
-
             }
 
-
-        if ($stock) {
-            if ($stock->cantidad < $details['cantidad']) {
-                return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-            }
-
-        }else {
-            return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
-            }
+            $total += $details['cantidad'] * $details['precio'];
         }
 
-
+        // Actualizar stock y limpiar carrito
         foreach ($carrito as $id => $details) {
             if ($details['tipo'] == 'camiseta') {
                 $stock = Stock::find($details['talle']);
-
-            }elseif($details['tipo'] == 'botin'){
+                if ($stock) {
+                    $stock->cantidad -= $details['cantidad'];
+                    $stock->save();
+                }
+            } elseif ($details['tipo'] == 'botin') {
                 $stock = StockCalzado::find($details['talle']);
-
-            }else{
-                return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
-
+                if ($stock) {
+                    $stock->cantidad -= $details['cantidad'];
+                    $stock->save();
+                }
             }
-
-
-
-            $stock->cantidad -= $details['cantidad'];
-            $stock->save();
         }
 
         session()->forget('carrito');
 
         return redirect()->route('carrito.index')->with('success', 'Compra realizada con éxito');
     }
+
+
 
 
 

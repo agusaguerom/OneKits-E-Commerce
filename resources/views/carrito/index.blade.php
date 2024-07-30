@@ -20,7 +20,6 @@
         <thead>
             <tr>
                 <th>Producto</th>
-                <th>Talle</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
                 <th>Total</th>
@@ -31,7 +30,6 @@
             @forelse($carrito as $id => $details)
                 <tr>
                     <td>{{ $details['nombre'] }}</td>
-                    <td>{{ $details['talle'] }}</td>
                     <td>{{ $details['cantidad'] }}</td>
                     <td>{{ $details['precio'] }}</td>
                     <td>{{ $details['cantidad'] * $details['precio'] }}</td>

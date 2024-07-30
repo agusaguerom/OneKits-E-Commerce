@@ -11,8 +11,6 @@ use App\Models\TipoTalle;
 use App\Models\TalleCalzado;
 
 
-
-
 class CarritoController extends Controller
 {
     public function index()
@@ -32,29 +30,25 @@ class CarritoController extends Controller
 
     public function add(Request $request)
     {
-
         $tipoProducto = $request->input('tipo_producto');
 
-        if($tipoProducto == 'camiseta'){
+        if ($tipoProducto == 'camiseta') {
             $producto = Camiseta::findOrFail($request->fk_camiseta);
-
-        }elseif($tipoProducto == 'botin'){
+        } elseif ($tipoProducto == 'botin') {
             $producto = Botin::findOrFail($request->fk_botin);
-
-        }else{
+        } else {
             return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
         }
-
 
         $talle = $request->talleelegido;
         $carrito = session()->get('carrito', []);
 
+        $id = $producto->id . '-' . $talle; // Crear un ID único para cada combinación de producto y talle
 
-
-        if (isset($carrito[$producto->id])) {
-            $carrito[$producto->id]['cantidad'] += $request->cantidad;
+        if (isset($carrito[$id])) {
+            $carrito[$id]['cantidad'] += $request->cantidad;
         } else {
-            $carrito[$producto->id] = [
+            $carrito[$id] = [
                 'nombre' => $producto->nombre,
                 'cantidad' => $request->cantidad,
                 'precio' => $producto->precio,
@@ -81,57 +75,46 @@ class CarritoController extends Controller
         $carrito = session()->get('carrito', []);
 
         foreach ($carrito as $id => $details) {
+            $producto_id = explode('-', $id)[0];
+            $talle = $details['talle'];
+
             if ($details['tipo'] == 'camiseta') {
-                $stock = Stock::find($details['talle']);
-                if ($stock) {
-                    $tipoTalle = $stock->tipoTalle;
-                    $details['nombre_talle'] = $tipoTalle ? $tipoTalle->nombre : 'N/A';
-                    if ($stock->cantidad < $details['cantidad']) {
-                        return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-                    }
-                } else {
-                    return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
-                }
+                $stock = Stock::where('producto_id', $producto_id)->where('talle', $talle)->first();
             } elseif ($details['tipo'] == 'botin') {
-                $stock = StockCalzado::find($details['talle']);
-                if ($stock) {
-                    $talleCalzado = $stock->talleCalzado;
-                    $details['nombre_talle'] = $talleCalzado ? $talleCalzado->nombre : 'N/A';
-                    if ($stock->cantidad < $details['cantidad']) {
-                        return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-                    }
-                } else {
-                    return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
-                }
+                $stock = StockCalzado::where('producto_id', $producto_id)->where('talle', $talle)->first();
             } else {
                 return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
             }
 
-            $total += $details['cantidad'] * $details['precio'];
+            if ($stock) {
+                if ($stock->cantidad < $details['cantidad']) {
+                    return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
+                }
+            } else {
+                return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
+            }
         }
 
-        // Actualizar stock y limpiar carrito
         foreach ($carrito as $id => $details) {
+            $producto_id = explode('-', $id)[0];
+            $talle = $details['talle'];
+
             if ($details['tipo'] == 'camiseta') {
-                $stock = Stock::find($details['talle']);
-                if ($stock) {
-                    $stock->cantidad -= $details['cantidad'];
-                    $stock->save();
-                }
+                $stock = Stock::where('producto_id', $producto_id)->where('talle', $talle)->first();
             } elseif ($details['tipo'] == 'botin') {
-                $stock = StockCalzado::find($details['talle']);
-                if ($stock) {
-                    $stock->cantidad -= $details['cantidad'];
-                    $stock->save();
-                }
+                $stock = StockCalzado::where('producto_id', $producto_id)->where('talle', $talle)->first();
+            } else {
+                return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
             }
+
+            $stock->cantidad -= $details['cantidad'];
+            $stock->save();
         }
 
         session()->forget('carrito');
 
         return redirect()->route('carrito.index')->with('success', 'Compra realizada con éxito');
     }
-
 
 
 

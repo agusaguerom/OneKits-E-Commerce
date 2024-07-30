@@ -33,7 +33,6 @@
                 <th class="table-header">Cantidad</th>
                 <th class="table-header">Precio</th>
                 <th class="table-header">Total</th>
-
             </tr>
         </thead>
         <tbody>

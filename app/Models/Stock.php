@@ -25,4 +25,4 @@ class Stock extends Model
     {
         return $this->belongsTo(Camiseta::class, 'fk_camiseta');
     }
-}
+    }

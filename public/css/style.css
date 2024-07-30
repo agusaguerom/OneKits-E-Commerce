@@ -92,19 +92,26 @@ footer {
     margin: auto;
     color: #555;
 }
+.cardInicio:hover{
+    transform: translateY(-10px);
+    background-color: #fff3f3;
+    transition: 0.3s ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .precioproducto {
-    font-size: 1.25rem; /* Tamaño de fuente grande */
-    font-weight: bold; /* Negrita para destacar */
-    color: #c0392b; /* Rojo oscuro que combina con blanco y negro */
-    margin: 0; /* Eliminar margen para que quede ajustado */
-    padding: 0.5rem 0; /* Espaciado superior e inferior */
-    text-align: center; /* Alinear al centro */
+    font-size: 1.25rem; 
+    color: #c0392b; 
+    margin: 0; 
+    padding: 0.5rem 0; 
+    text-align: center; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; 
   }
+
   
   .card-footer {
-    background-color: #f3f3f3; /* Fondo blanco para que combine con el esquema de colores */
-    border-top: 1px solid #dee2e6; /* Borde superior sutil */
-    padding: 0.75rem; /* Espaciado interior */
+    border-top: 1px solid #dee2e6; 
+    padding: 0.75rem; 
   }
 .containermetodospago{
     margin-top: 100px;
@@ -217,7 +224,7 @@ footer {
 }
 
 .cardProducto{
-    margin: 5px;
+    margin: 20px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-style: 10px;
@@ -274,7 +281,7 @@ footer {
 
 .titulocamisetaselec {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Bold */;
+    font-weight: 700;
     font-size: 2rem;
     font-weight: bold;
     color: #333;

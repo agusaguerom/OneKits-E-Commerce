@@ -39,7 +39,7 @@
           <img class="card-img-top imginicioproducto" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camisetaadi->nombre }}">
         @endforeach
         <div class="card-body">
-          <p class="card-text">{{$camisetaadi->nombre}}</p>
+          <p class="card-text nombrecamisetainicio">{{$camisetaadi->nombre}}</p>
         </div>
         <div class="card-footer">
           <p class="precioproducto">${{ number_format($camisetaadi->precio, 0, ',', '.') }}</p>

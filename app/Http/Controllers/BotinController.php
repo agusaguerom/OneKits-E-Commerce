@@ -148,6 +148,14 @@ class BotinController extends Controller
             'Descripcion' => $request->Descripcion,
         ]);
 
+
+        $imagenes = ImagenBotin::where('fk_botin', $botin->id)->get();
+        foreach ($imagenes as $imagen) {
+            \Storage::disk('public')->delete($imagen->url_img);
+            $imagen->delete();
+        }
+
+
         if ($request->hasFile('imagenes')) {
 
             foreach ($request->file('imagenes') as $imagen) {

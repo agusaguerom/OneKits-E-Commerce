@@ -80,22 +80,32 @@ class CarritoController extends Controller
                 $stock = StockCalzado::find($details['talle']);
 
             }else{
+                return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
 
             }
 
 
-            if ($stock) {
-                if ($stock->cantidad < $details['cantidad']) {
-                    return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
-                }
-            } else {
-                return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
+        if ($stock) {
+            if ($stock->cantidad < $details['cantidad']) {
+                return redirect()->route('carrito.index')->with('error', 'Stock insuficiente para ' . $details['nombre']);
+            }
+
+        }else {
+            return redirect()->route('carrito.index')->with('error', 'El stock no se encontró para ' . $details['nombre']);
             }
         }
+
 
         foreach ($carrito as $id => $details) {
             if ($details['tipo'] == 'camiseta') {
                 $stock = Stock::find($details['talle']);
+
+            }elseif($details['tipo'] == 'botin'){
+                $stock = StockCalzado::find($details['talle']);
+
+            }else{
+                return redirect()->route('carrito.index')->with('error', 'Tipo de producto no válido');
+
             }
 
 

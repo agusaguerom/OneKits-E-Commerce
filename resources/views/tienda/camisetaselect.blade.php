@@ -15,7 +15,7 @@
 
     <div class="col-md-6 detalles-camiseta">
       <h1 class="titulocamisetaselec">{{ $camiseta->nombre }}</h1>
-      <p class="precioocamisetaselec">${{ $camiseta->precio }}</p>
+      <p class="preciocamisetaselec">${{ number_format($camiseta->precio, 0, ',', '.') }}</p>
 
       @if ($stocks->isEmpty())
         <p class="no-stock">No hay stock disponible.</p>
@@ -32,7 +32,7 @@
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
                     @if ($stock->tipoTalle)
-                        <option value="{{ $stock->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
+                        <option value="{{ $stock->tipoTalle->id }}">{{ $stock->tipoTalle->nombre_talle }}</option>
                     @else
                         <option value="" disabled>Sin talle disponible</option>
                     @endif
@@ -65,6 +65,7 @@
 
     <div class="row">
       @foreach($recomendaciones as $recomendacion)
+      <div class="col-md-3 mb-4">
         <div class="card cardProducto" style="width: 18rem;">
           <a class="linkproductostienda" href="{{ route('camisetas.select', $recomendacion->id) }}">
             @foreach($recomendacion->imagenes as $imagen)
@@ -78,9 +79,12 @@
             </div>
           </a>
         </div>
+      </div>
       @endforeach
     </div>
   </div>
+
+  
 </div>
 
 @endsection

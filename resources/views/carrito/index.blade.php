@@ -27,31 +27,33 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($carrito as $id => $details)
-                <tr>
-                    <td>{{ $details['nombre'] }}</td>
-                    <td>{{ $details['cantidad'] }}</td>
-                    <td>{{ $details['precio'] }}</td>
-                    <td>{{ $details['cantidad'] * $details['precio'] }}</td>
-                    <td>
-                        <form action="{{ route('carrito.update', $id) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                            <input type="number" name="cantidad" value="{{ $details['cantidad'] }}" min="1">
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                        </form>
-                        <form action="{{ route('carrito.remove', $id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            @empty
+            @if(count($carrito) > 0)
+                @foreach($carrito as $id => $details)
+                    <tr>
+                        <td>{{ $details['nombre'] }}</td>
+                        <td>{{ $details['cantidad'] }}</td>
+                        <td>{{ number_format($details['precio'], 2, ',', '.') }}</td>
+                        <td>{{ number_format($details['cantidad'] * $details['precio'], 2, ',', '.') }}</td>
+                        <td>
+                            <form action="{{ route('carrito.update', $id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('PATCH')
+                                <input type="number" name="cantidad" value="{{ $details['cantidad'] }}" min="1">
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </form>
+                            <form action="{{ route('carrito.remove', $id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
                 <tr>
                     <td colspan="6" class="text-center">Tu carrito está vacío</td>
                 </tr>
-            @endforelse
+            @endif
         </tbody>
 
         <tfoot>

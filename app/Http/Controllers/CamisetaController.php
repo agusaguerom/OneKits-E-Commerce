@@ -20,11 +20,15 @@ class CamisetaController extends Controller
             'camisetas' => $camisetas
         ]);
     }
-   public function indexTienda()
+
+    public function indexTienda()
     {
-        $camisetas = Camiseta::orderBy('fk_equipo')->get();
+        $camisetas = Camiseta::with('tipomarca')->orderBy('fk_equipo')->get();
+        $marca = TipoMarca::orderBy('nombre')->get();
+
         return view('tienda.productos', [
-            'camisetas' => $camisetas
+            'camisetas' => $camisetas,
+            'marca' => $marca
         ]);
     }
 
@@ -47,6 +51,7 @@ class CamisetaController extends Controller
 
         ]);
 
+
     }
 
     public function filtroAdidas()
@@ -63,6 +68,9 @@ class CamisetaController extends Controller
 
         ]);
 
+
+
+
     }
 
     public function filtroPuma()
@@ -78,6 +86,8 @@ class CamisetaController extends Controller
 
         ]);
 
+
+
     }
 
     public function filtroNike()
@@ -92,6 +102,9 @@ class CamisetaController extends Controller
             'nikecamiseta' => $nike,
 
         ]);
+
+
+
 
     }
     /**
@@ -196,7 +209,10 @@ class CamisetaController extends Controller
         'stocks' => $stocks,
         'recomendaciones' => $recomendaciones
     ]);
-}
+
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -266,9 +282,8 @@ class CamisetaController extends Controller
      */
     public function destroy(Camiseta $camiseta)
     {
-
+        $camiseta->imagenes()->delete();
         $camiseta->delete();
-
         return redirect()->route('camisetas.index')->with('status', 'La camiseta ha sido eliminada correctamente');
     }
 }

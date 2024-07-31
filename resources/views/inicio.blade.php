@@ -34,17 +34,22 @@
   <div class="contenedorcards row container">
     @foreach($camisetasadidas as $camisetaadi)
       <div class="card cardInicio col-auto" style="width: 18rem;">
+        <a class="linkproductostienda" href="{{ route('camisetas.select', $camisetaadi->id) }}">
         @foreach($camisetaadi->imagenes as $imagen)
-          <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camisetaadi->nombre }}">
+          <img class="card-img-top imginicioproducto" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $camisetaadi->nombre }}">
         @endforeach
         <div class="card-body">
-          <p class="card-text">{{$camisetaadi->nombre}}</p>
+          <p class="card-text nombrecamisetainicio">{{$camisetaadi->nombre}}</p>
         </div>
-        <div class="container">
-          <p>$ {{$camisetaadi->precio}}</p>
+        <div class="card-footer">
+          <p class="precioproducto">${{ number_format($camisetaadi->precio, 0, ',', '.') }}</p>
         </div>
+      </a>
       </div>
     @endforeach
+    <div class="container text-end">
+    <a href="/adidas" class="btn btn-light btnlinkvermas">Ver Camisetas Adidas Disponibles  <i class="bi bi-arrow-right"></i></a>
+  </div>
   </div>
 
   <!-- Sección Puma -->
@@ -55,19 +60,22 @@
     </div>
     <div class="contenedorcards row container">
       @foreach($camisetaspuma as $puma)
-        <div class="card cardInicio col-auto" style="width: 18rem;">
-          @foreach($puma->imagenes as $imagen)
+      <div class="card cardInicio col-auto" style="width: 18rem;">
+        <a class="linkproductostienda" href="{{ route('camisetas.select', $puma->id) }}">
+        @foreach($puma->imagenes as $imagen)
             <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $puma->nombre }}">
           @endforeach
           <div class="card-body">
             <p class="card-text">{{$puma->nombre}}</p>
           </div>
-          <div class="container">
-            <p>$ {{$puma->precio}}</p>
+          <div class="card-footer">
+            <p class="precioproducto">${{ number_format($puma->precio, 0, ',', '.') }}</p>
           </div>
+        </a>
         </div>
       @endforeach
     </div>
+
   </div>
 
   <!-- Sección Nike -->
@@ -79,18 +87,23 @@
     <div class="contenedorcards row container">
       @foreach($camisetasnike as $nike)
         <div class="card cardInicio col-auto" style="width: 18rem;">
+          <a class="linkproductostienda" href="{{ route('camisetas.select', $nike->id) }}">
           @foreach($nike->imagenes as $imagen)
             <img class="card-img-top" src="{{ asset('storage/' . $imagen->url_img) }}" alt="Imagen de {{ $nike->nombre }}">
           @endforeach
           <div class="card-body">
             <p class="card-text">{{$nike->nombre}}</p>
           </div>
-          <div class="container">
-            <p>$ {{$nike->precio}}</p>
+          <div class="card-footer">
+            <p class="precioproducto">${{ number_format($nike->precio, 0, ',', '.') }}</p>
           </div>
+        </a>
         </div>
       @endforeach
     </div>
+  </div>
+  <div class="container text-end">
+    <a href="/nike" class="btn btn-light btnlinkvermas">¡Compra Ahora Todas las Camisetas Nike! <i class="bi bi-arrow-right"></i></a>
   </div>
 </div>
 

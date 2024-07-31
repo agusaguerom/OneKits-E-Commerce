@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TipoMarcaController;
@@ -27,17 +28,6 @@ Route::get('/a', function () {
 });
 
 
-
-Route::get('/', function () {
-    return view('inicio');
-})->name('inicio');
-
-
-
-
-
-
-
 Route::get('/',[
     CamisetaController::class,
     'indexInicio'
@@ -58,16 +48,37 @@ Route::get('/puma',[
     'filtroPuma'
 ])->name('puma');
 
+Route::get('/adidasb',[
+    BotinController::class,
+    'filtroAdidas'
+])->name('adidasbotines');
+
+Route::get('/nikeb',[
+    BotinController::class,
+    'filtroNike'
+])->name('nikebotines');
+
+Route::get('/pumab',[
+    BotinController::class,
+    'filtroPuma'
+])->name('pumabotines');
 
 Route::get('/contacto', function () {
     return view('tienda.contacto');
 });
+Route::post('/contacto', [ContactoController::class, 'store'])->name('contactoform');
+
+
 
 
 
 Route::get('/nosotros', function () {
     return view('tienda.nosotros');
 });
+Route::get('/productos',[
+    CamisetaController::class,
+        'indexTienda'
+        ])->name('productos');
 
 
 
@@ -89,124 +100,67 @@ Route::get('/camisetas/create',[CamisetaController::class,'create'])->name('cami
 
 
 
-// Usuarios
-Route::get('/usuarios',[
-    UserController::class, 'index'
-])->name('admin.usuarios.index');
 
 
 
-Route::get('/usuarios/{user}/edit', [
-    UserController::class,
-    'edit'
-])->name('admin.usuarios.usuariosedit');
+//MIDDLEWARE
+Route::middleware('is_admin')->group(function () {
 
-Route::put('usuarios/{user}', [
-    UserController::class,
-    'update'
-])->name('admin.usuarios.usuariosupdate');
+    Route::get('/admin', [AdminController::class, 'index']);
 
-Route::delete('usuarios/{user}',[
-    UserController::class,
-    'destroy'
-])->name('admin.usuarios.usuariosdestroy');
+     // Usuarios
+     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.usuarios.index');
+     Route::get('/usuarios/{user}/edit', [UserController::class, 'edit'])->name('admin.usuarios.usuariosedit');
+     Route::put('usuarios/{user}', [UserController::class, 'update'])->name('admin.usuarios.usuariosupdate');
+     Route::delete('usuarios/{user}', [UserController::class, 'destroy'])->name('admin.usuarios.usuariosdestroy');
+     Route::get('usuarios/{user}/changerol', [UserController::class, 'changerol'])->name('admin.usuarios.changerol');
 
 
-Route::get('/gestionadmin',[
-    AdminController::class, 'index'
-])->name('admin.usuarios.admin');
+     Route::get('/gestionadmin', [AdminController::class, 'index'])->name('admin.usuarios.admin');
+     Route::get('/gestionadmin/{user}/edit', [AdminController::class, 'edit'])->name('admin.usuarios.adminedit');
+     Route::put('gestionadmin/{user}', [AdminController::class, 'update'])->name('admin.usuarios.adminupdate');
+     Route::delete('gestionadmin/{user}', [AdminController::class, 'destroy'])->name('admin.usuarios.admindestroy');
 
-Route::get('/gestionadmin/{user}/edit', [
-    AdminController::class,
-    'edit'
-])->name('admin.usuarios.adminedit');
+     Route::get('/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
 
-Route::put('gestionadmin/{user}', [
-    AdminController::class,
-    'update'
-])->name('admin.usuarios.adminupdate');
+     // Camisetas
 
-Route::delete('gestionadmin/{user}',[
-    AdminController::class,
-    'destroy'
-])->name('admin.usuarios.admindestroy');
+     Route::get('/camisetas', [CamisetaController::class, 'index'])->name('camisetas.index');
+     Route::post('/camisetas', [CamisetaController::class, 'store'])->name('camisetas.store');
+     Route::get('/camisetas/{camiseta}', [CamisetaController::class, 'show'])->name('camisetas.show');
+     Route::get('/camisetas/{camiseta}/edit', [CamisetaController::class, 'edit'])->name('camisetas.edit');
+     Route::put('/camisetas/{camiseta}', [CamisetaController::class, 'update'])->name('camisetas.update');
+     Route::delete('/camisetas/{camiseta}', [CamisetaController::class, 'destroy'])->name('camisetas.destroy');
 
-Route::get('/usuarios/create',[
-    UserController::class,
-    'create'
-])->name ('usuarios.create');
+     Route::get('/camisetas/{camiseta}/stock/create', [StockController::class, 'create'])->name('camisetas.stock.create');
+     Route::post('/camisetas/{camiseta}/stock', [StockController::class, 'store'])->name('camisetas.stock.store');
 
+     // Marca
+     Route::get('/marca/create', [TipoMarcaController::class, 'create'])->name('marca.create');
+     Route::post('/crearmarca', [TipoMarcaController::class, 'store'])->name('marcas.store');
 
-// Usuarios
-Route::get('/usuarios',[
-    UserController::class, 'index'
-])->name('admin.usuarios.index');
+     // Equipos
+     Route::get('/equipos/create', [EquipoController::class, 'create'])->name('equipos.create');
+     Route::post('/crearequipo', [EquipoController::class, 'store'])->name('equipos.store');
 
 
-Route::get('/usuarios/{user}/edit', [
-    UserController::class,
-    'edit'
-])->name('admin.usuarios.usuariosedit');
-
-Route::put('usuarios/{user}', [
-    UserController::class,
-    'update'
-])->name('admin.usuarios.usuariosupdate');
-
-Route::delete('usuarios/{user}',[
-    UserController::class,
-    'destroy'
-])->name('admin.usuarios.usuariosdestroy');
 
 
-Route::get('/gestionadmin',[
-    AdminController::class, 'index'
-])->name('admin.usuarios.admin');
 
-Route::get('/gestionadmin/{user}/edit', [
-    AdminController::class,
-    'edit'
-])->name('admin.usuarios.adminedit');
-
-Route::put('gestionadmin/{user}', [
-    AdminController::class,
-    'update'
-])->name('admin.usuarios.adminupdate');
-
-Route::delete('gestionadmin/{user}',[
-    AdminController::class,
-    'destroy'
-])->name('admin.usuarios.admindestroy');
+    Route::get('/botines', [BotinController::class, 'index'])->name('botines.index');
+    Route::post('/botines', [BotinController::class, 'store'])->name('botines.store');
+    Route::get('/botines/{botin}', [BotinController::class, 'show'])->name('botines.show');
+    Route::get('/botines/{botin}/edit', [BotinController::class, 'edit'])->name('botines.edit');
+    Route::put('/botines/{botin}', [BotinController::class, 'update'])->name('botines.update');
+    Route::delete('/botines/{botin}', [BotinController::class, 'destroy'])->name('botines.destroy');
 
 
-Route::post('/camisetas',[
-    CamisetaController::class,
-    'store'
-])->name('camisetas.store');
+});
+// Fin de Middleware
 
 
-Route::get('/camisetas/{camiseta}',[
-    CamisetaController::class,
-    'show'
-])->name('camisetas.show');
 
 
-Route::get('/camisetas/{camiseta}/edit',[
-    CamisetaController::class,
-    'edit'
-])->name('camisetas.edit');
-
-
-Route::put('/camisetas/{camiseta}',
-    [CamisetaController::class,
-    'update'
-])->name('camisetas.update');
-
-
-Route::delete('/camisetas/{camiseta}',
-    [CamisetaController::class,
-    'destroy'
-])->name('camisetas.destroy');
 
 
 Route::resource('imagenCamiseta', ImagenCamisetaController::class);
@@ -224,21 +178,6 @@ Route::get('/marca/create', [
     'create'
 ])->name('marca.create');
 
-Route::post('/crearmarca', [
-    TipoMarcaController::class,
-    'store'
-])->name('marcas.store');
-
-//EQUIPOS
-Route::get('/equipos/create', [
-    EquipoController::class,
-    'create'
-])->name('equipos.create');
-
-Route::post('/crearequipo', [
-    EquipoController::class,
-    'store'
-])->name('equipos.store');
 
 
 
@@ -247,6 +186,9 @@ Route::post('/crearequipo', [
 
 
 
+
+
+//stock camisetas
 Route::get('/botines',[BotinController::class,'index'])->name('botines.index');
 
 
@@ -326,7 +268,6 @@ Route::get('/productos',[ProductoController::class, 'index'])->name('productos.i
 
 
 
-Route::get('/admin', [AdminController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('inicio');

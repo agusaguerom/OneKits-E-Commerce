@@ -13,40 +13,54 @@
 
 <header>
 
-<nav class="navbar navbar-expand-lg navheader">
-  <a class="navbar-brand logoheader text-black" href="#">Nombre</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav class="navbar navbar-expand-lg  navbar-light bg-light navheader">
 
-  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="text-black linksheader" href="{{ url('/') }}">Inicio</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/productos') }}">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/nosotros') }}">Nosotros</a>
-    </li>
-      <li class="nav-item">
-        <a class="text-black linksheader" href="{{ url('/contacto') }}">Contacto</a>
-    </li>
-    </ul>
-  </div>
-
-  <div class="iconosheader">
-    <!-- Hacer el ícono del carrito clickeable -->
-    <a href="{{ route('carrito.index') }}" class="text-black">
-      <i class="bi bi-cart4 icono"></i>
+    <a href="/">
+      <img src="{{ URL('/img/logo.svg') }}" width="70px" height="70px" alt="Logo">
     </a>
-    <a href="{{ route('profile.edit') }}" class="text-black">
-      <i class="bi bi-person icono"></i>
-    </a>
-  </div>
+  
+  
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="text-black linksheader nav-link" href="{{ url('/') }}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader nav-link" href="{{ url('/productos') }}">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader nav-link" href="{{ url('/nosotros') }}">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="text-black linksheader nav-link" href="{{ url('/contacto') }}">Contacto</a>
+        </li>
 
-</nav>
+        @if(Auth::user() and Auth::user()->fk_tipo_usuario == 2)
+        <li class="nav-item">
+          <a class="text-black linksheader nav-link" href="{{ url('/admin') }}">Panel</a>
+        </li>
+        @endif
+      </ul>
+  
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="{{ route('carrito.index') }}" class="nav-link">
+            <i class="bi bi-cart4 icono text-black"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('profile.edit') }}" class="nav-link">
+            <i class="bi bi-person icono text-black"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
 </header>
 
     <main>
@@ -86,9 +100,9 @@
       <!-- Grid row -->
       <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <p class="text-uppercase fw-bold mb-4">Nombre</p>
+          <p class="text-uppercase fw-bold mb-4">One Kits</p>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ex elementum, molestie sem sit amet, congue mauris. Aliquam posuere.
+            Nuestra misión es proporcionar a los aficionados una experiencia de compra única, donde la pasión por el fútbol se refleja en cada detalle.          
           </p>
         </div>
 
@@ -118,10 +132,10 @@
 
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <p class="text-uppercase fw-bold mb-4">Contacto</p>
-          <p><i class="fas fa-home me-3"></i> CABA, Buenos Aires</p>
+          <p><i class="fas fa-home me-3"></i> Av de Mayo 892, Ciudad Autonoma Buenos Aires</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            nombre@example.com
+            onekits@gmail.com
           </p>
           <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
           <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>

@@ -30,7 +30,7 @@
             <label for="talleelegido" class="label-talle">Escoge el talle</label>
             <select name="talleelegido" id="talleelegido" class="form-control select-talle">
                 @foreach($stocks as $stock)
-                    <option value="{{ $stock->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
+                    <option value="{{ $stock->talleCalzado->id }}">{{ $stock->talleCalzado->nombre_talle }}</option>
                 @endforeach
             </select>
         </div>
@@ -61,8 +61,9 @@
 
     <div class="row">
       @foreach($recomendaciones as $recomendacion)
+      <div class="col-md-3 mb-4">
         <div class="card cardProducto" style="width: 18rem;">
-          <a class="linkproductostienda" href="{{ route('botines.select', $recomendacion->id) }}">
+          <a class="linkproductostienda" href="{{ route('camisetas.select', $recomendacion->id) }}">
             @foreach($recomendacion->imagenes as $imagen)
               <img src="{{ asset('storage/' . $imagen->url_img) }}"
                    alt="Imagen de {{ $recomendacion->nombre }}"
@@ -70,10 +71,11 @@
             @endforeach
             <div class="card-body bodyproductos">
               <h2 class="nombreproductotienda">{{ $recomendacion->nombre }}</h2>
-              <p class="card-text precioproductotienda">${{ $recomendacion->precio }}</p>
+              <p class="card-text precioproductotienda">${{ number_format($recomendacion->precio, 0, ',', '.') }}</p>
             </div>
           </a>
         </div>
+      </div>
       @endforeach
     </div>
   </div>

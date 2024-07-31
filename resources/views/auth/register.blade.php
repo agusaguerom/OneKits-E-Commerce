@@ -39,7 +39,11 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+     
+        
         <div class="mt-4">
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ __('Datos de envio') }}</h2>
+                
             <x-input-label for="direccion" :value="__('Calle')" />
             <x-text-input id="calle" class="block mt-1 w-full" type="text" name="calle" :value="old('calle')" required autocomplete="calle" />
             <x-input-error :messages="$errors->get('nombre')" class="mt-2" />
